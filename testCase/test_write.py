@@ -1,16 +1,31 @@
-import requests
+from common.baseApi import BaseApi
+from configs.config import indata
+from configs.config import payload
+from utils.handle_yml import get_yaml_data
+from utils.handle_path import config_path
+import pytest
+import os
 
-def test_WriteData():
-  url = "http://192.168.220.134:8713/agilorapi/v6/write?db=我是数据库20"
+class Wq(BaseApi):
 
-  payload = "cpu_usage5,region=beijing,host=server1 core=7,usage=123"
+    def write(self,data):
+        respdata = self.request_send(data=data)   ##请求发送数据
 
-  headers = {'Authorization': 'Token XXX','Content-Type': 'text/plain'}
+        return respdata
 
-  response = requests.request("POST", url, headers=headers, data=payload)
+    def query(self,quData):
+        respon = self.request_send(data = quData)
+        # print(respon.text)
+        print(type(respon.text))
 
-  print(response.text)
+        return respon.text
 
+
+    def pull_data(self):
+        listdata = []
+
+        pass
 
 if __name__ == '__main__':
-    test_WriteData()
+    print(Wq().write(indata))
+    print(Wq().query(payload))

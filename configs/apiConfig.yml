@@ -1,13 +1,13 @@
-Write:
+Wq:
   write:
     path: /agilorapi/v6/write?db=agilor_test
     method: POST
     headers: {'Authorization': 'Token XXX','Content-Type': 'text/plain'}
 
-Query:
   query:
-    path: agilorapi/v6/query
-    method: POST
+      path: /agilorapi/v6/query
+      method: POST
+      headers: {'Authorization': 'Token XXX','Content-Type': 'text/plain'}
 
 #{'Login': {'login': {'path': '/account/sLogin', 'method': 'POST'}, 'logout': {'path': 'xxxx', 'method': 'POST'}}, 'Shop': {'add': {'path': 'xxxx', 'method': 'POST'}}}
 #{'Write': {'write': {'path': '/agilorapi/v6/write?db=我是数据库20', 'method': 'POST', 'headers': {'Authorization': 'Token XXX', 'Content-Type': 'text/plain'}}}, 'Query': {'query': {'path': 'agilorapi/v6/query', 'method': 'POST'}}}

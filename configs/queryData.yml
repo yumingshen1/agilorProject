@@ -1,0 +1,5 @@
+db: agilor_test
+start: "2021-11-18T01:00:00.1634864721Z"
+table: cpu_usage_func11
+tags:
+  - AGPOINTNAME: Simu1_1

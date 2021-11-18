@@ -1,0 +1,52 @@
+---
+Write:
+ dec: Agilor write
+ parameters:
+   -
+      data: 'cpu_usage4,region=beijing,host=server1 core=4,usage=0.4'
+   -
+      data: 'cpu_usage_query,region=beijing,host=server1 core=41,usage=0.41'
+   -
+      data: 'cpu_usage4,region=beijing,host=server1 core=4,usage=0.4'
+   -
+      data: "cpu_usage4,region=tianjin,host=server1 core=5,usage=0.5\n\
+             cpu_usage4,region=langfang,host=server1 core=6,usage=0.6"
+   -
+      data: 'cpu_usage4,region=beijing,host=server1 core=3,usage=0.3'
+   -
+      data: "cpu_usage_query,region=beijing,guolu=bianhao1 core=1\n\
+             cpu_usage_query,region=beijing,guolu=bianhao2 core=2\n\
+             cpu_usage_query,region=beijing,guolu=bianhao3 core=3\n\
+             cpu_usage_query,region='',guolu='' core=3"
+   -
+      data: 'cpu_usage_type,region=suzhou,host=server1 core=102.145,a=1,flag=true,b="jjj"'
+   -
+      data: "cpu_usage_func,region=suzhou,host=server1 core=1 1634865021000000000\n\
+             cpu_usage_func,region=suzhou,host=server1 core=-4 1634865081000000000\n\
+             cpu_usage_func,region=suzhou,host=server1 core=6 1634865141000000000\n\
+             cpu_usage_func,region=suzhou,host=server1 core=8 1634865201000000000\n\
+             cpu_usage_func,region=suzhou,host=server1 core=9 1634865261000000000"
+   -
+      data: 'cpu_usage_delete,region=beijing,host=server1 core=4'
+   -
+      data: 'cpu_usage_func,region=suzhou,host=server2 core=10 1634865021000000000'
+   -
+      data: "cpu_usage_func,region=suzhou,host=server01 core=1 1634865021000000000\n\
+             cpu_usage_func,region=suzhou,host=server02 core=-4 1634865081000000000\n\
+             cpu_usage_func,region=suzhou,host=server03 core=6 1634865141000000000"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
