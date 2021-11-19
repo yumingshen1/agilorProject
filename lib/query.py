@@ -56,15 +56,17 @@ def countlist():  ##获取查询接口的数据，并处理数据
     print(list)
     return list
 
+
 # 将数据写入文件
 def writeFile(data, fileName):
     f = open(fileName, 'w+')
 
     for line in data:
-        #todo 这里是已json 格式写入，其他格式自行组合
+        # todo 这里是已json 格式写入，其他格式自行组合
         f.write(json.dumps(line))
 
     f.close()
+
 
 # 模拟数据
 def mockData():
