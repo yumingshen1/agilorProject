@@ -87,7 +87,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
-        row = [Simu1_1, df, param1, statusStr, param2, s]
+        row = [Simu1_1, df, param2, statusStr, param1, s]
         listb.append(row)
 
     return listb
