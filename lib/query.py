@@ -1,8 +1,10 @@
 # coding=utf-8
+import array
 import datetime
 import string
 import time
 
+import numpy as np
 import requests
 import json
 
@@ -27,77 +29,104 @@ def test_QueryData():  ##查询接口
     print(response.text)
     re = response.text.split('_table')[1]
     print(re)
-    re = re.replace('\r\n','').strip(',')
-    lista  = []
+    re = re.replace('\r\n', '').strip(',')
+    lista = []
     lista.append(re)
     print(lista)
     return re
 
+
+def takeSecond(elem):
+    return elem[0][0], elem[1][0]
+
+
 def countlist():  ##获取查询接口的数据，并处理数据
-    tq = test_QueryData()
-    # tq = mockData()
+    # tq = test_QueryData()
+    tq = mockData()
+    tq = resolver(tq)
     print(len(tq))
     listb = []
-    for line in tq:
-        # 获取AGPOINTNAME
-        AGPOINTNAME = line[6]
+    timeMap = {}
 
-        # 获取日期
-        time = line[4]
-        # 日期处理
-        time = time.split('.')[0]
-        time = time.replace('T',' ')
+    # 对数据根据时间进行分组
+    for l in tq:
+        arr = l.split(",")
+        lastTime = arr[3]
+        # print (lastTime)
+        if (timeMap.get(lastTime)):
+            grouped = timeMap.get(lastTime)
+            grouped.append(arr)
+            timeMap[lastTime] = grouped
+        else:
+            timeMap[lastTime] = [arr]
 
-        #h获取value第一个值
-        valueone = line[5]
+    # 根据 table 字段进行 冒泡排序
+    for index, v in timeMap.items():
+        count = len(v)
+        for i in range(0, count):
+            for j in range(i + 1, count):
+                if v[i][0] > v[j][0]:
+                    v[i], v[j] = v[j], v[i]
 
-        # 获取value第二个值
-        valuetwo = line[5]
-        v = '正常|好点'
-        valuetwo = f'{v}{valuetwo}'
+    statusStr = "正常|好点"
+    s = "浮点型r/R"
+    for index, v in timeMap.items():
+        # print(v[0])
+        Simu1_1 = v[0][5]
+        date = v[0][3]
+        param1 = v[0][4]
+        param2 = v[1][4]
 
-        # 写入浮点型
-        datatype = f'浮点型r/R'
+        dateSub = date[0:date.rfind('.')]
+        # 定义小时
+        eightHour = datetime.timedelta(hours=8)
+        # 将时间格式化为 datetime 类型
+        d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
+        d = d + eightHour
+        df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
-        # 获取日期数据
-        # date = line[2]
-        # # 截取日期数据
-        # dateSub = date[0:string.rfind(date, '.')]
-        # # 定义小时
-        # eightHour = datetime.timedelta(hours=8)
-        # # 将时间格式化为 datetime 类型
-        # d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
-        # d = d + eightHour
-        # f = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
-        # row = [f]
-        listb.append(AGPOINTNAME,time,valueone,valuetwo,datatype)
+        row = [Simu1_1, df, param1, statusStr, param2, s]
+        listb.append(row)
 
-    print(listb)
     return listb
 
 
 # 将数据写入文件
 def writeFile(data, fileName):
-    # f = open(fileName, 'w+')
-    with open(fileName,'w+') as f:
+    with open(fileName, 'w+') as f:
         for line in data:
-            f.write(json.dumps(line))
+            s = ""
+            for v in line:
+                s = s + " " + v
+            f.write(s + "\n")
 
+
+# 解析数据转为数组
+def resolver(data):
+    # dataArr = string.split(data, ",_result,")
+    dataArr = data.split(",_result,")
+    dataArr.pop(0)
+    for line in dataArr:
+        print(line)
+    # print("----------")
+    return dataArr
 
 
 # 模拟数据
-# def mockData():
-#     mock = "[[\"_result\",0,\"2021-11-18T01:00:00.1634864721Z,3\"]]"
-#     mockArr = json.loads(mock)
-#     # print(mockArr)
-#     # print(type(mockArr))
-#     return mockArr
+def mockData():
+    mock = ",result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table" \
+           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,666.1234,Simu1_1,wendu,cpu_usage_func11" \
+           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,8208,Simu1_1,status,cpu_usage_func11" \
+           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,8208,Simu1_1,status,cpu_usage_func11" \
+           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,677.1234,Simu1_1,wendu,cpu_usage_func11"
+
+    return mock
 
 
 if __name__ == '__main__':
-    test_QueryData()
-    # fileName = "test.log"
-    # data = countlist()
-    # # mockData()
-    # writeFile(data, fileName)
-    # todo
+    # mockData = mockData()
+    # resolver(mockData)
+    # test_QueryData()
+    fileName = "test.log"
+    data = countlist()
+    writeFile(data, fileName)
