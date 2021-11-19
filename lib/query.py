@@ -75,7 +75,9 @@ def countlist():  ##获取查询接口的数据，并处理数据
         Simu1_1 = v[0][5]
         date = v[0][3]
         param1 = v[0][4]
-        param2 = v[1][4]
+        param2 = ""
+        if v[1]:
+            param2 = v[1][4]
 
         dateSub = date[0:date.rfind('.')]
         # 定义小时
