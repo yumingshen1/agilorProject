@@ -104,7 +104,7 @@ def writeFile(data, fileName):
 # 解析数据转为数组
 def resolver(data):
     # dataArr = string.split(data, ",_result,")
-    dataArr = data.split(",_result,")
+    dataArr = data.split("_result,")
     dataArr.pop(0)
     for line in dataArr:
         print(line)
