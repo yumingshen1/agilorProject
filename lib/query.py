@@ -53,7 +53,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         arr = l.split(",")
         lastTime = arr[3]
         # print (lastTime)
-        if (timeMap.get(lastTime)):
+        if timeMap.get(lastTime):
             grouped = timeMap.get(lastTime)
             grouped.append(arr)
             timeMap[lastTime] = grouped
