@@ -97,8 +97,8 @@ def writeFile(data, fileName):
         for line in data:
             s = ""
             for v in line:
-                s = s + " " + v
-            f.write(s + "\n")
+                s = s + v + " "
+            f.write(s.rstrip() + "\n")
 
 
 # 解析数据转为数组
