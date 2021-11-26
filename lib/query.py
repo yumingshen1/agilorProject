@@ -41,8 +41,8 @@ def takeSecond(elem):
 
 
 def countlist():  ##获取查询接口的数据，并处理数据
-    # tq = test_QueryData()
-    tq = mockData()
+    tq = test_QueryData()
+    # tq = mockData()
     tq = resolver(tq)
     print(len(tq))
     listb = []
@@ -115,14 +115,14 @@ def resolver(data):
 
 
 # 模拟数据
-def mockData():
-    mock = ",result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table" \
-           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,666.1234,Simu1_1,wendu,cpu_usage_func11" \
-           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,8208,Simu1_1,status,cpu_usage_func11" \
-           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,8208,Simu1_1,status,cpu_usage_func11" \
-           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,677.1234,Simu1_1,wendu,cpu_usage_func11"
-
-    return mock
+# def mockData():
+#     mock = ",result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table" \
+#            ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,666.1234,Simu1_1,wendu,cpu_usage_func11" \
+#            ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,8208,Simu1_1,status,cpu_usage_func11" \
+#            ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,8208,Simu1_1,status,cpu_usage_func11" \
+#            ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,677.1234,Simu1_1,wendu,cpu_usage_func11"
+#
+#     return mock
 
 
 if __name__ == '__main__':
