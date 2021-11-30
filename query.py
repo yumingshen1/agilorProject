@@ -13,11 +13,11 @@ def test_QueryData():  ##查询接口
     url = "http://192.168.220.134:8713/agilorapi/v6/query"
     data = {
         "db": "agilor_migration",
-        "start": "-79h",
+        "start": "-7y",
         "table": "test_table",
         "tags": [
             {
-                "AGPOINTNAME": "Simu1_1"
+                "AGPOINTNAME": "Simu1_6"
             }
         ]
     }
@@ -81,7 +81,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     statusStr = "正常|好点"     ## 不需要了
-    s = "长整型l/L"
+    s = "浮点型r/R"
     for index, v in timeMap.items():
         # print(v[0])
         Simu1_1 = v[0][5]              ## simu1
@@ -101,8 +101,8 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
-
-        row = [Simu1_1, df, param1, param2, s]
+        param3 = f'{statusStr}{param2}'
+        row = [Simu1_1, df, param1,param2, s]
         listb.append(row)
     print('listb数据',listb)
     return listb
@@ -116,26 +116,30 @@ def writeFile(data, fileName):
             for v in line:
                 s = s + v + " "
             print('s+v===>',s)
+            # print(type(s))
             f.write(s.rstrip() + "\n")
 
-## 数据写入excel
-import sys
 import xlwt
-def write_ecvel_data(data):
-    # 创建工作簿
-    book = xlwt.Workbook(encoding='utf-8',style_compression=0) ##utf-8格式，不压缩
-    # 创建一个sheet
-    sheet1 = book.add_sheet('Sheet1', cell_overwrite_ok=True)
-    col = ('AGPOINTNAME', '日期', 'status', 'value', '类型')
-    for i in range(0,5):
-        sheet1.write(0,i,col[i])
+## 数据写入excel
+def write_excel_data(data):
+    # listc = data
+    output = open('E:/sym/4.2迁移/6.xlsx', 'w+', encoding='gbk')
+    output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
+    for i in range(len(data)):
+        for j in range(len(data[i])):
+            output.write(str(data[i][j]))  # write函数不能写int类型的参数，所以使用str()转化
+            output.write('\t')  # 相当于Tab一下，换一个单元格
+        output.write('\n')  # 写完一行立马换行
+    output.close()
 
-    for i in range(0,2):
-        data = data[i]
-        for j in range(0,5):
-            sheet1.write(i+1,j,data[j])
-    savepath = 'sum1.xls'
-    book.save(savepath)
+    # # 创建工作簿
+    # book = xlwt.Workbook(encoding='utf-8', style_compression=0)  ##utf-8格式，不压缩
+    # # 创建一个sheet
+    # sheet1 = book.add_sheet('Sheet1', cell_overwrite_ok=True)
+    # for i in range(len(rows)):
+    #     for j in range(len(rows[i]))
+    #         sheet1.write(i,j,rows[i][j])
+    # book.save(filepath)
 
 
 # 解析数据转为数组
@@ -165,7 +169,7 @@ if __name__ == '__main__':
     # resolver(mockData)
     # test_QueryData()
     fileName = "test3.log"
+    fileExcel = "excel_b"
     data = countlist()
-    writeFile(data, fileName)
-
-    # write_ecvel_data(data)
+    # writeFile(data, fileName)
+    write_excel_data(data)

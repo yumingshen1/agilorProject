@@ -14,7 +14,7 @@ def writeToExcel(file_path, new_list):
     wb.save(file_path)  # 注意，写入后一定要保存
     print("成功写入文件: " + file_path + " !")
     return 1
-path = 'tt.xls'
+path = '../tt.xls'
 total_list = [['A', 'B', 'C', 'D', 'E'], [1, 2, 4, 6, 8], [4, 6, 7, 9, 0], [2, 6, 4, 5, 8]]
 writeToExcel(path,total_list)
 
