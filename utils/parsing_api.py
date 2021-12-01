@@ -25,30 +25,28 @@ class parsingApi:
         url = 'http://pi.vaiwan.com/piwebapi/dataservers/'
         path = f'{url}{da}'
         some_list = requests.get(path)
-        # print(type(some_list.json()))
-        # print(some_list.json()['Items'])
+
         name_list = []
         PointType_list = []
         RecordedData_list = []
-        WebId = []
         for i in range(len(some_list.json()['Items'])):
             name_list.append(some_list.json()['Items'][i]['Name'])
-            name_list.append(some_list.json()['Items'][i]['PointType'])
+            PointType_list.append(some_list.json()['Items'][i]['PointType'])
             links = (some_list.json()['Items'][i]['Links']['RecordedData'])
             links = links.split('/streams/')[1]
             links = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}'
-            # print(links)
-            name_list.append(links)
-        print(name_list)
+            RecordedData_list.append(links)
+
+        print(name_list,'\n',PointType_list,'\n',RecordedData_list)
         print(type(name_list))
 
-        return name_list
+        return name_list,PointType_list,RecordedData_list
 
 
     # 点的值
     def informationPage(self):
         da = self.information()
-        url = 'http://pi.vaiwan.com/piwebapi/streams/'
+
 
 
     # 写入
