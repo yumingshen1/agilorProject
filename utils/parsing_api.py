@@ -36,14 +36,12 @@ class parsingApi:
             links = links.split('/streams/')[1]
             links = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}'
             RecordedData_list.append(links)
-
-        # print(name_list,'\n',PointType_list,'\n',RecordedData_list)
         print(RecordedData_list)
 
         for one in RecordedData_list:
             res_list = requests.get(one)
-        print(res_list.json())
-
+            print(res_list.json())
+            print(type(res_list.json()),'\n')
         return name_list,PointType_list,RecordedData_list
 
 
