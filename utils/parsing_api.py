@@ -25,7 +25,7 @@ class parsingApi:
         url = 'http://pi.vaiwan.com/piwebapi/dataservers/'
         path = f'{url}{da}'
         some_list = requests.get(path)
-        more_dict = {}
+
         name_list = []
         PointType_list = []
         RecordedData_list = []
@@ -36,14 +36,13 @@ class parsingApi:
             links = links.split('/streams/')[1]
             links = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}'
             RecordedData_list.append(links)
-            # more_dict = {"name":[some_list.json()['Items'][i]['Name']],"type":some_list.json()['Items'][i]['PointType'],"links":[links]}
-        # print(name_list,'\n',PointType_list,'\n',RecordedData_list)
-        # print(type(name_list))
-        # print(more_dict)
 
-        for one in range(RecordedData_list):
+        # print(name_list,'\n',PointType_list,'\n',RecordedData_list)
+        print(RecordedData_list)
+
+        for one in RecordedData_list:
             res_list = requests.get(one)
-        print(res_list)
+        print(res_list.json())
 
         return name_list,PointType_list,RecordedData_list
 
@@ -76,9 +75,9 @@ class parsingApi:
 if __name__ == '__main__':
     # parsingApi().home_api()
     # parsingApi().database_list()
-    # parsingApi().information()
-    parsingApi().informationPage()
-    print(type(parsingApi().informationPage()))
+    parsingApi().information()
+    # parsingApi().informationPage()
+    # print(type(parsingApi().informationPage()))
     # data_list = parsingApi().information()
     # file_path = 'E:/sym/µãÖµ.xlsx'
     # parsingApi().write_list(file_path,data_list)
