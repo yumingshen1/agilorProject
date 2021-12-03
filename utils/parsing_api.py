@@ -2,7 +2,6 @@
 import requests
 import json
 import xlrd,xlwt
-from collections import defaultdict
 
 class parsingApi:
     # api首页
@@ -19,7 +18,6 @@ class parsingApi:
         res_list = requests.get(path)
         data = res_list.json()['Items'][0]['Links']['Points']
         str2 = data.split('dataservers/')[1]
-        # print(str2)
         return str2
     # 所有点信息
     def information(self):
@@ -44,13 +42,7 @@ class parsingApi:
             res_list = requests.get(one)
             print(res_list.json())
             print(type(res_list.json()),'\n')
-
-        # d = defaultdict(list)
-        # for key, value in name_list:
-        #     d[key].append(value)  # 省去了if判断语句
-        # print(d)
-
-        # return name_list,PointType_list,RecordedData_list
+        return name_list,PointType_list,RecordedData_list
 
 
     # 点的值
