@@ -132,14 +132,6 @@ def write_excel_data(data):
         output.write('\n')  # 写完一行立马换行
     output.close()
 
-    # # 创建工作簿
-    # book = xlwt.Workbook(encoding='utf-8', style_compression=0)  ##utf-8格式，不压缩
-    # # 创建一个sheet
-    # sheet1 = book.add_sheet('Sheet1', cell_overwrite_ok=True)
-    # for i in range(len(rows)):
-    #     for j in range(len(rows[i]))
-    #         sheet1.write(i,j,rows[i][j])
-    # book.save(filepath)
 
 
 # 解析数据转为数组
