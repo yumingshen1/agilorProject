@@ -3,6 +3,7 @@ import requests
 import json
 import xlrd, xlwt,openpyxl
 import pandas as pd
+import xlsxwriter
 
 class parsingApi:
     # api首页
@@ -60,7 +61,7 @@ class parsingApi:
             row_dict = {'name': name, 'point_type': point_type, 'values': values}    ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
             # print("row_dict的值----->",row_dict)
             results_arr.append(row_dict)                            ## 将存放每一个点的信息的 字典 放入list
-            # print("result_arr的值----->",results_arr)
+            print("result_arr的值----->",results_arr)
         return results_arr
 ## 返回数据格式 [{'name': '111111', 'point_type': 'Float32', 'values': [['2021-12-02T09:28:01Z', 50.0, True], ['2021-12-02T17:28:01Z', 50.0, True], ['2021-12-03T01:28:01Z', 50.0, True], ['2021-12-03T02:28:01Z', 50.0, True]]}, {'name': 'sy.st.WIN-F9KROVHMQ74.random1.Device Status', 'point_type': 'String', 'values': [['2021-12-02T08:11:31Z', '0 | Good', True], ['2021-12-02T16:11:31Z', '0 | Good', True], ['2021-12-03T00:11:31Z', '0 | Good', True]]}]
 
@@ -78,22 +79,55 @@ class parsingApi:
 
  # 写入excel
     def write_excel(self,datas,file_path):
-        with open(file_path,'w+') as f:
-            for i in datas:
-                name = i['name']
-                type = i['point_type']
-                print('i的值--->',i)
-                print('name的值---->',name)
-                print('type的值---->',type)
-                if i['values']:
-                    for v in i['values']:
-                        time = v[0]
-                        va = v[1]
-                        go = v[2]
-                        print('time的值---->', time)
-                        print('va的值---->', va)
-                        print('go的值---->', go)
+        print("------excel写入数据：{}".format(datas))
+        print("------excel写入文件：{}".format(file_path))
 
+        workbook = xlsxwriter.Workbook('{}'.format(file_path))  # 建立文件
+        worksheet = workbook.add_worksheet()  # 建立sheet
+
+        temp = 0   ##定义变量，为了标记values的数据是几层
+        for index, item in enumerate(datas):  ## enumerate() 函数用于将一个可遍历的数据对象组合为一个索引序列，同时列出数据和数据下标，这里循环传入的datas[]
+            if len(item['values']) == 0:    ## 判断如果是0或者没有子列表
+                index = index + temp        ##  下标 = 下标+子列表，1+0，2+0，3+0
+                worksheet.write(index, 0, '{}'.format(item['name']))
+                worksheet.write(index, 1, '{}'.format(item['point_type']))
+                worksheet.write(index, 2, '{}'.format(item['values'])) ## 写入空列表
+            else:
+                for ind, it in enumerate(item['values']): ## 判断values有值情况 ，循环下标和值
+                    tm = index      ## 外层下标存起来，
+                    if ind != 0:        ## 内层values的下表不等0
+                        temp = temp + 1     ## 内层values的数值+1，取第下一个元素（列表）
+                    index = index + temp    ## 内层values数据不止一条，index+1（相当于Excel行数+1）向下一行写入
+                    print("---it： {}".format(it))
+                    print("---temp： {}".format(temp))
+                    print("---index： {}".format(index))
+
+                    worksheet.write(index, 0, '{}'.format(item['name']))
+                    worksheet.write(index, 1, '{}'.format(item['point_type']))
+                    worksheet.write(index, 2, '{}'.format(str(it[0])))
+                    worksheet.write(index, 3, '{}'.format(str(it[1])))
+                    worksheet.write(index, 4, '{}'.format(str(it[2])))
+
+                    index = tm  ## 将外层的下标 还给外层的index，继续循环，
+
+        workbook.close()
+
+    # with open(file_path,'w+') as f:
+        #     for i in datas:
+        #         name = i['name']
+        #         type = i['point_type']
+        #         print('i的值--->',i)
+        #         print('name的值---->',name)
+        #         print('type的值---->',type)
+        #         if i['values']:
+        #             for v in i['values']:
+        #                 time = v[0]
+        #                 va = v[1]
+        #                 go = v[2]
+        #                 print('time的值---->', time)
+        #                 print('va的值---->', va)
+        #                 print('go的值---->', go)
+        #
 
         # wb = openpyxl.Workbook()
         # sheet = wb.active
@@ -134,3 +168,4 @@ if __name__ == '__main__':
     # parsingApi().write_file(parsingApi().information, 'test2.log')
 
     parsingApi().write_excel(parsingApi().information,'./data.xlsx')
+
