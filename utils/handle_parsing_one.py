@@ -15,17 +15,17 @@ class parsingApi:
         res = requests.get('http://192.168.10.243:8080/piwebapi')
         data = res.json()['Links']['DataServers']
         str1 = data.split('/')[-1]
-        return str1
+        return str1     #'/dataservers'
 
     # 数据库连接
     def database_list(self):
         da = self.home_api()
-        url = 'http://192.168.10.243:8080/piwebapi/'
+        url = 'http://192.168.10.243:8080/piwebapi/'  # /dataservers
         path = f'{url}{da}'
         res_list = requests.get(path)
         data = res_list.json()['Items'][0]['Links']['Points']
         str2 = data.split('dataservers/')[1]
-        return str2
+        return str2     ##
 
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
@@ -59,7 +59,7 @@ class parsingApi:
 
             ##单个点信息
             urlname = 'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywHgAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLlNDMQ/recorded?startTime=2021-12-05T00:00:00.000Z'
-
+            'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
             stream_datas = requests.get(urlname).json()  ## 循环访问每个url
 
             values = []
