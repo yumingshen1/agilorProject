@@ -10,14 +10,14 @@ import json
 
 # agilor_migration test_table
 def test_QueryData():  ##查询接口
-    url = "http://192.168.220.134:8713/agilorapi/v6/query"
+    url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
         "db": "agilor_migration",
         "start": "-7y",
         "table": "test_table",
         "tags": [
             {
-                "AGPOINTNAME": "Simu1_6"
+                "AGPOINTNAME": "Simu1_2"
             }
         ]
     }
@@ -48,8 +48,17 @@ def test_QueryData():  ##查询接口
 ,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,8208,Simu1_1,state,test_table
 '''
 
-def takeSecond(elem):
-    return elem[0][0], elem[1][0]
+'''
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
+,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
+
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
+,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
+'''
+# def takeSecond(elem):
+#     return elem[0][0], elem[1][0]
 
 
 def countlist():  ##获取查询接口的数据，并处理数据
@@ -81,13 +90,12 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     statusStr = "正常|好点"     ## 不需要了
-    s = "浮点型r/R"
+    # s = "浮点型r/R"
     for index, v in timeMap.items():
         # print(v[0])
-        Simu1_1 = v[0][5]              ## simu1
+        Simu1 = v[0][5]              ## simu1
         date = v[0][3]                 # 时间
         param1 = v[0][4]                ## 8208---> 变为true 或 false  数字
-        type = v[0][6]                  ##  类型
         param2 = ""                     ## 变为8208值
         if v[1]:
             param2 = v[1][4]
@@ -102,7 +110,18 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
         param3 = f'{statusStr}{param2}'
-        row = [Simu1_1, df, param1,param2, s]
+
+        type = v[0][6]  ##  类型
+        if type == 'R':
+            type = '浮点型r/R'
+        elif type == 'B':
+            type = '布尔型b/B'
+        elif type == 'L':
+            type = '长整型l/L'
+        elif type == 'S':
+            type = '字符串型s/S'
+
+        row = [Simu1, df, param1,param2, type]
         listb.append(row)
     print('listb数据',listb)
     return listb
@@ -123,7 +142,7 @@ import xlwt
 ## 数据写入excel
 def write_excel_data(data):
     # listc = data
-    output = open('E:/sym/4.2迁移/6.xlsx', 'w+', encoding='gbk')
+    output = open('E:/sym/4.2迁移/ee.xlsx', 'w+', encoding='gbk')
     output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -131,16 +150,6 @@ def write_excel_data(data):
             output.write('\t')  # 相当于Tab一下，换一个单元格
         output.write('\n')  # 写完一行立马换行
     output.close()
-
-    # # 创建工作簿
-    # book = xlwt.Workbook(encoding='utf-8', style_compression=0)  ##utf-8格式，不压缩
-    # # 创建一个sheet
-    # sheet1 = book.add_sheet('Sheet1', cell_overwrite_ok=True)
-    # for i in range(len(rows)):
-    #     for j in range(len(rows[i]))
-    #         sheet1.write(i,j,rows[i][j])
-    # book.save(filepath)
-
 
 # 解析数据转为数组
 def resolver(data):

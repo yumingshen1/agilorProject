@@ -1,7 +1,9 @@
 import xlrd
 import xlwt
 import pandas as pd
-
+'''
+excel对比
+'''
 # csv文件转换成xlsx文件
 def csv_to_xlsx_pd(data1, data2):
     csv = pd.read_csv(data1, encoding='utf-8')
@@ -29,10 +31,10 @@ def compare_excel(file1_name, file2_name):
                     comp_restult.write(i, j, result)
                 else:
                     comp_restult.write(i, j, tp1.cell(i, j).value)
-    result_excel.save('E:/sym/4.2迁移/Agilordata比对结果.xls')
+    result_excel.save('E:/sym/4.2迁移/sc1.xls')
 
 
 if __name__ == '__main__':
-    file1_name = 'E:/sym/4.2迁移/db6.0-5.xlsx'
-    file2_name = 'E:/sym/4.2迁移/修改数据4.2/db4.2-5.xlsx'
+    file1_name = 'E:/sym/4.2迁移/sc16.xlsx'
+    file2_name = 'E:/sym/pi解析/sc.xlsx'
     compare_excel(file1_name, file2_name)

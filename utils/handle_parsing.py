@@ -8,7 +8,7 @@ import xlsxwriter
 class parsingApi:
     # api首页
     def home_api(self):
-        res = requests.get('http://pi.vaiwan.com/piwebapi/')
+        res = requests.get('http://192.168.10.243:8080/piwebapi')
         data = res.json()['Links']['DataServers']
         str1 = data.split('/')[-1]
         return str1
@@ -16,7 +16,7 @@ class parsingApi:
     # 数据库连接
     def database_list(self):
         da = self.home_api()
-        url = 'http://pi.vaiwan.com/piwebapi/'
+        url = 'http://192.168.10.243:8080/piwebapi/'
         path = f'{url}{da}'
         res_list = requests.get(path)
         data = res_list.json()['Items'][0]['Links']['Points']
@@ -27,19 +27,31 @@ class parsingApi:
     @property           ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
         da = self.database_list()
-        url = 'http://pi.vaiwan.com/piwebapi/dataservers/'
-        path = f'{url}{da}'
+        url = 'http://192.168.10.243:8080/piwebapi/dataservers/'
+        path = f'{url}{da}'     ## 拼接所有点信息
+
         some_list = requests.get(path)      ##获取到所有的点信息
 
         results_arr = []                    # 创建一个list存放所有数据
 
         for item in some_list.json()['Items']:   ## 循环点信息
             name = item['Name']                     ## 获得所有name
+            name = name.replace(' ','')
             point_type = item['PointType']          ## 获得所有 type
+            if point_type == 'Float32':
+                point_type = 'F'
+            elif point_type == 'String':
+                point_type = 'S'
+            elif point_type == 'Int32':
+                point_type = 'I'
+
             record_data = item['Links']['RecordedData']     #获得InterpolatedData
             links = record_data.split('/streams/')[1]
-            url = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}'  ## 拼接后获得每个name对应的url
-
+            print('links-----------',links)
+            starttime = '?startTime=2021-12-07T00:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+            url = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url
+            print('url--------',url)
+   # http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2021-12-05T00:00:00.000Z
             stream_datas = requests.get(url).json()     ## 循环访问每个url
 
             values = []
@@ -61,7 +73,7 @@ class parsingApi:
             row_dict = {'name': name, 'point_type': point_type, 'values': values}    ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
             # print("row_dict的值----->",row_dict)
             results_arr.append(row_dict)                            ## 将存放每一个点的信息的 字典 放入list
-            print("result_arr的值----->",results_arr)
+            # print("result_arr的值----->",results_arr)
         return results_arr
 ## 返回数据格式 [{'name': '111111', 'point_type': 'Float32', 'values': [['2021-12-02T09:28:01Z', 50.0, True], ['2021-12-02T17:28:01Z', 50.0, True], ['2021-12-03T01:28:01Z', 50.0, True], ['2021-12-03T02:28:01Z', 50.0, True]]}, {'name': 'sy.st.WIN-F9KROVHMQ74.random1.Device Status', 'point_type': 'String', 'values': [['2021-12-02T08:11:31Z', '0 | Good', True], ['2021-12-02T16:11:31Z', '0 | Good', True], ['2021-12-03T00:11:31Z', '0 | Good', True]]}]
 
@@ -79,8 +91,8 @@ class parsingApi:
 
  # 写入excel
     def write_excel(self,datas,file_path):
-        print("------excel写入数据：{}".format(datas))
-        print("------excel写入文件：{}".format(file_path))
+        # print("------excel写入数据：{}".format(datas))
+        # print("------excel写入文件：{}".format(file_path))
 
         workbook = xlsxwriter.Workbook('{}'.format(file_path))  # 建立文件
         worksheet = workbook.add_worksheet()  # 建立sheet
@@ -95,64 +107,23 @@ class parsingApi:
             else:
                 for ind, it in enumerate(item['values']): ## 判断values有值情况 ，循环下标和值
                     tm = index      ## 外层下标存起来，
-                    if ind != 0:        ## 内层values的下表不等0
+                    if ind != 0:
+                        ## 内层values的下表不等0
                         temp = temp + 1     ## 内层values的数值+1，取第下一个元素（列表）
                     index = index + temp    ## 内层values数据不止一条，index+1（相当于Excel行数+1）向下一行写入
-                    print("---it： {}".format(it))
-                    print("---temp： {}".format(temp))
-                    print("---index： {}".format(index))
+                    # print("---it： {}".format(it))
+                    # print("---temp： {}".format(temp))
+                    # print("---index： {}".format(index))
 
                     worksheet.write(index, 0, '{}'.format(item['name']))
-                    worksheet.write(index, 1, '{}'.format(item['point_type']))
                     worksheet.write(index, 2, '{}'.format(str(it[0])))
                     worksheet.write(index, 3, '{}'.format(str(it[1])))
                     worksheet.write(index, 4, '{}'.format(str(it[2])))
+                    worksheet.write(index, 1, '{}'.format(item['point_type']))
 
                     index = tm  ## 将外层的下标 还给外层的index，继续循环，
 
         workbook.close()
-
-    # with open(file_path,'w+') as f:
-        #     for i in datas:
-        #         name = i['name']
-        #         type = i['point_type']
-        #         print('i的值--->',i)
-        #         print('name的值---->',name)
-        #         print('type的值---->',type)
-        #         if i['values']:
-        #             for v in i['values']:
-        #                 time = v[0]
-        #                 va = v[1]
-        #                 go = v[2]
-        #                 print('time的值---->', time)
-        #                 print('va的值---->', va)
-        #                 print('go的值---->', go)
-        #
-
-        # wb = openpyxl.Workbook()
-        # sheet = wb.active
-        # sheet.title = "Sheet1"
-        # sheet['A1'].value = 'name'
-        # sheet['B1'].value = 'point_type'
-        # j = 1
-        # for item in datas:
-        #     sheet['A' + str(j)].value = item['name']
-        #     sheet['B' + str(j)].value = item['point_type']
-        #     j = j + 1
-        # wb.save(file_path)
-        # print('保存完成！！！')
-
-'''
- output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            output.write(str(data[i][j]))  # write函数不能写int类型的参数，所以使用str()转化
-            output.write('\t')  # 相当于Tab一下，换一个单元格
-        output.write('\n')  # 写完一行立马换行
-    output.close()
-'''
-
-
 
 
 if __name__ == '__main__':
@@ -167,5 +138,5 @@ if __name__ == '__main__':
 
     # parsingApi().write_file(parsingApi().information, 'test2.log')
 
-    parsingApi().write_excel(parsingApi().information,'./data.xlsx')
+    parsingApi().write_excel(parsingApi().information,'./data1.xlsx')
 

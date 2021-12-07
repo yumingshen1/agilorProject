@@ -1,23 +1,25 @@
+# -*- coding: utf-8 -*-
+# @Time: 2021/12/6 16:21
+# @Author: shenyuming
 # coding=utf-8
 import array
 import datetime
 import string
 import time
-
 import numpy as np
 import requests
 import json
 
 # agilor_migration test_table
 def test_QueryData():  ##查询接口
-    url = "http://192.168.220.134:8713/agilorapi/v6/query"
+    url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
-        "db": "agilor_migration",
-        "start": "-7y",
-        "table": "test_table",
+        "db": "PINEW2",
+        "start": "2021-12-07T05:00:00.000Z",
+        "table": "PI_TABLE",
         "tags": [
             {
-                "AGPOINTNAME": "Simu1_6"
+                "AGPOINTNAME": "CDEP1589"
             }
         ]
     }
@@ -48,9 +50,15 @@ def test_QueryData():  ##查询接口
 ,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,8208,Simu1_1,state,test_table
 '''
 
-def takeSecond(elem):
-    return elem[0][0], elem[1][0]
+'''
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
+,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
 
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
+,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
+'''
 
 def countlist():  ##获取查询接口的数据，并处理数据
     tq = test_QueryData()
@@ -81,13 +89,12 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     statusStr = "正常|好点"     ## 不需要了
-    s = "浮点型r/R"
     for index, v in timeMap.items():
         # print(v[0])
         Simu1_1 = v[0][5]              ## simu1
         date = v[0][3]                 # 时间
         param1 = v[0][4]                ## 8208---> 变为true 或 false  数字
-        type = v[0][6]                  ##  类型
+        type = v[1][6]                  ##  类型
         param2 = ""                     ## 变为8208值
         if v[1]:
             param2 = v[1][4]
@@ -102,7 +109,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
         param3 = f'{statusStr}{param2}'
-        row = [Simu1_1, df, param1,param2, s]
+        row = [Simu1_1, df, param1,param2, type]
         listb.append(row)
     print('listb数据',listb)
     return listb
@@ -123,7 +130,7 @@ import xlwt
 ## 数据写入excel
 def write_excel_data(data):
     # listc = data
-    output = open('E:/sym/4.2迁移/66.xlsx', 'w+', encoding='gbk')
+    output = open('E:/sym/4.2迁移/CDEP1589.xlsx', 'w+', encoding='gbk')
     output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -132,28 +139,26 @@ def write_excel_data(data):
         output.write('\n')  # 写完一行立马换行
     output.close()
 
-
-
 # 解析数据转为数组
 def resolver(data):
     # dataArr = string.split(data, ",_result,")
     dataArr = data.split("_result,")
     dataArr.pop(0)
     for line in dataArr:
-        print(line)
+        print('pop的数据',line)
     # print("----------")
     return dataArr
 
 
-# # 模拟数据
-# def mockData():
-#     mock = ",result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table" \
-#            ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,666.1234,Simu1_1,wendu,cpu_usage_func11" \
-#            ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,8208,Simu1_1,status,cpu_usage_func11" \
-#            ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,8208,Simu1_1,status,cpu_usage_func11" \
-#            ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,677.1234,Simu1_1,wendu,cpu_usage_func11"
-#
-#     return mock
+# 模拟数据
+def mockData():
+    mock = ",result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table" \
+           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,666.1234,Simu1_1,wendu,cpu_usage_func11" \
+           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T01:59:29.255251114Z,8208,Simu1_1,status,cpu_usage_func11" \
+           ",_result,0,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,8208,Simu1_1,status,cpu_usage_func11" \
+           ",_result,1,2021-11-19T01:01:00.163486472Z,2021-11-19T04:51:19.648740986Z,2021-11-19T03:39:13.295111728Z,677.1234,Simu1_1,wendu,cpu_usage_func11"
+
+    return mock
 
 
 if __name__ == '__main__':
