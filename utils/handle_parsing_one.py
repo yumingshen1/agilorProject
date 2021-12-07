@@ -2,7 +2,7 @@
 # @Time: 2021/12/7 15:54
 # @Author: shenyuming
 # -*- coding: gbk -*-
-import requests
+import requests,datetime
 import json
 import xlrd, xlwt, openpyxl
 import pandas as pd
@@ -12,86 +12,101 @@ import xlsxwriter
 class parsingApi:
     # api首页
     def home_api(self):
-        res = requests.get('http://192.168.10.243:8080/piwebapi')
+        res = requests.get('http://pi.vaiwan.com/piwebapi/dataservers') #http://192.168.10.243:8080/piwebapi  http://pi.vaiwan.com/piwebapi/dataservers
         data = res.json()['Links']['DataServers']
         str1 = data.split('/')[-1]
-        return str1     #'/dataservers'
+        return str1     #'截取： /dataservers'
 
     # 数据库连接
     def database_list(self):
         da = self.home_api()
-        url = 'http://192.168.10.243:8080/piwebapi/'  # /dataservers
+        url = 'http://pi.vaiwan.com/piwebapi/'  # +  /dataservers  ， http://192.168.10.243:8080/piwebapi/
         path = f'{url}{da}'
         res_list = requests.get(path)
         data = res_list.json()['Items'][0]['Links']['Points']
         str2 = data.split('dataservers/')[1]
-        return str2     ##
+        return str2     ##截取： F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points
 
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
-        da = self.database_list()
-        url = 'http://192.168.10.243:8080/piwebapi/dataservers/'
-        path = f'{url}{da}'  ## 拼接所有点信息
+        # da = self.database_list()
+        # url = 'http://pi.vaiwan.com/piwebapi/streams/'  ##  http://pi.vaiwan.com/piwebapi/streams/ ， http://192.168.10.243:8080/piwebapi/dataservers/
+        # path = f'{url}{da}'  ## 拼接所有点信息
 
-        some_list = requests.get(path)  ##获取到所有的点信息
+        path2 = 'http://pi.vaiwan.com/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
+
+        some_list = requests.get(path2)  ##获取到所有的点信息
+
+        ## 需要的name
+        need_name = ['sy.st.WIN-F9KROVHMQ74.random1.sc1']
+        # ,'BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
 
         for item in some_list.json()['Items']:  ## 循环点信息
             name = item['Name']  ## 获得所有name
-            name = name.replace(' ', '')
-            point_type = item['PointType']  ## 获得所有 type
-            if point_type == 'Float32':
-                point_type = 'F'
-            elif point_type == 'String':
-                point_type = 'S'
-            elif point_type == 'Int32':
-                point_type = 'I'
+            print('name---%s,' %name)
+            if name in need_name:
+                name = name.replace(' ', '')
+                point_type = item['PointType']  ## 获得所有 type
+                if point_type == 'Float32':
+                    point_type = 'F'
+                elif point_type == 'String':
+                    point_type = 'S'
+                elif point_type == 'Int32':
+                    point_type = 'I'
 
-            record_data = item['Links']['RecordedData']  # 获得InterpolatedData
-            links = record_data.split('/streams/')[1]
-            print('links-----------', links)
+                record_data = item['Links']['RecordedData']  # 获得InterpolatedData
+                links = record_data.split('/streams/')[1]
+                print('links-----------', links)
 
-            starttime = '?startTime=2021-12-05T00:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+                starttime = '?startTime=2021-12-07T05:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
 
-            url = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url
+                url = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
 
-            ##单个点信息
-            urlname = 'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywHgAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLlNDMQ/recorded?startTime=2021-12-05T00:00:00.000Z'
-            'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
-            stream_datas = requests.get(urlname).json()  ## 循环访问每个url
+                ##单个点信息
+                urlname = 'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
 
-            values = []
-            for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
-                timestamp = v['Timestamp']  ## 时间直接获取
-                good = v['Good']  ## good直接获取
-                value = 0
-                if isinstance(v['Value'], dict):  ##判断请求的url中的 value 是不是字典类型
-                    if v['Value']['Value']:  ##如果是字典类型取value键下的value键的值
-                        value = v['Value']['Value']  ## value取值
-                else:
-                    value = v['Value']  ##value不是字典，直接取值
+                stream_datas = requests.get(url).json()  ## 循环访问每个url
 
-                r = [timestamp, value, good]  ## 将name 对应的一组 时间，value，good 存入一个list
-                # print("r的值----->",r)
-                values.append(r)  ## 将每一个name 取得的 时间，value，good 放入一个list
-                # print("values的值----->",values)
+                values = []
+                for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
+                    timestamp = v['Timestamp']  ## 时间直接获取
+                    good = v['Good']  ## good直接获取
+                    value = 0
+                    if isinstance(v['Value'], dict):  ##判断请求的url中的 value 是不是字典类型
+                        if v['Value']['Value']:  ##如果是字典类型取value键下的value键的值
+                            value = v['Value']['Value']  ## value取值
+                    else:
+                        value = v['Value']  ##value不是字典，直接取值
 
-            row_dict = {'name': name, 'point_type': point_type,
-                        'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
-            # print("row_dict的值----->",row_dict)
-            results_arr.append(row_dict)  ## 将存放每一个点的信息的 字典 放入list
-            print("result_arr的值----->", results_arr)
+                    ##  时间处理
+                    dateSub = timestamp[0:timestamp.rfind('.')]
+                    # 定义小时
+                    eightHour = datetime.timedelta(hours=8)
+                    # 将时间格式化为 datetime 类型
+                    d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
+                    d = d + eightHour
+                    timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
+
+                    r = [timestamp, value, good]  ## 将name 对应的一组 时间，value，good 存入一个list
+                    # print("r的值----->",r)
+                    values.append(r)  ## 将每一个name 取得的 时间，value，good 放入一个list
+                    # print("values的值----->",values)
+
+                row_dict = {'name': name, 'point_type': point_type,
+                            'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
+                results_arr.append(row_dict)  ## 将存放每一个点的信息的 字典 放入list
+                print("result_arr的值----->", results_arr)
         return results_arr
 
-    ## 返回数据格式 [{'name': '111111', 'point_type': 'Float32', 'values': [['2021-12-02T09:28:01Z', 50.0, True], ['2021-12-02T17:28:01Z', 50.0, True], ['2021-12-03T01:28:01Z', 50.0, True], ['2021-12-03T02:28:01Z', 50.0, True]]}, {'name': 'sy.st.WIN-F9KROVHMQ74.random1.Device Status', 'point_type': 'String', 'values': [['2021-12-02T08:11:31Z', '0 | Good', True], ['2021-12-02T16:11:31Z', '0 | Good', True], ['2021-12-03T00:11:31Z', '0 | Good', True]]}]
 
 
     # 写入excel
     def write_excel(self, datas, file_path):
-        print("------excel写入数据：{}".format(datas))
-        print("------excel写入文件：{}".format(file_path))
+        # print("------excel写入数据：{}".format(datas))
+        # print("------excel写入文件：{}".format(file_path))
 
         workbook = xlsxwriter.Workbook('{}'.format(file_path))  # 建立文件
         worksheet = workbook.add_worksheet()  # 建立sheet
