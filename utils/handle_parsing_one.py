@@ -12,7 +12,7 @@ import xlsxwriter
 class parsingApi:
     # api首页
     def home_api(self):
-        res = requests.get('http://pi.vaiwan.com/piwebapi/dataservers') #http://192.168.10.243:8080/piwebapi  http://pi.vaiwan.com/piwebapi/dataservers
+        res = requests.get('http://pi.vaiwan.com/piwebapi/dataservers') #http://192.168.10.243:8080/piwebapi/dataservers  http://pi.vaiwan.com/piwebapi/dataservers
         data = res.json()['Links']['DataServers']
         str1 = data.split('/')[-1]
         return str1     #'截取： /dataservers'
@@ -34,9 +34,10 @@ class parsingApi:
         # url = 'http://pi.vaiwan.com/piwebapi/streams/'  ##  http://pi.vaiwan.com/piwebapi/streams/ ， http://192.168.10.243:8080/piwebapi/dataservers/
         # path = f'{url}{da}'  ## 拼接所有点信息
 
+        path1 = 'http://192.168.10.243:8080/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
         path2 = 'http://pi.vaiwan.com/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
 
-        some_list = requests.get(path2)  ##获取到所有的点信息
+        some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
         need_name = ['sy.st.WIN-F9KROVHMQ74.random1.sc1']
@@ -63,12 +64,12 @@ class parsingApi:
 
                 starttime = '?startTime=2021-12-07T05:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
 
-                url = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
-
+                url1 = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}'
+                url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
                 ##单个点信息
                 urlname = 'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
 
-                stream_datas = requests.get(url).json()  ## 循环访问每个url
+                stream_datas = requests.get(url1).json()  ## 循环访问每个url
 
                 values = []
                 for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
@@ -91,12 +92,11 @@ class parsingApi:
                     timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
                     r = [timestamp, value, good]  ## 将name 对应的一组 时间，value，good 存入一个list
-                    # print("r的值----->",r)
-                    values.append(r)  ## 将每一个name 取得的 时间，value，good 放入一个list
-                    # print("values的值----->",values)
 
-                row_dict = {'name': name, 'point_type': point_type,
-                            'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
+                    values.append(r)  ## 将每一个name 取得的 时间，value，good 放入一个list
+
+
+                row_dict = {'name': name, 'point_type': point_type,'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
                 results_arr.append(row_dict)  ## 将存放每一个点的信息的 字典 放入list
                 print("result_arr的值----->", results_arr)
         return results_arr

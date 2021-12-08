@@ -1,5 +1,5 @@
 # -*- coding: gbk -*-
-import requests
+import requests,datetime
 import json
 import xlrd, xlwt,openpyxl
 import pandas as pd
@@ -64,6 +64,15 @@ class parsingApi:
                         value = v['Value']['Value']     ## value取值
                 else:
                     value = v['Value']      ##value不是字典，直接取值
+
+                    ##  时间处理
+                    dateSub = timestamp[0:timestamp.rfind('.')]
+                    # 定义小时
+                    eightHour = datetime.timedelta(hours=8)
+                    # 将时间格式化为 datetime 类型
+                    d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
+                    d = d + eightHour
+                    timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
                 r = [timestamp, value, good]           ## 将name 对应的一组 时间，value，good 存入一个list
                 # print("r的值----->",r)
