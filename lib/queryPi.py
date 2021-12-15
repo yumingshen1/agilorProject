@@ -40,8 +40,7 @@ def test_QueryData():  ##查询接口
     print('lista添加的结果---->',lista)
     return re
 
-# def takeSecond(elem):
-#     return elem[0][0], elem[1][0]
+
 '''
 4.2-->6.0:
 ,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
@@ -62,7 +61,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
     tq = test_QueryData()
     # tq = mockData()
     tq = resolver(tq)
-    # print(len(tq))
+
     listb = []
     timeMap = {}
 
@@ -90,17 +89,18 @@ def countlist():  ##获取查询接口的数据，并处理数据
     # s = "浮点型r/R"
     for index, v in timeMap.items():
         # print(v[0])
-        AGPOINTNAME = v[0][5]              ## simu1
-        date = v[0][3]                 # 时间
-        value = v[0][4]                ## 8208---> 变为true 或 false  数字
-        good = ""                     ## 变为8208值
+        AGPOINTNAME = v[0][5]
+        date = v[0][3]
+        value = v[0][4]
+        good = ""
         if v[1]:
             good = v[1][4]
         print('v====>',v)
         print('v[0]===>',v[0])
         print('v[1]===>',v[1])
+
+        # 时间处理
         dateSub = date[0:date.rfind('.')]
-        # 定义小时
         eightHour = datetime.timedelta(hours=8)
         # 将时间格式化为 datetime 类型
         d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
@@ -197,4 +197,5 @@ if __name__ == '__main__':
     # fileExcel = "excel_b"
     data = countlist()
     file_path = 'E:/sym/pi解析/rtdb_DeviceStatus1.xlsx'
-    write_excel_data(file_path,data)
+    file_path2 = '/Users/shenyuming/Downloads/sym/z_rtdb/rtdb_DeviceStatus1.xlsx'
+    write_excel_data(file_path2,data)
