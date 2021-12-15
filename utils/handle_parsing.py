@@ -3,7 +3,8 @@ import requests,datetime
 import json
 import xlrd, xlwt,openpyxl
 import pandas as pd
-import xlsxwriter
+import xlsxwriter,os
+from utils.handle_path import report_path
 
 class parsingApi:
     # apiÊ×Ò³
@@ -147,5 +148,6 @@ if __name__ == '__main__':
 
     # parsingApi().write_file(parsingApi().information, 'test2.log')
 
-    parsingApi().write_excel(parsingApi().information,'./data1.xlsx')
+    file_path = os.path.join(report_path, 'data.xlsx')
+    parsingApi().write_excel(parsingApi().information,file_path)
 

@@ -10,3 +10,11 @@ project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ## 配置路径
 config_path = os.path.join(project_path,'configs')
 # print(config_path)
+
+# 报告
+report_path = os.path.join(project_path,r'outFiles\report')
+# print(report_path)
+
+# 日志
+log_path = os.path.join(project_path,r'outFiles\ogs')
+# print(log_path)

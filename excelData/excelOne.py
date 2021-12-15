@@ -7,7 +7,7 @@ import xlrd
     读取excel
 '''
 #打开一个excel
-workbook = xlrd.open_workbook(f'E:/sym/pi解析/pi web api.xlsx')
+workbook = xlrd.open_workbook(f'E:/sym/pi解析/pi web api(2).xlsx')
 
 ## 定位到某个sheet页面
 worksheet1 = workbook.sheet_by_name(u'Sheet1')
@@ -128,5 +128,6 @@ for i in range(1,8,2):  ##遍历第二列数据
 
 
 if __name__ == '__main__':
-    openpytest('./testcase.xlsx')
+    # openpytest('./testcase.xlsx')
+    pass
 

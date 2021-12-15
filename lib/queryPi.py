@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-# @Time: 2021/12/6 16:21
-# @Author: shenyuming
 # coding=utf-8
 import array
 import datetime
 import string
 import time
+
 import numpy as np
 import requests
 import json
@@ -14,12 +12,13 @@ import json
 def test_QueryData():  ##查询接口
     url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
-        "db": "PINEW2",
-        "start": "2021-12-07T05:00:00.000Z",
+        "db": "PI",
+        "start": "2021-12-10T05:00:00.000000001Z",
+        "stop": "2021-12-13T05:00:00.000000001Z",
         "table": "PI_TABLE",
         "tags": [
             {
-                "AGPOINTNAME": "CDEP1589"
+                "AGPOINTNAME":"sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus"
             }
         ]
     }
@@ -40,24 +39,23 @@ def test_QueryData():  ##查询接口
     lista.append(re)
     print('lista添加的结果---->',lista)
     return re
+
+# def takeSecond(elem):
+#     return elem[0][0], elem[1][0]
 '''
+4.2-->6.0:
 ,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
 ,_result,0,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,true,Simu1_1,B,test_table
-,_result,0,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,true,Simu1_1,B,test_table
 
 ,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
 ,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,8208,Simu1_1,state,test_table
-,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,8208,Simu1_1,state,test_table
-'''
 
-'''
+PI:
 ,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
-,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
+,_result,0,2021-12-07T05:00:00.000000001Z,2021-12-13T21:27:51.030181106Z,2021-12-07T05:00:25Z,50,sy.st.WIN-F9KROVHMQ74.random1.sc1,F,PI_TABLE
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,1,2021-12-07T05:00:00.000000001Z,2021-12-13T21:27:51.030181106Z,2021-12-07T05:00:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.sc1,Good,PI_TABLE
 
-,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
-,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
 '''
 
 def countlist():  ##获取查询接口的数据，并处理数据
@@ -89,15 +87,15 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     statusStr = "正常|好点"     ## 不需要了
+    # s = "浮点型r/R"
     for index, v in timeMap.items():
         # print(v[0])
-        Simu1_1 = v[0][5]              ## simu1
+        AGPOINTNAME = v[0][5]              ## simu1
         date = v[0][3]                 # 时间
-        param1 = v[0][4]                ## 8208---> 变为true 或 false  数字
-        type = v[1][6]                  ##  类型
-        param2 = ""                     ## 变为8208值
+        value = v[0][4]                ## 8208---> 变为true 或 false  数字
+        good = ""                     ## 变为8208值
         if v[1]:
-            param2 = v[1][4]
+            good = v[1][4]
         print('v====>',v)
         print('v[0]===>',v[0])
         print('v[1]===>',v[1])
@@ -108,11 +106,57 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
-        param3 = f'{statusStr}{param2}'
-        row = [Simu1_1, df, param1,param2, type]
+        goods = f'{statusStr}{" "}{good}'
+
+        type = v[0][6]  ##  类型
+        if type == 'R':
+            type = '浮点型r/R'
+        elif type == 'B':
+            type = '布尔型b/B'
+        elif type == 'L':
+            type = '长整型l/L'
+        elif type == 'S':
+            type = '字符串型s/S'
+
+        row = [AGPOINTNAME, df, value,good, type]
         listb.append(row)
     print('listb数据',listb)
+    #  [['sy.st.WIN-F9KROVHMQ74.random1.sc1', '2021-12-14 09:45:55', '50', 'true', 'F'], ['sy.st.WIN-F9KROVHMQ74.random1.sc1', '2021-12-14 09:46:25', '50', 'true', 'F']]
     return listb
+
+import xlwt,xlsxwriter
+## 数据写入excel
+def write_excel_data(filepath,data):
+    now = datetime.datetime.now().strftime('%Y-%m-%d')  # 当前时间
+    filename = f'{filepath}'   # 存放excel的路径
+    workbook = xlsxwriter.Workbook('{}'.format(filename))  # 建立文件
+    worksheet = workbook.add_worksheet()  # 建立sheet
+    format4 = workbook.add_format(
+        {'font_size': '12', 'align': 'center', 'valign': 'vcenter', 'bold': True, 'font_color': '#217346',
+         'bg_color': '#FFD1A4'})
+    col = ['A1', 'B1', 'C1', 'D1', 'E1']
+    title = [u'AGPOINTNAME','date','value','good','type'] # title
+    print(type(title))
+    worksheet.write_row(col[0], title, format4)
+
+    for i in range(len(data)):
+        worksheet.write(i+1,0,data[i][0])
+        worksheet.write(i+1,1,data[i][1])
+        worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
+        worksheet.write(i+1,3,data[i][3])
+        worksheet.write(i+1,4,data[i][4])
+    workbook.close()
+
+    # listc = data
+    # output = open('E:/sym/pi解析/sc11.xls', 'w+', encoding='gbk')
+    # output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
+    # for i in range(len(data)):
+    #     for j in range(len(data[i])):
+    #         output.write(str(data[i][j]))  # write函数不能写int类型的参数，所以使用str()转化
+    #         print('时间->',data[j][1])
+    #         output.write('\t')  # 相当于Tab一下，换一个单元格
+    #     output.write('\n')  # 写完一行立马换行
+    # output.close()
 
 
 # 将数据写入文件
@@ -122,31 +166,18 @@ def writeFile(data, fileName):
             s = ""
             for v in line:
                 s = s + v + " "
-            print('s+v===>',s)
+            # print('s+v===>',s)
             # print(type(s))
             f.write(s.rstrip() + "\n")
-
-import xlwt
-## 数据写入excel
-def write_excel_data(data):
-    # listc = data
-    output = open('E:/sym/4.2迁移/CDEP1589.xlsx', 'w+', encoding='gbk')
-    output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            output.write(str(data[i][j]))  # write函数不能写int类型的参数，所以使用str()转化
-            output.write('\t')  # 相当于Tab一下，换一个单元格
-        output.write('\n')  # 写完一行立马换行
-    output.close()
 
 # 解析数据转为数组
 def resolver(data):
     # dataArr = string.split(data, ",_result,")
     dataArr = data.split("_result,")
     dataArr.pop(0)
-    for line in dataArr:
-        print('pop的数据',line)
-    # print("----------")
+    # for line in dataArr:
+    #     print('line---数据',line)
+        # 0,2014-12-13T19:35:17.906247683Z,2021-12-13T13:35:17.906247683Z,2021-11-26T02:48:37Z,true,Simu1_1,B,test_table,
     return dataArr
 
 
@@ -162,11 +193,8 @@ def mockData():
 
 
 if __name__ == '__main__':
-    # mockData = mockData()
-    # resolver(mockData)
-    # test_QueryData()
-    fileName = "test3.log"
-    fileExcel = "excel_b"
+    # fileName = "test3.log"
+    # fileExcel = "excel_b"
     data = countlist()
-    # writeFile(data, fileName)
-    write_excel_data(data)
+    file_path = 'E:/sym/pi解析/rtdb_DeviceStatus1.xlsx'
+    write_excel_data(file_path,data)

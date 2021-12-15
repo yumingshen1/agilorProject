@@ -12,12 +12,12 @@ import json
 def test_QueryData():  ##查询接口
     url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
-        "db": "agilor_migration",
+        "db": "agilor_migration2",
         "start": "-7y",
         "table": "test_table",
         "tags": [
             {
-                "AGPOINTNAME": "Simu1_2"
+                "AGPOINTNAME": "Simu1_10"
             }
         ]
     }
@@ -38,25 +38,7 @@ def test_QueryData():  ##查询接口
     lista.append(re)
     print('lista添加的结果---->',lista)
     return re
-'''
-,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,0,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,true,Simu1_1,B,test_table
-,_result,0,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,true,Simu1_1,B,test_table
 
-,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,8208,Simu1_1,state,test_table
-,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:02Z,8208,Simu1_1,state,test_table
-'''
-
-'''
-,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
-,_result,0,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,Good,PI_TABLE
-
-,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
-,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:03:48Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
-,_result,1,2020-12-06T01:20:57.344787599Z,2021-12-06T07:20:57.344787599Z,2021-12-06T07:06:25Z,1,sy.st.WIN-F9KROVHMQ74.random1.ScanClassPointCount.sc2,L,PI_TABLE
-'''
 # def takeSecond(elem):
 #     return elem[0][0], elem[1][0]
 
@@ -109,7 +91,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
-        param3 = f'{statusStr}{param2}'
+        param3 = f'{statusStr}{" "}{param2}'
 
         type = v[0][6]  ##  类型
         if type == 'R':
@@ -121,9 +103,10 @@ def countlist():  ##获取查询接口的数据，并处理数据
         elif type == 'S':
             type = '字符串型s/S'
 
-        row = [Simu1, df, param1,param2, type]
+        row = [Simu1, df, param1,param3, type]
         listb.append(row)
     print('listb数据',listb)
+    # [['Simu1_1', '2021-11-26 10:48:37', 'true', '8208', '布尔型b/B'], ['Simu1_1', '2021-11-26 10:48:38', 'true', '8208', '布尔型b/B']]
     return listb
 
 
@@ -142,7 +125,7 @@ import xlwt
 ## 数据写入excel
 def write_excel_data(data):
     # listc = data
-    output = open('E:/sym/4.2迁移/ee.xlsx', 'w+', encoding='gbk')
+    output = open('E:/sym/4.2迁移/导出6.0数据_win/10.xls', 'w+', encoding='gbk')
     output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
     for i in range(len(data)):
         for j in range(len(data[i])):
@@ -157,8 +140,8 @@ def resolver(data):
     dataArr = data.split("_result,")
     dataArr.pop(0)
     for line in dataArr:
-        print(line)
-    # print("----------")
+        print('line---数据',line)
+        # 0,2014-12-13T19:35:17.906247683Z,2021-12-13T13:35:17.906247683Z,2021-11-26T02:48:37Z,true,Simu1_1,B,test_table,
     return dataArr
 
 
@@ -177,8 +160,8 @@ if __name__ == '__main__':
     # mockData = mockData()
     # resolver(mockData)
     # test_QueryData()
-    fileName = "test3.log"
-    fileExcel = "excel_b"
+    # fileName = "test3.log"
+    # fileExcel = "excel_b"
     data = countlist()
     # writeFile(data, fileName)
     write_excel_data(data)
