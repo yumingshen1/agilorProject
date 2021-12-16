@@ -131,3 +131,19 @@ if __name__ == '__main__':
     # openpytest('./testcase.xlsx')
     pass
 
+
+'''
+4.2-->6.0:
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,0,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,true,Simu1_1,B,test_table
+
+,_result,1,2021-11-23T03:07:00.408151759Z,2021-11-26T02:07:00.408151759Z,2021-11-23T03:07:01Z,8208,Simu1_1,state,test_table
+
+PI:
+,result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table
+,_result,0,2021-12-07T05:00:00.000000001Z,2021-12-13T21:27:51.030181106Z,2021-12-07T05:00:25Z,50,sy.st.WIN-F9KROVHMQ74.random1.sc1,F,PI_TABLE
+
+,_result,1,2021-12-07T05:00:00.000000001Z,2021-12-13T21:27:51.030181106Z,2021-12-07T05:00:25Z,true,sy.st.WIN-F9KROVHMQ74.random1.sc1,Good,PI_TABLE
+
+'''
+[['sy.st.WIN-F9KROVHMQ74.random1.sc1', '2021-12-14 09:45:55', '50', 'true', 'F'], ['sy.st.WIN-F9KROVHMQ74.random1.sc1', '2021-12-14 09:46:25', '50', 'true', 'F']]
