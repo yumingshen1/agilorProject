@@ -10,23 +10,6 @@ import xlsxwriter,os
 from utils.handle_path import report_path
 
 class parsingApi:
-    # api首页
-    def home_api(self):
-        res = requests.get('http://pi.vaiwan.com/piwebapi/dataservers') #http://192.168.10.243:8080/piwebapi/dataservers  http://pi.vaiwan.com/piwebapi/dataservers
-        data = res.json()['Links']['DataServers']
-        str1 = data.split('/')[-1]
-        return str1     #'截取： /dataservers'
-
-    # 数据库连接
-    def database_list(self):
-        da = self.home_api()
-        url = 'http://pi.vaiwan.com/piwebapi/'  # +  /dataservers  ， http://192.168.10.243:8080/piwebapi/
-        path = f'{url}{da}'
-        res_list = requests.get(path)
-        data = res_list.json()['Items'][0]['Links']['Points']
-        str2 = data.split('dataservers/')[1]
-        return str2     ##截取： F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points
-
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
@@ -40,7 +23,7 @@ class parsingApi:
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['CDEP1589']
+        need_name = ['BA:LEVEL.1']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -58,13 +41,13 @@ class parsingApi:
                 elif point_type == 'Int32':
                     point_type = 'L'
                 elif point_type == 'Digital':
-                    point_type = 'B'
+                    point_type = 'L'
 
                 record_data = item['Links']['RecordedData']  # 获得InterpolatedData
                 links = record_data.split('/streams/')[1]
                 print('links----------->', links)
 
-                starttime = '?startTime=2021-12-10T05:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+                starttime = '?startTime=2021-01-13T05:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
                 endtime = '&endTime=2021-12-13T05:00:00.000Z'
                 num = '&maxCount=86400'
                 url1 = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
@@ -168,6 +151,6 @@ class parsingApi:
 if __name__ == '__main__':
 
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_excel/pi_CDEP1589.xlsx'
+    file_path2 = 'E:/sym/pi解析/大量数据/pi_ba(3).xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

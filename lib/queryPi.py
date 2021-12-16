@@ -12,7 +12,7 @@ def test_QueryData():  ##查询接口
     url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
         "db": "PI",
-        "start": "2021-12-10T05:00:00.000000001Z",
+        "start": "2021-01-13T05:00:00.000000001Z",
         "stop": "2021-12-13T05:00:00.000000001Z",
         "table": "PI_TABLE",
         "tags": [
@@ -144,7 +144,7 @@ def mockData():
 
 if __name__ == '__main__':
     data = countlist()
-    file_path = 'E:/sym/pi解析/pi_post_linux/rtdb_DeviceStatus.xlsx'
+    file_path = 'E:/sym/pi解析/pi_post_linux/rtdb_DeviceStatus(2).xlsx'
     write_excel_data(file_path,data)
     print('完成！！！')
 
