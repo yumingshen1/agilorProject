@@ -65,13 +65,6 @@ def countlist():  ##获取查询接口的数据，并处理数据
     for index, v in timeMap.items():
         Simu1 = v[0][5]
         date = v[0][3]
-
-        param1 = v[0][4]
-        param2 = ""
-        if v[1]:
-            param2 = v[1][4]
-        print('v====>',v)
-
         # 处理时间
         dateSub = date[0:date.rfind('.')]
         # 定义小时
@@ -80,9 +73,20 @@ def countlist():  ##获取查询接口的数据，并处理数据
         d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
         d = d + eightHour
         df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
-        param3 = f'{statusStr}{" "}{param2}'
 
-        type = v[0][6]  ##  类型
+        type = v[0][6]
+        if type in ('R','B','L','S'):
+            value1 = v[0][4]
+            value2 = ""
+            if v[1]:
+                value2 = v[1][4]
+            print('v====>',v)
+            param = f'{statusStr}{" "}{value2}'
+        else:
+            value1 = v[1][4]
+            param = v[0][4]
+            type = v[1][6]
+
         if type == 'R':
             type = '浮点型r/R'
         elif type == 'B':
@@ -92,7 +96,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         elif type == 'S':
             type = '字符串型s/S'
 
-        row = [Simu1, df, param1,param3, type]
+        row = [Simu1, df, value1,param, type]
         listb.append(row)
     print('listb数据',listb)
     # [['Simu1_1', '2021-11-26 10:48:37', 'true', '8208', '布尔型b/B'], ['Simu1_1', '2021-11-26 10:48:38', 'true', '8208', '布尔型b/B']]
@@ -115,7 +119,7 @@ def write_excel_data(filepath,data):
         {'font_size': '12', 'align': 'center', 'valign': 'vcenter', 'bold': True, 'font_color': '#217346',
          'bg_color': '#FFD1A4'})
     col = ['A1', 'B1', 'C1', 'D1', 'E1']
-    title = [u'AGPOINTNAME','date','value','good','type'] # title
+    title = [u'AGPOINTNAME','date','value1','value2','type'] # title
     worksheet.write_row(col[0], title, format4)
 
     for i in range(len(data)):
@@ -150,5 +154,5 @@ def mockData():
 
 if __name__ == '__main__':
     data = countlist()
-    file_path = 'E:/sym/4.2迁移/导出6.0数据_linux/6.xlsx'
+    file_path = 'E:/sym/4.2迁移/导出6.0数据_linux/sium1_6.xlsx'
     write_excel_data(file_path,data)

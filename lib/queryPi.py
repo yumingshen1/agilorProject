@@ -62,8 +62,6 @@ def countlist():  ##获取查询接口的数据，并处理数据
                 if v[i][0] > v[j][0]:
                     v[i], v[j] = v[j], v[i]
 
-    statusStr = "正常|好点"     ## 不需要了
-    # s = "浮点型r/R"
     for index, v in timeMap.items():
         AGPOINTNAME = v[0][5]
         date = v[0][3]
