@@ -31,10 +31,11 @@ def compare_excel(file1_name, file2_name):
                     comp_restult.write(i, j, result)
                 else:
                     comp_restult.write(i, j, tp1.cell(i, j).value)
-    result_excel.save('E:/sym/pi解析/对比结果_pi/ba.xls')
+    result_excel.save('E:/sym/pi解析/对比结果_pi_linux1/CDEP158.xls')
 
 
 if __name__ == '__main__':
-    file1_name = 'E:/sym/pi解析/pi_excel/pi_ba.xlsx'
-    file2_name = 'E:/sym/pi解析/rtdb_ba.xlsx'
+    file1_name = 'E:/sym/pi解析/pi_post_linux/rtdb_CDEP158.xlsx'
+    file2_name = 'E:/sym/pi解析/pi_excel/pi_CDEP158.xlsx'
     compare_excel(file1_name, file2_name)
+    print('比对结束！！')

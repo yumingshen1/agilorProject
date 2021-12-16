@@ -40,7 +40,7 @@ class parsingApi:
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['sy.st.WIN-F9KROVHMQ74.random1.Device Status']
+        need_name = ['CDEP1589']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -56,7 +56,9 @@ class parsingApi:
                 elif point_type == 'String':
                     point_type = 'S'
                 elif point_type == 'Int32':
-                    point_type = 'I'
+                    point_type = 'L'
+                elif point_type == 'Digital':
+                    point_type = 'B'
 
                 record_data = item['Links']['RecordedData']  # 获得InterpolatedData
                 links = record_data.split('/streams/')[1]
@@ -117,17 +119,9 @@ class parsingApi:
         workbook = xlsxwriter.Workbook('{}'.format(file_path))  # 建立文件
         worksheet = workbook.add_worksheet()  # 建立sheet
 
-        # tt = ('AGPOINTNAME', 'date', 'value', 'good', 'type')
-        # worksheet.write_row('A1',tt)
-        # title = [u'AGPOINTNAME', 'date', 'value', 'good', 'type']
-        # for i in range(0,len(title)):
-        #     worksheet.write(0,i,title[i])
-
-        worksheet.write(0,0,'{}'.format('AGPOINTNAME'))
-        worksheet.write(0,1,'{}'.format('date'))
-        worksheet.write(0,2,'{}'.format('value'))
-        worksheet.write(0,3,'{}'.format('good'))
-        worksheet.write(0,4,'{}'.format('type'))
+        tt = ['AGPOINTNAME', 'date', 'value', 'good', 'type']
+        for index,item in enumerate(tt):
+            worksheet.write(0,index,'{}'.format(item))
 
         temp = 0  ##定义变量，为了标记values的数据是几层
         for index, item in enumerate(datas):  ## enumerate() 函数用于将一个可遍历的数据对象组合为一个索引序列，同时列出数据和数据下标，这里循环传入的datas[]
@@ -158,8 +152,6 @@ class parsingApi:
         workbook.close()
 
 
-
-
  ## 写入文件
     def write_file(self, data_arr, file_name):
         with open(file_name, 'w+') as f:  ## 打开文件准备写入
@@ -176,6 +168,6 @@ class parsingApi:
 if __name__ == '__main__':
 
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_excel/pi_DeviceStatus.xlsx'
+    file_path2 = 'E:/sym/pi解析/pi_excel/pi_CDEP1589.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

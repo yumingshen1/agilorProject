@@ -3,21 +3,20 @@ import array
 import datetime
 import string
 import time
-
+import xlwt,xlsxwriter
 import numpy as np
 import requests
 import json
 
-# agilor_migration test_table
 def test_QueryData():  ##查询接口
     url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
-        "db": "agilor_migration2",
+        "db": "agilor_migration",
         "start": "-7y",
         "table": "test_table",
         "tags": [
             {
-                "AGPOINTNAME": "Simu1_10"
+                "AGPOINTNAME": "Simu1_6"
             }
         ]
     }
@@ -26,12 +25,9 @@ def test_QueryData():  ##查询接口
         'Content-Type': 'application/json'
     }
     response = requests.post(url, headers=headers, data=json.dumps(data))
-    print(type(response.text))
     print('respone的返回---->',response.text)
 
     re = response.text.replace(',result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table','')
-    # re = response.text.split(',result,table,_start,_stop,_time,_value,AGPOINTNAME,_field,_table')[1]
-    print('第一次切割：----->',re)
 
     re = re.replace('\r\n', '').strip(',')
     lista = []
@@ -39,15 +35,9 @@ def test_QueryData():  ##查询接口
     print('lista添加的结果---->',lista)
     return re
 
-# def takeSecond(elem):
-#     return elem[0][0], elem[1][0]
-
-
 def countlist():  ##获取查询接口的数据，并处理数据
     tq = test_QueryData()
-    # tq = mockData()
     tq = resolver(tq)
-    # print(len(tq))
     listb = []
     timeMap = {}
 
@@ -71,19 +61,18 @@ def countlist():  ##获取查询接口的数据，并处理数据
                 if v[i][0] > v[j][0]:
                     v[i], v[j] = v[j], v[i]
 
-    statusStr = "正常|好点"     ## 不需要了
-    # s = "浮点型r/R"
+    statusStr = "正常|好点"
     for index, v in timeMap.items():
-        # print(v[0])
-        Simu1 = v[0][5]              ## simu1
-        date = v[0][3]                 # 时间
-        param1 = v[0][4]                ## 8208---> 变为true 或 false  数字
-        param2 = ""                     ## 变为8208值
+        Simu1 = v[0][5]
+        date = v[0][3]
+
+        param1 = v[0][4]
+        param2 = ""
         if v[1]:
             param2 = v[1][4]
         print('v====>',v)
-        print('v[0]===>',v[0])
-        print('v[1]===>',v[1])
+
+        # 处理时间
         dateSub = date[0:date.rfind('.')]
         # 定义小时
         eightHour = datetime.timedelta(hours=8)
@@ -109,6 +98,33 @@ def countlist():  ##获取查询接口的数据，并处理数据
     # [['Simu1_1', '2021-11-26 10:48:37', 'true', '8208', '布尔型b/B'], ['Simu1_1', '2021-11-26 10:48:38', 'true', '8208', '布尔型b/B']]
     return listb
 
+# 解析数据转为数组，去掉_result
+def resolver(data):
+    dataArr = data.split("_result,")
+    dataArr.pop(0)
+    return dataArr
+
+## 数据写入excel
+def write_excel_data(filepath,data):
+    now = datetime.datetime.now().strftime('%Y-%m-%d')  # 当前时间
+    filename = f'{filepath}'   # 存放excel的路径
+    workbook = xlsxwriter.Workbook('{}'.format(filename))  # 建立文件
+    worksheet = workbook.add_worksheet()  # 建立sheet
+    ## 添加表头
+    format4 = workbook.add_format(
+        {'font_size': '12', 'align': 'center', 'valign': 'vcenter', 'bold': True, 'font_color': '#217346',
+         'bg_color': '#FFD1A4'})
+    col = ['A1', 'B1', 'C1', 'D1', 'E1']
+    title = [u'AGPOINTNAME','date','value','good','type'] # title
+    worksheet.write_row(col[0], title, format4)
+
+    for i in range(len(data)):
+        worksheet.write(i+1,0,data[i][0])
+        worksheet.write(i+1,1,data[i][1])
+        worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
+        worksheet.write(i+1,3,data[i][3])
+        worksheet.write(i+1,4,data[i][4])
+    workbook.close()
 
 # 将数据写入文件
 def writeFile(data, fileName):
@@ -120,30 +136,6 @@ def writeFile(data, fileName):
             print('s+v===>',s)
             # print(type(s))
             f.write(s.rstrip() + "\n")
-
-import xlwt
-## 数据写入excel
-def write_excel_data(data):
-    # listc = data
-    output = open('E:/sym/4.2迁移/导出6.0数据_win/10.xls', 'w+', encoding='gbk')
-    output.write('AGPOINTNAME\tdate\tnumerical\tnum\ttype\n')
-    for i in range(len(data)):
-        for j in range(len(data[i])):
-            output.write(str(data[i][j]))  # write函数不能写int类型的参数，所以使用str()转化
-            output.write('\t')  # 相当于Tab一下，换一个单元格
-        output.write('\n')  # 写完一行立马换行
-    output.close()
-
-# 解析数据转为数组
-def resolver(data):
-    # dataArr = string.split(data, ",_result,")
-    dataArr = data.split("_result,")
-    dataArr.pop(0)
-    for line in dataArr:
-        print('line---数据',line)
-        # 0,2014-12-13T19:35:17.906247683Z,2021-12-13T13:35:17.906247683Z,2021-11-26T02:48:37Z,true,Simu1_1,B,test_table,
-    return dataArr
-
 
 # 模拟数据
 def mockData():
@@ -157,11 +149,6 @@ def mockData():
 
 
 if __name__ == '__main__':
-    # mockData = mockData()
-    # resolver(mockData)
-    # test_QueryData()
-    # fileName = "test3.log"
-    # fileExcel = "excel_b"
     data = countlist()
-    # writeFile(data, fileName)
-    write_excel_data(data)
+    file_path = 'E:/sym/4.2迁移/导出6.0数据_linux/6.xlsx'
+    write_excel_data(file_path,data)
