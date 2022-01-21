@@ -1,10 +1,16 @@
-import json
-
-HOST = 'http://192.168.220.134:8713'
-indata = "cpu_usage5,region=beijing,host=server1 core=0,usage=7788"
-
-payload = json.dumps({
-    "db": "agilor_test",
-    "start": "2021-11-18T01:00:00.1634864721Z",
-    "table": "cpu_usage5"
-})
+url = "http://192.168.220.150:8713/agilorapi/v6/query"
+data = {
+    "db": "PI",
+    "start": "2021-01-13T05:00:00.000000001Z",
+    "stop": "2021-12-13T05:00:00.000000001Z",
+    "table": "PI_TABLE",
+    "tags": [
+        {
+            "AGPOINTNAME": "sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus"
+        }
+    ]
+}
+headers = {
+    'Authorization': 'Token XXX',
+    'Content-Type': 'application/json'
+}
