@@ -13,6 +13,10 @@
 #
 #
 
+'''
+    批量生成不同类型的数据
+'''
+
 a = ''
 for i in range(1,751):
     f = "${table1},AGPOINTNAME=tag_F_${__intSum("+str(i)+r',${num1},)} F=${__Random(1,99999,)}.${__Random(1,9999999,)}${__unescape(\n)}'

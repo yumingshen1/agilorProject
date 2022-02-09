@@ -34,6 +34,10 @@ import json
 #     tq = test_Query()
 #
 
+"""
+    中国系统 -- 1亿数据分批次导出大量数据到excel,
+
+"""
 
 def test_QueryData(l, o):  ##查询接口
     url = "http://106.39.185.104:8713/agilorapi/v6/query?db=AGILOR_RTDB"
@@ -73,8 +77,8 @@ def writeToExcel(file_path, new_list):
 
 if __name__ == '__main__':
     limit = 1000000  # 一次所查询的数据量，受excel存储限制，最大100w条
-    count = 74
-    for i in range(73, 102):  # 一次查询的数据量存成1个excel，遍历查询
+    count = 100
+    for i in range(99, 101):  # 一次查询的数据量存成1个excel，遍历查询
         offset = limit * i
         total_list = test_QueryData(limit, offset)
         writeToExcel('E:\sym\全量数据\全量1\第' + str(i + 1) + '个' + str(limit) + '条.xlsx', total_list)

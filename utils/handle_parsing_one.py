@@ -9,6 +9,9 @@ import pandas as pd
 import xlsxwriter,os
 from utils.handle_path import report_path
 
+"""
+    pi 数据导出excel
+"""
 class parsingApi:
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身

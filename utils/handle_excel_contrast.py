@@ -5,13 +5,18 @@ import pandas
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+    excel大量数据对比
+"""
+
+
 #导入模块 openpyxl
 import openpyxl
 from openpyxl.styles import PatternFill
 from openpyxl.styles import colors
 from openpyxl.styles import Font, Color
-con = 4
-for i in range(82,101):
+con = 97
+for i in range(97,102):
     #读取excel文件
     #括号中的字符串为你要比较的两个excel的路径，注意用“/”
     wb_a = openpyxl.load_workbook(f'E:/sym/全量数据/全量/第{con}个1000000条.xlsx')

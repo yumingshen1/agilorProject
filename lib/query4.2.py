@@ -8,6 +8,10 @@ import numpy as np
 import requests
 import json
 
+"""
+    迁移4.2数据到6.2数据库后导出数据库的数据到excel, 
+"""
+
 def test_QueryData():  ##查询接口
     url = "http://192.168.220.150:8713/agilorapi/v6/query"
     data = {
