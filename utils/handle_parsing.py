@@ -1,153 +1,155 @@
+# -*- coding: utf-8 -*-
+# @Time: 2021/12/7 15:54
+# @Author: shenyuming
 # -*- coding: gbk -*-
 import requests,datetime
 import json
-import xlrd, xlwt,openpyxl
+import xlrd, xlwt, openpyxl
 import pandas as pd
 import xlsxwriter,os
 from utils.handle_path import report_path
 
+"""
+    pi æ•°æ®å¯¼å‡ºexcel --- å…¨éƒ¨ç‚¹å€¼
+"""
 class parsingApi:
-    # apiÊ×Ò³
-    def home_api(self):
-        res = requests.get('http://192.168.10.243:8080/piwebapi')
-        data = res.json()['Links']['DataServers']
-        str1 = data.split('/')[-1]
-        return str1
-
-    # Êı¾İ¿âÁ¬½Ó
-    def database_list(self):
-        da = self.home_api()
-        url = 'http://192.168.10.243:8080/piwebapi/'
-        path = f'{url}{da}'
-        res_list = requests.get(path)
-        data = res_list.json()['Items'][0]['Links']['Points']
-        str2 = data.split('dataservers/')[1]
-        return str2
-
-    # ËùÓĞµãĞÅÏ¢
-    @property           ##±»ÉùÃ÷ÊÇÊôĞÔ£¬²»ÊÇ·½·¨£¬ µ÷ÓÃÊ±¿ÉÖ±½Óµ÷ÓÃ·½·¨±¾Éí
+    # æ‰€æœ‰ç‚¹ä¿¡æ¯
+    @property  ##è¢«å£°æ˜æ˜¯å±æ€§ï¼Œä¸æ˜¯æ–¹æ³•ï¼Œ è°ƒç”¨æ—¶å¯ç›´æ¥è°ƒç”¨æ–¹æ³•æœ¬èº«
     def information(self):
-        da = self.database_list()
-        url = 'http://192.168.10.243:8080/piwebapi/dataservers/'
-        path = f'{url}{da}'     ## Æ´½ÓËùÓĞµãĞÅÏ¢
 
-        some_list = requests.get(path)      ##»ñÈ¡µ½ËùÓĞµÄµãĞÅÏ¢
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points'
 
-        results_arr = []                    # ´´½¨Ò»¸ölist´æ·ÅËùÓĞÊı¾İ
+        some_list = requests.get(path1)  ##è·å–åˆ°æ‰€æœ‰çš„ç‚¹ä¿¡æ¯
 
-        for item in some_list.json()['Items']:   ## Ñ­»·µãĞÅÏ¢
-            name = item['Name']                     ## »ñµÃËùÓĞname
-            name = name.replace(' ','')
-            point_type = item['PointType']          ## »ñµÃËùÓĞ type
+        ## éœ€è¦çš„name
+        need_name = ['BA:CONC.1']
+        # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
+
+        results_arr = []  # åˆ›å»ºä¸€ä¸ªlistå­˜æ”¾æ‰€æœ‰æ•°æ®
+
+        for item in some_list.json()['Items']:  ## å¾ªç¯ç‚¹ä¿¡æ¯
+            name = item['Name']  ## è·å¾—æ‰€æœ‰name
+            # print('name---%s,' %name)
+
+            name = name.replace(' ', '')
+            point_type = item['PointType']  ## è·å¾—æ‰€æœ‰ type
             if point_type == 'Float32':
                 point_type = 'F'
             elif point_type == 'String':
                 point_type = 'S'
             elif point_type == 'Int32':
-                point_type = 'I'
+                point_type = 'L'
+            elif point_type == 'Digital':
+                point_type = 'L'
 
-            record_data = item['Links']['RecordedData']     #»ñµÃInterpolatedData
+            record_data = item['Links']['RecordedData']  # è·å¾—InterpolatedData
             links = record_data.split('/streams/')[1]
-            print('links-----------',links)
-            starttime = '?startTime=2021-12-07T00:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
-            url = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}'  ## Æ´½Óºó»ñµÃÃ¿¸öname¶ÔÓ¦µÄurl
-            print('url--------',url)
-   # http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2021-12-05T00:00:00.000Z
-            stream_datas = requests.get(url).json()     ## Ñ­»··ÃÎÊÃ¿¸öurl
+            # print('links----------->', links)
 
-            values = []
-            for v in stream_datas['Items']:     ##Ñ­»·Ã¿¸önameÇëÇóµÄurlºóµÄÊı¾İ
-                timestamp = v['Timestamp']      ## Ê±¼äÖ±½Ó»ñÈ¡
-                good = v['Good']                ## goodÖ±½Ó»ñÈ¡
+            starttime = '?startTime=2022-02-01T13:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+            endtime = '&endTime=2022-02-11T13:00:00.000Z'
+            num = '&maxCount=86400'
+            url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
+            url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## æ‹¼æ¥åè·å¾—æ¯ä¸ªnameå¯¹åº”çš„urlï¼Œhttp://192.168.10.243:8080/piwebapi/streams/
+            print('url1------>',url1)
+            ##å•ä¸ªç‚¹ä¿¡æ¯
+            urlname = 'http://192.168.30.72:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
+
+            stream_datas = requests.get(url1).json()  ## å¾ªç¯è®¿é—®æ¯ä¸ªurl
+
+            values = []  ##å­˜æ”¾ç‚¹çš„ä¿¡æ¯
+            for v in stream_datas['Items']:  ##å¾ªç¯æ¯ä¸ªnameè¯·æ±‚çš„urlåçš„æ•°æ®
+                timestamp = v['Timestamp']  ## æ—¶é—´ç›´æ¥è·å–
+                good = v['Good']  ## goodç›´æ¥è·å–
+                # print('good--->',good)
+                if good == True:
+                    good = 'true'
                 value = 0
-                if isinstance(v['Value'], dict): ##ÅĞ¶ÏÇëÇóµÄurlÖĞµÄ value ÊÇ²»ÊÇ×ÖµäÀàĞÍ
-                    if v['Value']['Value']:         ##Èç¹ûÊÇ×ÖµäÀàĞÍÈ¡value¼üÏÂµÄvalue¼üµÄÖµ
-                        value = v['Value']['Value']     ## valueÈ¡Öµ
+                if isinstance(v['Value'], dict):  ##åˆ¤æ–­è¯·æ±‚çš„urlä¸­çš„ value æ˜¯ä¸æ˜¯å­—å…¸ç±»å‹  isinstance(object, classinfo)
+                    if v['Value']['Value']:  ##å¦‚æœæ˜¯å­—å…¸ç±»å‹å–valueé”®ä¸‹çš„valueé”®çš„å€¼
+                        value = v['Value']['Value']  ## valueå–å€¼
                 else:
-                    value = v['Value']      ##value²»ÊÇ×Öµä£¬Ö±½ÓÈ¡Öµ
+                    value = v['Value']  ##valueä¸æ˜¯å­—å…¸ï¼Œç›´æ¥å–å€¼
 
-                    ##  Ê±¼ä´¦Àí
-                    dateSub = timestamp[0:timestamp.rfind('.')]
-                    # ¶¨ÒåĞ¡Ê±
-                    eightHour = datetime.timedelta(hours=8)
-                    # ½«Ê±¼ä¸ñÊ½»¯Îª datetime ÀàĞÍ
-                    d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
-                    d = d + eightHour
-                    timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
+                ##  æ—¶é—´å¤„ç†
+                dateSub = timestamp[0:timestamp.rfind('.')]
+                # å®šä¹‰å°æ—¶
+                eightHour = datetime.timedelta(hours=8)
+                # å°†æ—¶é—´æ ¼å¼åŒ–ä¸º datetime ç±»å‹
+                d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
+                d = d + eightHour
+                timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
-                r = [timestamp, value, good]           ## ½«name ¶ÔÓ¦µÄÒ»×é Ê±¼ä£¬value£¬good ´æÈëÒ»¸ölist
-                # print("rµÄÖµ----->",r)
-                values.append(r)                       ## ½«Ã¿Ò»¸öname È¡µÃµÄ Ê±¼ä£¬value£¬good ·ÅÈëÒ»¸ölist
-                # print("valuesµÄÖµ----->",values)
+                r = [timestamp, value, good]  ## å°†name å¯¹åº”çš„ä¸€ç»„ æ—¶é—´ï¼Œvalueï¼Œgood å­˜å…¥ä¸€ä¸ªlist
+                # print('r---',r)
+                values.append(r)  ## å°†æ¯ä¸€ä¸ªname å–å¾—çš„ æ—¶é—´ï¼Œvalueï¼Œgood æ”¾å…¥ä¸€ä¸ªlist
+                # print('values----',values)
 
-            row_dict = {'name': name, 'point_type': point_type, 'values': values}    ##½« Ò»¸öµãµÄĞÅÏ¢ name ,ÀàĞÍ£¬ ´æ·ÅÊ±¼ä£¬value£¬goodµÄlist  È«²¿ ´æÈë×Öµä
-            # print("row_dictµÄÖµ----->",row_dict)
-            results_arr.append(row_dict)                            ## ½«´æ·ÅÃ¿Ò»¸öµãµÄĞÅÏ¢µÄ ×Öµä ·ÅÈëlist
-            # print("result_arrµÄÖµ----->",results_arr)
+            row_dict = {'name': name, 'point_type': point_type,'values': values}  ##å°† ä¸€ä¸ªç‚¹çš„ä¿¡æ¯ name ,ç±»å‹ï¼Œ å­˜æ”¾æ—¶é—´ï¼Œvalueï¼Œgoodçš„list  å…¨éƒ¨ å­˜å…¥å­—å…¸
+            results_arr.append(row_dict)  ## å°†å­˜æ”¾æ¯ä¸€ä¸ªç‚¹çš„ä¿¡æ¯çš„ å­—å…¸ æ”¾å…¥list
+            # print("result_arrçš„å€¼----->", results_arr)
+            '''
+            [{'name': 'sy.st.WIN-F9KROVHMQ74.random1.sc1', 'point_type': 'F', 'values': [['2021-12-07 13:00:25', 50.0, True], ['2021-12-07 13:00:55', 50.0, True]]}]
+            '''
         return results_arr
-## ·µ»ØÊı¾İ¸ñÊ½ [{'name': '111111', 'point_type': 'Float32', 'values': [['2021-12-02T09:28:01Z', 50.0, True], ['2021-12-02T17:28:01Z', 50.0, True], ['2021-12-03T01:28:01Z', 50.0, True], ['2021-12-03T02:28:01Z', 50.0, True]]}, {'name': 'sy.st.WIN-F9KROVHMQ74.random1.Device Status', 'point_type': 'String', 'values': [['2021-12-02T08:11:31Z', '0 | Good', True], ['2021-12-02T16:11:31Z', '0 | Good', True], ['2021-12-03T00:11:31Z', '0 | Good', True]]}]
 
-    ## Ğ´ÈëÎÄ¼ş
-    def write_file(self, data_arr, file_name):
-        with open(file_name, 'w+') as f:            ## ´ò¿ªÎÄ¼ş×¼±¸Ğ´Èë
-            for line in data_arr:                  ## Ñ­»· information º¯Êı·µ»ØµÄlist £¬ listÖĞÃ¿¸ö×Öµä´ú±íÒ»¸öµãµÄĞÅÏ¢ £¬ Ñ­»·Ê±line¾ÍÊÇÒ»¸ö×Öµä
-                print("LineµÄÖµ--->",line)
-                s = f"{line['name']} {line['point_type']}"    ## Ğ´ÈëÈ¡×ÖµäÖĞµÄ name ºÍ ÀàĞÍ
-                if line['values']:                          ## ÅĞ¶ÏÁĞ±ívalues Õı³£»ò´æÔÚ
-                    for v in line['values']:               ## Ñ­»·valuesÖĞµÄÃ¿Ò»ÌõÊı¾İ
-                        # print(type(v))
-                        s1 = f" {v[0]} {v[1]} {v[2]}"       ## È¡valuesÖĞÃ¿Ò»¸ö×ÖÁĞ±íµÄ0£¬1£¬2ÔªËØ
-                        f.write(s + s1 + "\n")
 
- # Ğ´Èëexcel
-    def write_excel(self,datas,file_path):
-        # print("------excelĞ´ÈëÊı¾İ£º{}".format(datas))
-        # print("------excelĞ´ÈëÎÄ¼ş£º{}".format(file_path))
 
-        workbook = xlsxwriter.Workbook('{}'.format(file_path))  # ½¨Á¢ÎÄ¼ş
-        worksheet = workbook.add_worksheet()  # ½¨Á¢sheet
+    # å†™å…¥excel
+    def write_excel(self, datas, file_path):
 
-        temp = 0   ##¶¨Òå±äÁ¿£¬ÎªÁË±ê¼ÇvaluesµÄÊı¾İÊÇ¼¸²ã
-        for index, item in enumerate(datas):  ## enumerate() º¯ÊıÓÃÓÚ½«Ò»¸ö¿É±éÀúµÄÊı¾İ¶ÔÏó×éºÏÎªÒ»¸öË÷ÒıĞòÁĞ£¬Í¬Ê±ÁĞ³öÊı¾İºÍÊı¾İÏÂ±ê£¬ÕâÀïÑ­»·´«ÈëµÄdatas[]
-            if len(item['values']) == 0:    ## ÅĞ¶ÏÈç¹ûÊÇ0»òÕßÃ»ÓĞ×ÓÁĞ±í
-                index = index + temp        ##  ÏÂ±ê = ÏÂ±ê+×ÓÁĞ±í£¬1+0£¬2+0£¬3+0
+        workbook = xlsxwriter.Workbook('{}'.format(file_path))  # å»ºç«‹æ–‡ä»¶
+        worksheet = workbook.add_worksheet()  # å»ºç«‹sheet
+
+        tt = ['AGPOINTNAME', 'date', 'value', 'good', 'type']
+        for index,item in enumerate(tt):
+            worksheet.write(0,index,'{}'.format(item))
+
+        temp = 0  ##å®šä¹‰å˜é‡ï¼Œä¸ºäº†æ ‡è®°valuesçš„æ•°æ®æ˜¯å‡ å±‚
+        for index, item in enumerate(datas):  ## enumerate() å‡½æ•°ç”¨äºå°†ä¸€ä¸ªå¯éå†çš„æ•°æ®å¯¹è±¡ç»„åˆä¸ºä¸€ä¸ªç´¢å¼•åºåˆ—ï¼ŒåŒæ—¶åˆ—å‡ºæ•°æ®å’Œæ•°æ®ä¸‹æ ‡ï¼Œè¿™é‡Œå¾ªç¯ä¼ å…¥çš„datas[]
+            index = index+1
+            if len(item['values']) == 0:  ## åˆ¤æ–­å¦‚æœæ˜¯0æˆ–è€…æ²¡æœ‰å­åˆ—è¡¨
+                index = index + temp  ##  ä¸‹æ ‡ = ä¸‹æ ‡+å­åˆ—è¡¨ï¼Œ1+0ï¼Œ2+0ï¼Œ3+0
                 worksheet.write(index, 0, '{}'.format(item['name']))
                 worksheet.write(index, 1, '{}'.format(item['point_type']))
-                worksheet.write(index, 2, '{}'.format(item['values'])) ## Ğ´Èë¿ÕÁĞ±í
+                worksheet.write(index, 2, '{}'.format(item['values']))  ## å†™å…¥ç©ºåˆ—è¡¨
             else:
-                for ind, it in enumerate(item['values']): ## ÅĞ¶ÏvaluesÓĞÖµÇé¿ö £¬Ñ­»·ÏÂ±êºÍÖµ
-                    tm = index      ## Íâ²ãÏÂ±ê´æÆğÀ´£¬
+                for ind, it in enumerate(item['values']):  ## åˆ¤æ–­valuesæœ‰å€¼æƒ…å†µ ï¼Œå¾ªç¯ä¸‹æ ‡å’Œå€¼
+                    tm = index  ## å¤–å±‚ä¸‹æ ‡å­˜èµ·æ¥ï¼Œ
                     if ind != 0:
-                        ## ÄÚ²ãvaluesµÄÏÂ±í²»µÈ0
-                        temp = temp + 1     ## ÄÚ²ãvaluesµÄÊıÖµ+1£¬È¡µÚÏÂÒ»¸öÔªËØ£¨ÁĞ±í£©
-                    index = index + temp    ## ÄÚ²ãvaluesÊı¾İ²»Ö¹Ò»Ìõ£¬index+1£¨Ïàµ±ÓÚExcelĞĞÊı+1£©ÏòÏÂÒ»ĞĞĞ´Èë
-                    # print("---it£º {}".format(it))
-                    # print("---temp£º {}".format(temp))
-                    # print("---index£º {}".format(index))
+                        ## å†…å±‚valuesçš„ä¸‹è¡¨ä¸ç­‰0
+                        temp = temp + 1  ## å†…å±‚valuesçš„æ•°å€¼+1ï¼Œå–ç¬¬ä¸‹ä¸€ä¸ªå…ƒç´ ï¼ˆåˆ—è¡¨ï¼‰
+                    index = index + temp  ## å†…å±‚valuesæ•°æ®ä¸æ­¢ä¸€æ¡ï¼Œindex+1ï¼ˆç›¸å½“äºExcelè¡Œæ•°+1ï¼‰å‘ä¸‹ä¸€è¡Œå†™å…¥
+                    # print("---itï¼š {}".format(it))
+                    # print("---tempï¼š {}".format(temp))
+                    # print("---indexï¼š {}".format(index))
 
                     worksheet.write(index, 0, '{}'.format(item['name']))
-                    worksheet.write(index, 2, '{}'.format(str(it[0])))
-                    worksheet.write(index, 3, '{}'.format(str(it[1])))
-                    worksheet.write(index, 4, '{}'.format(str(it[2])))
-                    worksheet.write(index, 1, '{}'.format(item['point_type']))
-
-                    index = tm  ## ½«Íâ²ãµÄÏÂ±ê »¹¸øÍâ²ãµÄindex£¬¼ÌĞøÑ­»·£¬
+                    worksheet.write(index, 1, '{}'.format(str(it[0])))
+                    worksheet.write(index, 2, '{}'.format(str(it[1])))
+                    worksheet.write(index, 3, '{}'.format(str(it[2])))
+                    worksheet.write(index, 4, '{}'.format(item['point_type']))
+                    index = tm  ## å°†å¤–å±‚çš„ä¸‹æ ‡ è¿˜ç»™å¤–å±‚çš„indexï¼Œç»§ç»­å¾ªç¯ï¼Œ
 
         workbook.close()
 
 
+ ## å†™å…¥æ–‡ä»¶
+    def write_file(self, data_arr, file_name):
+        with open(file_name, 'w+') as f:  ## æ‰“å¼€æ–‡ä»¶å‡†å¤‡å†™å…¥
+            for line in data_arr:  ## å¾ªç¯ information å‡½æ•°è¿”å›çš„list ï¼Œ listä¸­æ¯ä¸ªå­—å…¸ä»£è¡¨ä¸€ä¸ªç‚¹çš„ä¿¡æ¯ ï¼Œ å¾ªç¯æ—¶lineå°±æ˜¯ä¸€ä¸ªå­—å…¸
+                print("Lineçš„å€¼--->", line)
+                s = f"{line['name']} {line['point_type']}"  ## å†™å…¥å–å­—å…¸ä¸­çš„ name å’Œ ç±»å‹
+                if line['values']:  ## åˆ¤æ–­åˆ—è¡¨values æ­£å¸¸æˆ–å­˜åœ¨
+                    for v in line['values']:  ## å¾ªç¯valuesä¸­çš„æ¯ä¸€æ¡æ•°æ®
+                        # print(type(v))
+                        s1 = f" {v[0]} {v[1]} {v[2]}"  ## å–valuesä¸­æ¯ä¸€ä¸ªå­—åˆ—è¡¨çš„0ï¼Œ1ï¼Œ2å…ƒç´ 
+                        f.write(s + s1 + "\n")
+
+
 if __name__ == '__main__':
-    # parsingApi().home_api()
-    # parsingApi().database_list()
-    # parsingApi().information()
-    # parsingApi().informationPage()
-    # print(type(parsingApi().informationPage()))
-    # data_list = parsingApi().information()
-    # file_path = 'E:/sym/µãÖµ.xlsx'
-    # parsingApi().write_list(file_path,data_list)
 
-    # parsingApi().write_file(parsingApi().information, 'test2.log')
-
-    file_path = os.path.join(report_path, 'data.xlsx')
-    parsingApi().write_excel(parsingApi().information,file_path)
+    file_path = os.path.join(report_path,'data.xlsx')
+    file_path2 = 'E:/sym/piè§£æ/pi_recorded/pi_1.xlsx'
+    parsingApi().write_excel(parsingApi().information, file_path2)
 

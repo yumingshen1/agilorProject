@@ -10,7 +10,7 @@ import xlsxwriter,os
 from utils.handle_path import report_path
 
 """
-    pi 数据导出excel
+    pi 数据导出excel  --- 筛选点值
 """
 class parsingApi:
     # 所有点信息
@@ -20,20 +20,21 @@ class parsingApi:
         # url = 'http://pi.vaiwan.com/piwebapi/streams/'  ##  http://pi.vaiwan.com/piwebapi/streams/ ， http://192.168.10.243:8080/piwebapi/dataservers/
         # path = f'{url}{da}'  ## 拼接所有点信息
 
-        path1 = 'http://192.168.10.243:8080/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
-        path2 = 'http://pi.vaiwan.com/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points'
+        path2 = 'http://192.168.10.243:8080/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
+        # http://pi.vaiwan.com/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points
 
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['BA:LEVEL.1']
+        need_name = ['DBDW_DB_YJ_Fir_2_TLCKNOXND_ZS']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
 
         for item in some_list.json()['Items']:  ## 循环点信息
             name = item['Name']  ## 获得所有name
-            print('name---%s,' %name)
+            # print('name---%s,' %name)
             if name in need_name:
                 name = name.replace(' ', '')
                 point_type = item['PointType']  ## 获得所有 type
@@ -48,12 +49,12 @@ class parsingApi:
 
                 record_data = item['Links']['RecordedData']  # 获得InterpolatedData
                 links = record_data.split('/streams/')[1]
-                print('links----------->', links)
+                # print('links----------->', links)
 
-                starttime = '?startTime=2021-01-13T05:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
-                endtime = '&endTime=2021-12-13T05:00:00.000Z'
+                starttime = '?startTime=2022-01-18T13:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+                endtime = '&endTime=2022-01-18T13:00:05.000Z'
                 num = '&maxCount=86400'
-                url1 = f'{"http://192.168.10.243:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
+                url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
                 url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
                 print('url1------>',url1)
                 ##单个点信息
@@ -61,7 +62,7 @@ class parsingApi:
 
                 stream_datas = requests.get(url1).json()  ## 循环访问每个url
 
-                values = []
+                values = []  ##存放点的信息
                 for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
                     timestamp = v['Timestamp']  ## 时间直接获取
                     good = v['Good']  ## good直接获取
@@ -69,7 +70,7 @@ class parsingApi:
                     if good == True:
                         good = 'true'
                     value = 0
-                    if isinstance(v['Value'], dict):  ##判断请求的url中的 value 是不是字典类型
+                    if isinstance(v['Value'], dict):  ##判断请求的url中的 value 是不是字典类型  isinstance(object, classinfo)
                         if v['Value']['Value']:  ##如果是字典类型取value键下的value键的值
                             value = v['Value']['Value']  ## value取值
                     else:
@@ -154,6 +155,6 @@ class parsingApi:
 if __name__ == '__main__':
 
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/大量数据/pi_ba(3).xlsx'
+    file_path2 = 'E:/sym/pi解析/pi_recorded/pi_3.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 
