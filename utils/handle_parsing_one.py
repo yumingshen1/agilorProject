@@ -27,7 +27,7 @@ class parsingApi:
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['DL-GH002-LGSLL-2SJ-S-PI']
+        need_name = ['DBDW_DB_YJ_Fir_2_TLCKNOXND_ZS']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -43,7 +43,7 @@ class parsingApi:
                 elif point_type == 'String':
                     point_type = 'S'
                 elif point_type == 'Int32':
-                    point_type = 'L'
+                    point_type = 'I'
                 elif point_type == 'Digital':
                     point_type = 'L'
 
@@ -51,14 +51,12 @@ class parsingApi:
                 links = record_data.split('/streams/')[1]
                 # print('links----------->', links)
 
-                starttime = '?startTime=2022-02-01T14:40:43.0000000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
-                endtime = '&endTime=2022-02-01T14:40:48.0000000Z'
+                starttime = '?startTime=2022-01-18T13:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
+                endtime = '&endTime=2022-01-18T13:00:30.000Z'
                 num = '&maxCount=86400'
                 url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
                 url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
                 print('url1------>',url1)
-                ##单个点信息
-                urlname = 'http://192.168.10.243:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
 
                 stream_datas = requests.get(url1).json()  ## 循环访问每个url
 
@@ -155,6 +153,6 @@ class parsingApi:
 if __name__ == '__main__':
 
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_recorded/pi_DL-GH002-LGSLL-2SJ-S-PI.xlsx'
+    file_path2 = 'E:/sym/pi解析/pi/DBDW_DB_YJ_Fir_2_TLCKNOXND_ZS.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

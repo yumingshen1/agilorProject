@@ -9,28 +9,43 @@ import requests
 import json
 
 def test_QueryData():  ##查询接口
+    import requests
+
     url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIR"
-    data = {
-        "db": "PIR",
-        "start": "2022-01-18T13:00:00.000Z",
-        "stop": "2022-01-19T13:00:00.000Z",
-        "table": "PI",
-        "tags": [
-            {
-                "AGPOINTNAME":"DL-GH002-JYQNOX-4SJ-S-PI"
-            }
-        ]
-    }
+
+    payload = "select * from PI where AGPOINTNAME = 'DL-GH002-JYQNOX-4SJ-S-PI'"
     headers = {
         'Accept': 'application/csv',
-        'Authorization': 'Token XXX',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/vnd.agilorql',
+        'Authorization': 'Token XXX'
     }
-    response = requests.post(url, headers=headers, data=json.dumps(data))
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    # url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIR"
+    # data = {
+    #     "db": "PIR",
+    #     "start": "2022-01-18T13:00:00.000Z",
+    #     "stop": "2022-01-19T13:00:00.000Z",
+    #     "table": "PI",
+    #     "tags": [
+    #         {
+    #             "AGPOINTNAME":"DL-GH002-JYQNOX-4SJ-S-PI"
+    #         }
+    #     ]
+    # }
+    # headers = {
+    #     'Accept': 'application/csv',
+    #     'Authorization': 'Token XXX',
+    #     'Content-Type': 'application/json'
+    # }
+    # response = requests.post(url, headers=headers, data=json.dumps(data))
+
     print(type(response.text))
     print('结果---》',response.text)
-    re = response.text.replace(',result,table,_start,_stop,_time,_value,AGPOINTNAME, _field,_table','')
+    re = response.text.split('\n',1)[1]
 
+    print('截取的\n',re)
     re = re.replace('\r\n', '').strip(',')
     lista = []
     lista.append(re)
@@ -46,7 +61,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
     # 对数据根据时间进行分组
     for l in tq:
         arr = l.split(",")
-        lastTime = arr[3]
+        lastTime = arr[0]
         # print (lastTime)
         if timeMap.get(lastTime):
             grouped = timeMap.get(lastTime)
@@ -64,8 +79,8 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     for index, v in timeMap.items():
-        AGPOINTNAME = v[0][5]
-        date = v[0][3]
+        AGPOINTNAME = v[0][1]
+        date = v[0][0]
         dateSub = date[0:date.rfind('.')]
         # 定义小时
         eightHour = datetime.timedelta(hours=8)
@@ -92,10 +107,11 @@ def countlist():  ##获取查询接口的数据，并处理数据
         # print('listb数据',listb)
     return listb
 
-# 解析数据转为数组 ，去除_result
+# 解析数据转为数组 ，去除PI
 def resolver(data):
-    dataArr = data.split("_result,")
+    dataArr = data.split(",,")
     dataArr.pop(0)
+    print('处理',dataArr)
     return dataArr
 
 ## 数据写入excel
@@ -161,12 +177,15 @@ PI:
 [['0', '2021-12-10T05:00:00.000000001Z', '2021-12-13T05:00:00.000000001Z', '2021-12-12T23:06:25Z', 'true', 'sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus', 'Good', 'PI_TABLE', ''], 
  ['1', '2021-12-10T05:00:00.000000001Z', '2021-12-13T05:00:00.000000001Z', '2021-12-12T23:06:25Z', '0 | Good', 'sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus', 'S', 'PI_TABLE']]
  
- 
+
  
 name,tags,      time,                   AGPOINTNAME,                    F,          Good,   L
 PI,    ,        1642510804775009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.50433,   true,
 PI,    ,        1642510814775009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.5599251, true,
 PI,    ,        1642510819275009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.830246,  true,
 PI,    ,        1642510824275009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.9119377, true,
-
+ ['PI,,1642510804775009100,DL-GH002-JYQNOX-4SJ-S-PI,40.50433,true,
+ \nPI,,1642510814775009100,DL-GH002-JYQNOX-4SJ-S-PI,40.5599251,true,
+ \nPI,,1642510819275009100,DL-GH002-JYQNOX-4SJ-S-PI,40.830246,true,
+ \nPI,,1642510824275009100,DL-GH002-JYQNOX-4SJ-S-PI,40.9119377,true,\n']
 '''

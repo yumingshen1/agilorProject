@@ -38,7 +38,7 @@ class parsingApi:
             elif point_type == 'String':
                 point_type = 'S'
             elif point_type == 'Int32':
-                point_type = 'L'
+                point_type = 'I'
             elif point_type == 'Digital':
                 point_type = 'L'
 
