@@ -11,9 +11,9 @@ import json
 def test_QueryData():  ##查询接口
     import requests
 
-    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIR"
+    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIX"
 
-    payload = "select * from PI where AGPOINTNAME = 'DL-GH002-JYQNOX-4SJ-S-PI'"
+    payload = "select * from PI where AGPOINTNAME = 'DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT' and time <= '2022-01-20T13:00:00.000Z' and time >= '2022-01-18T13:00:00.000Z'"
     headers = {
         'Accept': 'application/csv',
         'Content-Type': 'application/vnd.agilorql',
@@ -21,32 +21,13 @@ def test_QueryData():  ##查询接口
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-
-    # url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIR"
-    # data = {
-    #     "db": "PIR",
-    #     "start": "2022-01-18T13:00:00.000Z",
-    #     "stop": "2022-01-19T13:00:00.000Z",
-    #     "table": "PI",
-    #     "tags": [
-    #         {
-    #             "AGPOINTNAME":"DL-GH002-JYQNOX-4SJ-S-PI"
-    #         }
-    #     ]
-    # }
-    # headers = {
-    #     'Accept': 'application/csv',
-    #     'Authorization': 'Token XXX',
-    #     'Content-Type': 'application/json'
-    # }
-    # response = requests.post(url, headers=headers, data=json.dumps(data))
-
     print(type(response.text))
     print('结果---》',response.text)
-    re = response.text.split('\n',1)[1]
 
+    re = response.text.split('\n',1)[1]
     print('截取的\n',re)
-    re = re.replace('\r\n', '').strip(',')
+
+    re = re.replace('\n', '')
     lista = []
     lista.append(re)
     print('lista添加的结果---->',lista)
@@ -81,42 +62,31 @@ def countlist():  ##获取查询接口的数据，并处理数据
     for index, v in timeMap.items():
         AGPOINTNAME = v[0][1]
         date = v[0][0]
-        dateSub = date[0:date.rfind('.')]
-        # 定义小时
-        eightHour = datetime.timedelta(hours=8)
-        # 将时间格式化为 datetime 类型
-        d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
-        d = d + eightHour
-        df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
+        date = date[:10]
+        time_tuple_1 = time.localtime(int(date))
+        bj_time = time.strftime("%Y-%m-%d %H:%M:%S", time_tuple_1)
 
-        type = v[0][6]
-        if type in ('F','L','B','S'):
-            value = v[0][4]
-            good = ""
-            if v[1]:
-                good = v[1][4]
-            print('v====>',v)
-            # print('v[0]===>',v[0])
-            # print('v[1]===>',v[1])
-        else:
-            value = v[1][4]
-            good = v[0][4]
-            type = v[1][6]
-        row = [AGPOINTNAME, df, value,good, type]
+        '''
+            根据不同的点值的类型，更改value的取值 [0][2] [0][4]
+        '''
+        value = v[0][4]
+        # print('value的值',value)
+        good = v[0][3]
+
+        row = [AGPOINTNAME,bj_time,value,good]
         listb.append(row)
         # print('listb数据',listb)
     return listb
 
 # 解析数据转为数组 ，去除PI
 def resolver(data):
-    dataArr = data.split(",,")
+    dataArr = data.split("PI,,")
     dataArr.pop(0)
     print('处理',dataArr)
     return dataArr
 
 ## 数据写入excel
 def write_excel_data(filepath,data):
-    now = datetime.datetime.now().strftime('%Y-%m-%d')  # 当前时间
     filename = f'{filepath}'   # 存放excel的路径
     workbook = xlsxwriter.Workbook('{}'.format(filename))  # 建立文件
     worksheet = workbook.add_worksheet()  # 建立sheet
@@ -132,9 +102,10 @@ def write_excel_data(filepath,data):
     for i in range(len(data)):
         worksheet.write(i+1,0,data[i][0])
         worksheet.write(i+1,1,data[i][1])
-        worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
+        # worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
+        worksheet.write(i+1,2,data[i][2])
         worksheet.write(i+1,3,data[i][3])
-        worksheet.write(i+1,4,data[i][4])
+        # worksheet.write(i+1,4,data[i][4])
     workbook.close()
 
 # 将数据写入文件
@@ -151,7 +122,7 @@ def writeFile(data, fileName):
 
 if __name__ == '__main__':
     data = countlist()
-    file_path = 'E:/sym/pi解析/pi_Interpolated/DL-GH002-JYQNOX-4SJ-S-PI.xlsx'
+    file_path = 'E:/sym/pi解析/pix_Interpolated/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
     write_excel_data(file_path,data)
     print('完成！！！')
 

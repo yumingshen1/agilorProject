@@ -16,18 +16,12 @@ class parsingApi:
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
-        # da = self.database_list()
-        # url = 'http://pi.vaiwan.com/piwebapi/streams/'  ##  http://pi.vaiwan.com/piwebapi/streams/ ， http://192.168.10.243:8080/piwebapi/dataservers/
-        # path = f'{url}{da}'  ## 拼接所有点信息
 
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points'
-        path2 = 'http://192.168.10.243:8080/piwebapi/dataservers/F1DSL9_f9XkRSkCpa9_eooJCywV0lOLUY5S1JPVkhNUTc0/points'
-        # http://pi.vaiwan.com/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points
-
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=45000'
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['DBDW_DB_YJ_Fir_2_TLCKNOXND_ZS']
+        need_name = ['DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -45,17 +39,20 @@ class parsingApi:
                 elif point_type == 'Int32':
                     point_type = 'I'
                 elif point_type == 'Digital':
-                    point_type = 'L'
+                    point_type = 'B'
 
-                record_data = item['Links']['RecordedData']  # 获得InterpolatedData
-                links = record_data.split('/streams/')[1]
+                '''
+                    根据pi的实际情况来确定是需要获取RecordedData的数据还是RecordedData的数据
+                '''
+                record_data = item['Links']['RecordedData']  # 获得RecordedData
+                Interpolated_data = item['Links']['InterpolatedData'] # 获得InterpolatedData
+                links = Interpolated_data.split('/streams/')[1]
                 # print('links----------->', links)
 
-                starttime = '?startTime=2022-01-18T13:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
-                endtime = '&endTime=2022-01-18T13:00:30.000Z'
+                starttime = '?startTime=2022-01-18T13:00:00.000Z'
+                endtime = '&endTime=2022-01-20T13:00:00.000Z'
                 num = '&maxCount=86400'
                 url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
-                url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
                 print('url1------>',url1)
 
                 stream_datas = requests.get(url1).json()  ## 循环访问每个url
@@ -91,6 +88,7 @@ class parsingApi:
                 row_dict = {'name': name, 'point_type': point_type,'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
                 results_arr.append(row_dict)  ## 将存放每一个点的信息的 字典 放入list
                 print("result_arr的值----->", results_arr)
+
                 '''
                 [{'name': 'sy.st.WIN-F9KROVHMQ74.random1.sc1', 'point_type': 'F', 'values': [['2021-12-07 13:00:25', 50.0, True], ['2021-12-07 13:00:55', 50.0, True]]}]
                 '''
@@ -131,7 +129,7 @@ class parsingApi:
                     worksheet.write(index, 1, '{}'.format(str(it[0])))
                     worksheet.write(index, 2, '{}'.format(str(it[1])))
                     worksheet.write(index, 3, '{}'.format(str(it[2])))
-                    worksheet.write(index, 4, '{}'.format(item['point_type']))
+                    # worksheet.write(index, 4, '{}'.format(item['point_type']))
                     index = tm  ## 将外层的下标 还给外层的index，继续循环，
 
         workbook.close()
@@ -153,6 +151,6 @@ class parsingApi:
 if __name__ == '__main__':
 
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi/DBDW_DB_YJ_Fir_2_TLCKNOXND_ZS.xlsx'
+    file_path2 = 'E:/sym/pi解析/pi_interpolated/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 
