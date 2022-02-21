@@ -4,36 +4,6 @@
 
 import requests,re,openpyxl
 import json
-
-# def test_Query(num):
-#
-#     url = "http://106.39.185.104:8713/agilorapi/v6/query?db=AGILOR_RTDB"
-#
-#     payload = "select * from T1 limit 10000 offset" + str(num)
-#     headers = {
-#         'Accept': 'application/csv',
-#         'Content-Type': 'application/vnd.agilorql',
-#         'Authorization': 'Token NcBoqGPHg92sihD-fiFxaLfsrw0H8pC0q8OJvaWmOtvWuYFrAZTb2pgEX3kcVxLfZ1SxON9kPqRHHiLRrv-Bsw=='
-#     }
-#
-#     response = requests.request("POST", url, headers=headers, data=payload)
-#     ## 表头替换为空
-#     res = response.text.replace('name,tags,time,AGPOINTNAME,B,F,L,S','')
-#     lista = re.split(r'\n',res)
-#     listall = []
-#     for i in range(1,len(lista)-1):
-#         li1 = []
-#         li1.append(lista[i])
-#         listall.append(li1)
-#
-#     print('listall添加的结果---->', listall)
-#     return listall
-#
-#
-# def data_Write(path,new_list):
-#     tq = test_Query()
-#
-
 """
     中国系统 -- 1亿数据分批次导出大量数据到excel,每次一百万
 
@@ -84,6 +54,20 @@ if __name__ == '__main__':
         writeToExcel('E:\sym\全量数据\全量1\第' + str(i + 1) + '个' + str(limit) + '条.xlsx', total_list)
         print('这是第%d个excel完成' %count)
         count+=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 name,       tags,       time,               AGPOINTNAME,        B,          F,                  L,          S
 T1,             ,       1642734682916293946,    tag_F_1,         ,          45226.4006899,       ,

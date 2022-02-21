@@ -17,7 +17,7 @@ class parsingApi:
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
 
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=45000'
 
         some_list = requests.get(path1)  ##获取到所有的点信息
 
@@ -41,7 +41,9 @@ class parsingApi:
                 point_type = 'I'
             elif point_type == 'Digital':
                 point_type = 'L'
-
+                # results_arr.append(name)
+                # print('数据',name,point_type)
+        # print('长度',len(results_arr))
             record_data = item['Links']['RecordedData']  # 获得InterpolatedData
             links = record_data.split('/streams/')[1]
             # print('links----------->', links)
@@ -149,7 +151,8 @@ class parsingApi:
 
 if __name__ == '__main__':
 
-    file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_recorded/pi_1.xlsx'
-    parsingApi().write_excel(parsingApi().information, file_path2)
+    # file_path = os.path.join(report_path,'data.xlsx')
+    # file_path2 = 'E:/sym/pi解析/pi_recorded/pi_1.xlsx'
+    # parsingApi().write_excel(parsingApi().information, file_path2)
+    parsingApi().information
 

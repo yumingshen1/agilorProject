@@ -2,7 +2,7 @@ import xlrd
 import xlwt
 import pandas as pd
 '''
-excel对比
+    excel 某一列进行对比
 '''
 # csv文件转换成xlsx文件
 def csv_to_xlsx_pd(data1, data2):
@@ -31,11 +31,11 @@ def compare_excel(file1_name, file2_name):
                     comp_restult.write(i, j, result)
                 else:
                     comp_restult.write(i, j, tp1.cell(i, j).value)
-    result_excel.save('E:/sym/pi解析/对比结果_PIRX/DL-GH002-JYQNOX-4SJ-S-PI.xls')
+    result_excel.save('E:/sym/pi解析/对比结果2022218/Interpolated/1d/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx')
 
 
 if __name__ == '__main__':
-    file1_name = 'E:/sym/pi解析/pi_recorded/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
-    file2_name = 'E:/sym/pi解析/pirx_recorded/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
+    file1_name = 'E:/sym/pi解析/pi_Interpolated_1d/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
+    file2_name = 'E:/sym/pi解析/PI2d1d_interpolated_1d/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
     compare_excel(file1_name, file2_name)
     print('比对结束！！')
