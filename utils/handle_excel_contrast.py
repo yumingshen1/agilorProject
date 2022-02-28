@@ -6,7 +6,7 @@ import pandas
 # -*- coding: utf-8 -*-
 
 """
-    excel大量数据对比
+    excel大量数据对比, 对比单列
 """
 
 
@@ -19,8 +19,8 @@ con = 97
 # for i in range(97,102):
 #读取excel文件
 #括号中的字符串为你要比较的两个excel的路径，注意用“/”
-wb_a = openpyxl.load_workbook(f'E:/sym/pi解析/pi_Interpolated_1s/DL-GH002-JYQNOX-4SJ-S-PI.xlsx')
-wb_b = openpyxl.load_workbook(f'E:/sym/pi解析/PI1d1s_interpolated_1s/DL-GH002-JYQNOX-4SJ-S-PI.xlsx')
+wb_a = openpyxl.load_workbook(f'E:/sym/pi解析/pi_Interpolated_1s/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx')
+wb_b = openpyxl.load_workbook(f'E:/sym/pi解析/PI1d1s_interpolated_1s/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx')
 #定义一个方法来获取表格中某一列的内容，返回一个列表
 #在这里，我的表格中：IP是具有唯一性的，所以我用它来区分数据的差异，而IP这一列在我的表格中是第“A”列
 def getIP(wb):
@@ -60,6 +60,6 @@ for cellobj in b:
         cellobj.font = Font(color=colors.BLACK, italic=True ,bold = True)
         cellobj.fill = PatternFill("solid", fgColor="DDDDDD")
 
-wb_a.save(f'E:/sym/pi解析/对比结果2022218/Interpolated/1s/DL-GH002-JYQNOX-4SJ-S-PI-B.xlsx')
+wb_a.save(f'E:/sym/pi解析/对比结果2022218/Interpolated/1s/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT-B.xlsx')
 # wb_b.save(f'E:/sym/全量数据/对比结果/{con}-b.xlsx')
     # con+=1

@@ -17,12 +17,12 @@ class parsingApi:
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
 
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=4500'  #?maxCount=45000
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?nameFilter=sy.st.FWQ-DATAEX.PItoPI1.Scan%20Class%20Information'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=20000'  #?maxCount=45000
+        # path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?nameFilter=sy.st.FWQ-DATAEX.PItoPI1.Scan%20Class%20Information'
         some_list = requests.get(path1)  ##获取到所有的点信息
-        print('samelist',some_list)
+        print('samelist:',some_list)
         ## 需要的name
-        need_name = ['sy.st.FWQ-DATAEX.PItoPI1.Scan Class Information']
+        need_name = ['DL-SW001-MMJCYX-2SJ-S-PLANTCONNECT']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -50,10 +50,10 @@ class parsingApi:
                 links = Interpolated_data.split('/streams/')[1]
                 # print('links----------->', links)
 
-                starttime = '?startTime=2022-01-18T13:00:00.000Z'
-                endtime = '&endTime=2022-01-19T13:00:00.000Z'
+                starttime = '?startTime=2022-01-20T01:57:43.000Z'
+                endtime = '&endTime=2022-02-06T08:25:56.000Z'
                 num = '&maxCount=86400'
-                t = '&interval=1s'  # 间隔
+                t = '&interval=1y'  # 间隔
                 url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{t}{num}'
                 print('url1------>',url1)
 
@@ -152,6 +152,6 @@ class parsingApi:
 
 if __name__ == '__main__':
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_recorded/sy.st.FWQ-DATAEX.PItoPI1.ScanClassInformation.xlsx'
+    file_path2 = 'E:/sym/pi解析/pi_Interpolated_1y/DL-SW001-MMJCYX-2SJ-S-PLANTCONNECT.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

@@ -2,6 +2,11 @@
 # @Time: 2022/2/18 15:52
 # @Author: shenyuming
 
+'''
+    查询excel-1 的数据是不是在 excel-2 中存在的
+
+'''
+
 import   xlrd
 def read_excel(fileName):
     global newset

@@ -22,7 +22,7 @@ class parsingApi:
         some_list = requests.get(path1)  ##获取到所有的点信息
 
         ## 需要的name
-        need_name = ['BA:CONC.1']
+        need_name = ['sy.st.FWQ-DATAEX.PItoPI1.ScanClassInformation']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据

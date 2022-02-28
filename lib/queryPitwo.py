@@ -11,9 +11,9 @@ import json
 def test_QueryData():  ##查询接口
     import requests
 
-    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PI2d1d"
+    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIF1y"
 
-    payload = "select * from PI where AGPOINTNAME = 'sy.st.FWQ-DATAEX.PItoPI1.Scan Class Information' and time <= '2022-01-19T13:00:00.000Z' and time >= '2022-01-18T13:00:00.000Z'"
+    payload = "select * from PI where AGPOINTNAME = 'DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT' and time <= '2022-02-06T08:25:56.000Z' and time >= '2022-01-20T01:57:43.000Z'"
     headers = {
         'Accept': 'application/csv',
         'Content-Type': 'application/vnd.agilorql',
@@ -69,7 +69,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
         '''
             根据不同的点值的类型，更改value的取值 [0][2] [0][4]
         '''
-        value = v[0][5]
+        value = v[0][4]
         # print('value的值',value)
         good = v[0][3]
 
@@ -122,7 +122,7 @@ def writeFile(data, fileName):
 
 if __name__ == '__main__':
     data = countlist()
-    file_path = 'E:/sym/pi解析/PI2d1m_interpolated_1m/sy.st.FWQ-DATAEX.PItoPI1.ScanClassInformation.xlsx'
+    file_path = 'E:/sym/pi解析/PIF1y_interprolated_1y/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
     write_excel_data(file_path,data)
     print('完成！！！')
 
