@@ -53,5 +53,52 @@ print(ws['A1'].number_format)
     使用公式
 '''
 ws['B1'] = "=SUM(1,1)"
-wb.save('../excelData/formula.xlsx')
+# wb.save('../excelData/formula.xlsx')
 
+'''
+    插入图片
+'''
+from openpyxl.drawing.image import Image
+image = Image('../excelData/代码01.png')
+ws.add_image(image,'C1')
+# wb.save('../excelData/formula.xlsx')
+
+
+'''
+    二维面积图
+'''
+from openpyxl.chart import (
+    AreaChart,
+    AreaChart3D,
+    Reference,
+    Series,
+)
+#创建新的sheet用于图标
+ws2 = wb.create_sheet(title='tubiao')
+
+rows = [
+    ['Number', 'Batch 1', 'Batch 2'],
+    [2, 40, 30],
+    [3, 40, 25],
+    [4, 50, 30],
+    [5, 30, 10],
+    [6, 25, 5],
+    [7, 50, 10],
+]
+
+for row in rows:
+    ws2.append(row)
+
+chart = AreaChart()
+chart.title = "Area Chart"
+chart.style = 13
+chart.x_axis.title = 'Test'
+chart.y_axis.title = 'Percentage'
+
+cats = Reference(ws2, min_col=1, min_row=1, max_row=7)
+data = Reference(ws2, min_col=2, min_row=1, max_col=3, max_row=7)
+chart.add_data(data, titles_from_data=True)
+chart.set_categories(cats)
+ws2.add_chart(chart, "A10")
+
+wb.save('../excelData/formula.xlsx')

@@ -8,6 +8,10 @@ import numpy as np
 import requests
 import json
 
+'''
+    rtdb 6.2.0 读取数据。
+'''
+
 def test_QueryData():  ##查询接口
     import requests
 

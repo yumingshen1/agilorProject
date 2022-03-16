@@ -2,7 +2,7 @@ import xlrd
 import xlwt
 import pandas as pd
 '''
-    excel 某一列进行对比
+    excel  全部数据进行对比
 '''
 # csv文件转换成xlsx文件
 def csv_to_xlsx_pd(data1, data2):
