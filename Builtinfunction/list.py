@@ -73,10 +73,10 @@ Solution3().removeDuplicates2(lists)
 ## 双指针
 class Solution4:
     def removeElment(self,nums:List[int],val):
-        left = 0
+        left = 0        ## 定义一个数，用来标记长度
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[left] = nums[i]
+                # nums[left] = nums[i]
                 left +=1
         print(left)
 
@@ -88,6 +88,25 @@ class Solution4:
                 num.append(nums[i])
         print(num)
 
-n = [1,3,5,7]
+n = [1,3,5,7,0]
 v = 5
+Solution4().removeElment(n,v)
 Solution4().removeElment2(n,v)
+
+
+'''
+    给你两个字符haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。
+'''
+class Solution5:
+    def strStr(self, haystack: str, needle: str) -> int:
+        len1=len(needle)
+        if len1==0:
+            return 0
+        for i in range(len(haystack)):
+            if haystack[i:i+len1]==needle:
+                print(i)
+        return -1
+
+s1 = 'bfmllopk'
+s2= 'll'
+Solution5().strStr(s1,s2)
