@@ -37,5 +37,10 @@ from pathlib import Path
 '''
     优雅的打开网页，自动关闭
 '''
-with webdriver.Chrome() as driver:
+with webdriver.Chrome(service_args=['--verbose'],service_log_path='selenium.log') as driver:
     driver.get('https://cn.bing.com')
+    driver.maximize_window()
+    time.sleep(3)
+    driver.find_element('id','sb_form_q').send_keys('Agilor')
+    driver.find_element('id','search_icon').click()
+    time.sleep(5)
