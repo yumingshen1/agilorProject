@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    p{
+        color:red
+    }
+</style>
+
+</head>
+
+<body>
+    <hi1>一级标题</hi1>
+    <div id = "div1">
+        用户名：<input type="text" name = "name" id = "na" placeholder="用户名"/>
+        <br>
+        密码：<input type="password" name = "pa" id = "pa" placeholder="密码"/>
+        <br>
+        <button type="button">登录</button>
+    </div>
+
+    <div id="div2">
+        <p>这是一个段落</p>
+        <a href="https://www.baidu.com">百度一下，你就知道</a>
+        <a href="https://cn.bing.com" target="_blank">有求必应</a>
+    </div>
+
+    <div id="div3">
+        <input type="button" id="alert" value="alert" onclick="alert(hello_alert)"/>
+        <input type="button" id="confirm" value="confirm" onclick="confirm(hello_confirm)"/>
+        <input type="button" id="prompt" value="prompt" onclick="prompt(hello_prompt)"/>
+    </div>
+
+    <div id="div4">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+
+        <ol>
+            <li>hh</li>
+            <li>gg</li>
+            <li>kk</li>
+            <li>pp</li>
+        </ol>
+    </div>
+
+<!--   multiple="multiple" 多选，  去掉就是单选 -->
+    <div id="div5"><select multiple="multiple">
+        <option value="1">15k-20k</option>
+        <option value="2">20k-25k</option>
+        <option value="3">25k-30k</option>
+        <option value="4">30k-35k</option>
+        <option value="5">35k-40k</option>
+    </select></div>
+
+<!--  src=""  外部网址     -->
+    <iframe id="if" width="500" height="700" src="https://zhuanlan.zhihu.com/p/368455789" frameborder="0"></iframe>
+
+</body>
+</html>
