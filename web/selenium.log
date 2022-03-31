@@ -1,6 +1,6 @@
-[1647588840.064][INFO]: Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 59234
-[1647588840.064][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-[1647588840.560][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND InitSession {
+[1647938422.497][INFO]: Starting ChromeDriver 96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947}) on port 53885
+[1647938422.497][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[1647938422.991][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND InitSession {
    "capabilities": {
       "alwaysMatch": {
          "browserName": "chrome",
@@ -23,7 +23,7 @@
       "pageLoadStrategy": "normal"
    }
 }
-[1647588840.564][INFO]: Populating Preferences file: {
+[1647938422.994][INFO]: Populating Preferences file: {
    "alternate_error_pages": {
       "enabled": false
    },
@@ -76,7 +76,7 @@
       "enabled": false
    }
 }
-[1647588840.564][INFO]: Populating Local State file: {
+[1647938422.995][INFO]: Populating Local State file: {
    "background_mode": {
       "enabled": false
    },
@@ -86,75 +86,75 @@
       }
    }
 }
-[1647588840.565][INFO]: Launching chrome: "C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-pre-commit-input --disable-background-networking --disable-backgrounding-occluded-windows --disable-client-side-phishing-detection --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\dell\AppData\Local\Temp\scoped_dir20928_143278819" data:,
-[1647588840.733][DEBUG]: DevTools HTTP Request: http://localhost:59241/json/version
-[1647588841.039][DEBUG]: DevTools HTTP Response: {
+[1647938422.996][INFO]: Launching chrome: "C:\Program Files\Google\Chrome\Application\chrome.exe" --allow-pre-commit-input --disable-background-networking --disable-backgrounding-occluded-windows --disable-client-side-phishing-detection --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir="C:\Users\dell\AppData\Local\Temp\scoped_dir10424_1988559524" data:,
+[1647938423.268][DEBUG]: DevTools HTTP Request: http://localhost:53890/json/version
+[1647938423.571][DEBUG]: DevTools HTTP Response: {
    "Browser": "Chrome/96.0.4664.45",
    "Protocol-Version": "1.3",
    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36",
    "V8-Version": "9.6.180.12",
    "WebKit-Version": "537.36 (@76e4c1bb2ab4671b8beba3444e61c0f17584b2fc)",
-   "webSocketDebuggerUrl": "ws://localhost:59241/devtools/browser/d8612530-59b9-45a7-a7f9-2d65e38686d1"
+   "webSocketDebuggerUrl": "ws://localhost:53890/devtools/browser/05ed4af9-4c79-4dee-ab7a-2e9149fbd41f"
 }
 
-[1647588841.039][DEBUG]: DevTools HTTP Request: http://localhost:59241/json/list
-[1647588841.041][DEBUG]: DevTools HTTP Response: [ {
+[1647938423.571][DEBUG]: DevTools HTTP Request: http://localhost:53890/json/list
+[1647938423.572][DEBUG]: DevTools HTTP Response: [ {
    "description": "",
-   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:59241/devtools/page/2BFBFD1B27A520EAC693666BF07E0923",
-   "id": "2BFBFD1B27A520EAC693666BF07E0923",
-   "title": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:53890/devtools/page/E70FB382B88369164552235EDF318F15",
+   "id": "E70FB382B88369164552235EDF318F15",
+   "title": "data:,",
    "type": "page",
    "url": "data:,",
-   "webSocketDebuggerUrl": "ws://localhost:59241/devtools/page/2BFBFD1B27A520EAC693666BF07E0923"
+   "webSocketDebuggerUrl": "ws://localhost:53890/devtools/page/E70FB382B88369164552235EDF318F15"
 } ]
 
-[1647588841.041][DEBUG]: DevTools HTTP Request: http://localhost:59241/json/list
-[1647588841.044][DEBUG]: DevTools HTTP Response: [ {
+[1647938423.572][DEBUG]: DevTools HTTP Request: http://localhost:53890/json/list
+[1647938423.573][DEBUG]: DevTools HTTP Response: [ {
    "description": "",
-   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:59241/devtools/page/2BFBFD1B27A520EAC693666BF07E0923",
-   "id": "2BFBFD1B27A520EAC693666BF07E0923",
-   "title": "",
+   "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:53890/devtools/page/E70FB382B88369164552235EDF318F15",
+   "id": "E70FB382B88369164552235EDF318F15",
+   "title": "data:,",
    "type": "page",
    "url": "data:,",
-   "webSocketDebuggerUrl": "ws://localhost:59241/devtools/page/2BFBFD1B27A520EAC693666BF07E0923"
+   "webSocketDebuggerUrl": "ws://localhost:53890/devtools/page/E70FB382B88369164552235EDF318F15"
 } ]
 
-[1647588841.047][INFO]: resolved localhost to ["::1","127.0.0.1"]
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Page.addScriptToEvaluateOnNewDocument (id=1) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.577][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Page.addScriptToEvaluateOnNewDocument (id=1) E70FB382B88369164552235EDF318F15 {
    "source": "(function () {window.cdc_adoQpoasnfa76pfcZLmcfl_Array = window.Array;window.cdc_adoQpoasnfa76pfcZLmcfl_Promise = window.Promise;window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol = window.Symbol;}) ();"
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=2) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=2) E70FB382B88369164552235EDF318F15 {
    "expression": "(function () {window.cdc_adoQpoasnfa76pfcZLmcfl_Array = window.Array;window.cdc_adoQpoasnfa76pfcZLmcfl_Promise = window.Promise;window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol = window.Symbol;}) ();"
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Log.enable (id=3) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Log.enable (id=3) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=4) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=4) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Target.setAutoAttach (id=5) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Target.setAutoAttach (id=5) E70FB382B88369164552235EDF318F15 {
    "autoAttach": true,
    "flatten": true,
    "waitForDebuggerOnStart": false
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Page.enable (id=6) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Page.enable (id=6) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.049][DEBUG]: DevTools WebSocket Command: Page.enable (id=7) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Command: Page.enable (id=7) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Page.addScriptToEvaluateOnNewDocument (id=1) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Response: Page.addScriptToEvaluateOnNewDocument (id=1) E70FB382B88369164552235EDF318F15 {
    "identifier": "1"
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=2) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=2) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "undefined"
    }
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Log.enable (id=3) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.579][DEBUG]: DevTools WebSocket Response: Log.enable (id=3) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=4) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.580][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=4) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 1,
       "baseURL": "data:,",
@@ -184,7 +184,7 @@
             "nodeValue": "",
             "parentId": 2
          } ],
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "localName": "html",
          "nodeId": 2,
          "nodeName": "HTML",
@@ -202,52 +202,52 @@
       "xmlVersion": ""
    }
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Target.setAutoAttach (id=5) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.580][DEBUG]: DevTools WebSocket Response: Target.setAutoAttach (id=5) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Page.enable (id=6) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.580][DEBUG]: DevTools WebSocket Response: Page.enable (id=6) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Response: Page.enable (id=7) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.580][DEBUG]: DevTools WebSocket Response: Page.enable (id=7) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.055][DEBUG]: DevTools WebSocket Command: Runtime.enable (id=8) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.580][DEBUG]: DevTools WebSocket Command: Runtime.enable (id=8) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.056][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.581][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
    "context": {
       "auxData": {
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "isDefault": true,
          "type": "default"
       },
       "id": 1,
       "name": "",
       "origin": "://",
-      "uniqueId": "411069753990779147.-2484088655283130547"
+      "uniqueId": "-8590164364526504179.-8872266515472681686"
    }
 }
-[1647588841.056][DEBUG]: DevTools WebSocket Response: Runtime.enable (id=8) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.581][DEBUG]: DevTools WebSocket Response: Runtime.enable (id=8) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.056][DEBUG]: DevTools WebSocket Command: Page.enable (id=9) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.581][DEBUG]: DevTools WebSocket Command: Page.enable (id=9) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.056][DEBUG]: DevTools WebSocket Response: Page.enable (id=9) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.581][DEBUG]: DevTools WebSocket Response: Page.enable (id=9) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.056][DEBUG]: DevTools WebSocket Command: Runtime.enable (id=10) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.581][DEBUG]: DevTools WebSocket Command: Runtime.enable (id=10) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.058][DEBUG]: DevTools WebSocket Response: Runtime.enable (id=10) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.582][DEBUG]: DevTools WebSocket Response: Runtime.enable (id=10) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588841.058][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=11) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.582][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=11) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588841.060][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=11) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938423.583][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=11) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -256,17 +256,17 @@
       }
    }
 }
-[1647588841.060][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE InitSession {
+[1647938423.583][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE InitSession {
    "capabilities": {
       "acceptInsecureCerts": false,
       "browserName": "chrome",
       "browserVersion": "96.0.4664.45",
       "chrome": {
          "chromedriverVersion": "96.0.4664.45 (76e4c1bb2ab4671b8beba3444e61c0f17584b2fc-refs/branch-heads/4664@{#947})",
-         "userDataDir": "C:\\Users\\dell\\AppData\\Local\\Temp\\scoped_dir20928_143278819"
+         "userDataDir": "C:\\Users\\dell\\AppData\\Local\\Temp\\scoped_dir10424_1988559524"
       },
       "goog:chromeOptions": {
-         "debuggerAddress": "localhost:59241"
+         "debuggerAddress": "localhost:53890"
       },
       "networkConnectionEnabled": false,
       "pageLoadStrategy": "normal",
@@ -286,26 +286,26 @@
       "webauthn:extension:largeBlob": true,
       "webauthn:virtualAuthenticators": true
    },
-   "sessionId": "6d2a4a43d2bb21538c4ab865db583aa6"
+   "sessionId": "5306576915395a6c5cea652ed4ef42ed"
 }
-[1647588843.084][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND Navigate {
+[1647938425.612][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND Navigate {
    "url": "https://cn.bing.com"
 }
-[1647588843.084][INFO]: Waiting for pending navigations...
-[1647588843.084][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=12) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.612][INFO]: Waiting for pending navigations...
+[1647938425.612][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=12) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588843.085][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=12) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.613][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=12) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588843.085][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=13) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.613][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=13) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.086][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=13) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.613][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=13) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 1,
       "baseURL": "data:,",
@@ -335,7 +335,7 @@
             "nodeValue": "",
             "parentId": 6
          } ],
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "localName": "html",
          "nodeId": 6,
          "nodeName": "HTML",
@@ -353,38 +353,38 @@
       "xmlVersion": ""
    }
 }
-[1647588843.086][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=14) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.614][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=14) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": false,
    "expression": "document.readyState",
    "returnByValue": true
 }
-[1647588843.087][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=14) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.614][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=14) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "string",
       "value": "complete"
    }
 }
-[1647588843.087][INFO]: Done waiting for pending navigations. Status: ok
-[1647588843.087][DEBUG]: DevTools WebSocket Command: Page.navigate (id=15) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.614][INFO]: Done waiting for pending navigations. Status: ok
+[1647938425.614][DEBUG]: DevTools WebSocket Command: Page.navigate (id=15) E70FB382B88369164552235EDF318F15 {
    "url": "https://cn.bing.com"
 }
-[1647588843.178][DEBUG]: DevTools WebSocket Response: Page.navigate (id=15) 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
-   "loaderId": "5125D4841BABC271BF6D2011F13DDDA4"
+[1647938425.745][DEBUG]: DevTools WebSocket Response: Page.navigate (id=15) E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15",
+   "loaderId": "0DACEA2F47F47F5B7061203541D8288A"
 }
-[1647588843.178][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=16) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.745][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=16) E70FB382B88369164552235EDF318F15 {
    "expression": "document.URL"
 }
-[1647588843.179][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.746][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.179][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923"
+[1647938425.747][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15"
 }
-[1647588843.188][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.757][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.188][DEBUG]: DevTools WebSocket Event: Page.frameNavigated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.757][DEBUG]: DevTools WebSocket Event: Page.frameNavigated E70FB382B88369164552235EDF318F15 {
    "frame": {
       "adFrameStatus": {
          "adFrameType": "none"
@@ -392,8 +392,8 @@
       "crossOriginIsolatedContextType": "NotIsolated",
       "domainAndRegistry": "bing.com",
       "gatedAPIFeatures": [  ],
-      "id": "2BFBFD1B27A520EAC693666BF07E0923",
-      "loaderId": "5125D4841BABC271BF6D2011F13DDDA4",
+      "id": "E70FB382B88369164552235EDF318F15",
+      "loaderId": "0DACEA2F47F47F5B7061203541D8288A",
       "mimeType": "text/html",
       "secureContextType": "Secure",
       "securityOrigin": "https://cn.bing.com",
@@ -401,33 +401,36 @@
    },
    "type": "Navigation"
 }
-[1647588843.188][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.757][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
    "context": {
       "auxData": {
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "isDefault": true,
          "type": "default"
       },
       "id": 1,
       "name": "",
       "origin": "https://cn.bing.com",
-      "uniqueId": "5007321430840545038.-304795855957938281"
+      "uniqueId": "7119712489290322989.-8250458855300601361"
    }
 }
-[1647588843.188][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.757][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.188][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=17) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.757][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=17) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.195][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=16) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.763][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=16) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "string",
       "value": "https://cn.bing.com/"
    }
 }
-[1647588843.195][INFO]: Waiting for pending navigations...
-[1647588843.195][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=17) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.763][INFO]: Waiting for pending navigations...
+[1647938425.763][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=18) E70FB382B88369164552235EDF318F15 {
+   "expression": "1"
+}
+[1647938425.764][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=17) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 1,
       "baseURL": "https://cn.bing.com/",
@@ -443,10 +446,7 @@
       "xmlVersion": ""
    }
 }
-[1647588843.195][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=18) 2BFBFD1B27A520EAC693666BF07E0923 {
-   "expression": "1"
-}
-[1647588843.199][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.772][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted E70FB382B88369164552235EDF318F15 {
    "node": {
       "backendNodeId": 2,
       "localName": "",
@@ -460,12 +460,12 @@
    "parentNodeId": 1,
    "previousNodeId": 0
 }
-[1647588843.199][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.772][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted E70FB382B88369164552235EDF318F15 {
    "node": {
       "attributes": [ "lang", "zh", "dir", "ltr" ],
       "backendNodeId": 3,
       "childNodeCount": 0,
-      "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+      "frameId": "E70FB382B88369164552235EDF318F15",
       "localName": "html",
       "nodeId": 3,
       "nodeName": "HTML",
@@ -475,44 +475,44 @@
    "parentNodeId": 1,
    "previousNodeId": 2
 }
-[1647588843.199][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.772][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 1,
    "nodeId": 3
 }
-[1647588843.199][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.772][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 2,
    "nodeId": 3
 }
-[1647588843.199][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=18) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.772][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=18) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588843.298][DEBUG]: DevTools WebSocket Event: Page.frameResized 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.834][DEBUG]: DevTools WebSocket Event: Page.frameResized E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.298][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=19) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.835][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=19) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588843.298][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.852][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.298][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=20) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.852][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=20) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588843.298][DEBUG]: DevTools WebSocket Event: Page.domContentEventFired 2BFBFD1B27A520EAC693666BF07E0923 {
-   "timestamp": 157683.519252
+[1647938425.852][DEBUG]: DevTools WebSocket Event: Page.domContentEventFired E70FB382B88369164552235EDF318F15 {
+   "timestamp": 507266.422231
 }
-[1647588843.299][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=19) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.852][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=19) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588843.299][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=20) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.856][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=20) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 1,
       "baseURL": "https://cn.bing.com/",
@@ -543,7 +543,7 @@
             "parentId": 6
          }, {
             "attributes": [ "data-priority", "2" ],
-            "backendNodeId": 4,
+            "backendNodeId": 14,
             "childNodeCount": 7,
             "localName": "body",
             "nodeId": 8,
@@ -552,7 +552,7 @@
             "nodeValue": "",
             "parentId": 6
          } ],
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "localName": "html",
          "nodeId": 6,
          "nodeName": "HTML",
@@ -570,72 +570,138 @@
       "xmlVersion": ""
    }
 }
-[1647588843.300][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=21) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.856][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=21) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588843.301][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=21) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938425.858][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=21) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588843.405][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.003][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 21,
    "nodeId": 7
 }
-[1647588843.405][DEBUG]: DevTools WebSocket Event: Page.loadEventFired 2BFBFD1B27A520EAC693666BF07E0923 {
-   "timestamp": 157683.628169
+[1647938426.003][DEBUG]: DevTools WebSocket Event: Page.loadEventFired E70FB382B88369164552235EDF318F15 {
+   "timestamp": 507266.585716
 }
-[1647588843.405][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=22) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.003][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=22) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": false,
    "expression": "document.readyState",
    "returnByValue": true
 }
-[1647588843.405][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923"
+[1647938426.003][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15"
 }
-[1647588843.406][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=22) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.004][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=22) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "string",
       "value": "complete"
    }
 }
-[1647588843.406][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=23) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.004][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=23) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588843.406][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=23) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.004][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=23) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588843.406][INFO]: Done waiting for pending navigations. Status: ok
-[1647588843.406][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE Navigate
-[1647588846.409][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND FindElement {
-   "using": "css selector",
-   "value": "[id=\"sb_form_q\"]"
+[1647938426.004][INFO]: Done waiting for pending navigations. Status: ok
+[1647938426.004][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE Navigate
+[1647938426.005][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND MaximizeWindow {
+
 }
-[1647588846.409][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.005][INFO]: Waiting for pending navigations...
+[1647938426.005][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=24) E70FB382B88369164552235EDF318F15 {
+   "expression": "1"
+}
+[1647938426.005][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=24) E70FB382B88369164552235EDF318F15 {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[1647938426.005][INFO]: Done waiting for pending navigations. Status: ok
+[1647938426.005][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[1647938426.006][DEBUG]: DevTools WebSocket Command: Browser.getWindowForTarget (id=1) browser {
+   "targetId": "E70FB382B88369164552235EDF318F15"
+}
+[1647938426.006][DEBUG]: DevTools WebSocket Response: Browser.getWindowForTarget (id=1) browser {
+   "bounds": {
+      "height": 1380,
+      "left": 10,
+      "top": 10,
+      "width": 1265,
+      "windowState": "normal"
+   },
+   "windowId": 1
+}
+[1647938426.006][DEBUG]: DevTools WebSocket Command: Browser.setWindowBounds (id=2) browser {
+   "bounds": {
+      "windowState": "maximized"
+   },
+   "windowId": 1
+}
+[1647938426.015][DEBUG]: DevTools WebSocket Response: Browser.setWindowBounds (id=2) browser {
+
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Command: Browser.getWindowBounds (id=3) browser {
+   "windowId": 1
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Response: Browser.getWindowBounds (id=3) browser {
+   "bounds": {
+      "height": 1416,
+      "left": -8,
+      "top": -8,
+      "width": 2576,
+      "windowState": "maximized"
+   }
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Command: Browser.getWindowForTarget (id=4) browser {
+   "targetId": "E70FB382B88369164552235EDF318F15"
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Response: Browser.getWindowForTarget (id=4) browser {
+   "bounds": {
+      "height": 1416,
+      "left": -8,
+      "top": -8,
+      "width": 2576,
+      "windowState": "maximized"
+   },
+   "windowId": 1
+}
+[1647938426.118][INFO]: Waiting for pending navigations...
+[1647938426.118][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 8,
    "nodeId": 8
 }
-[1647588846.409][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.118][DEBUG]: DevTools WebSocket Event: Page.frameResized E70FB382B88369164552235EDF318F15 {
+
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 9,
    "nodeId": 8
 }
-[1647588846.409][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.118][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 10,
    "nodeId": 8
 }
-[1647588846.409][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.118][DEBUG]: DevTools WebSocket Event: Page.frameResized E70FB382B88369164552235EDF318F15 {
+
+}
+[1647938426.118][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 11,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameAttached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "8B933747351D6DE9B9674CBA846D2CC5",
-   "parentFrameId": "2BFBFD1B27A520EAC693666BF07E0923",
+[1647938426.118][DEBUG]: DevTools WebSocket Event: Page.frameAttached E70FB382B88369164552235EDF318F15 {
+   "frameId": "496DD75DD98FD195F70717F7265698FA",
+   "parentFrameId": "E70FB382B88369164552235EDF318F15",
    "stack": {
       "callFrames": [ {
          "columnNumber": 7927,
@@ -658,14 +724,14 @@
       } ]
    }
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "8B933747351D6DE9B9674CBA846D2CC5"
+[1647938426.119][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "496DD75DD98FD195F70717F7265698FA"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 12,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameNavigated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Event: Page.frameNavigated E70FB382B88369164552235EDF318F15 {
    "frame": {
       "adFrameStatus": {
          "adFrameType": "none",
@@ -674,148 +740,169 @@
       "crossOriginIsolatedContextType": "NotIsolated",
       "domainAndRegistry": "",
       "gatedAPIFeatures": [  ],
-      "id": "8B933747351D6DE9B9674CBA846D2CC5",
-      "loaderId": "11060E27967B009B300F22830EDB3497",
+      "id": "496DD75DD98FD195F70717F7265698FA",
+      "loaderId": "6E9844A920DB4E6F14BE56B977F9DFFE",
       "mimeType": "text/html",
       "name": "",
-      "parentId": "2BFBFD1B27A520EAC693666BF07E0923",
+      "parentId": "E70FB382B88369164552235EDF318F15",
       "secureContextType": "Secure",
       "securityOrigin": "://",
       "url": "about:srcdoc"
    },
    "type": "Navigation"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
    "context": {
       "auxData": {
-         "frameId": "8B933747351D6DE9B9674CBA846D2CC5",
+         "frameId": "496DD75DD98FD195F70717F7265698FA",
          "isDefault": true,
          "type": "default"
       },
       "id": 2,
       "name": "",
       "origin": "https://cn.bing.com",
-      "uniqueId": "-87734012728068451.2744518400466833346"
+      "uniqueId": "6116460536673636299.-6630644866359768859"
    }
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "8B933747351D6DE9B9674CBA846D2CC5"
+[1647938426.119][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "496DD75DD98FD195F70717F7265698FA"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 11,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameDetached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "8B933747351D6DE9B9674CBA846D2CC5",
+[1647938426.119][DEBUG]: DevTools WebSocket Event: Page.frameDetached E70FB382B88369164552235EDF318F15 {
+   "frameId": "496DD75DD98FD195F70717F7265698FA",
    "reason": "remove"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 12,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938426.119][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=25) E70FB382B88369164552235EDF318F15 {
+   "expression": "1"
+}
+[1647938426.119][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=25) E70FB382B88369164552235EDF318F15 {
+   "result": {
+      "description": "1",
+      "type": "number",
+      "value": 1
+   }
+}
+[1647938426.119][INFO]: Done waiting for pending navigations. Status: ok
+[1647938426.119][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE MaximizeWindow {
+   "height": 1416,
+   "width": 2576,
+   "x": -8,
+   "y": -8
+}
+[1647938429.121][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND FindElement {
+   "using": "css selector",
+   "value": "[id=\"sb_form_q\"]"
+}
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 13,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 14,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 15,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 16,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 17,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 18,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 19,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 20,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 21,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 22,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 23,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 24,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 25,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 26,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 27,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 28,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 29,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 30,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 31,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 32,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 33,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 34,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 35,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 36,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 37,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameAttached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667",
-   "parentFrameId": "2BFBFD1B27A520EAC693666BF07E0923",
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Page.frameAttached E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0",
+   "parentFrameId": "E70FB382B88369164552235EDF318F15",
    "stack": {
       "callFrames": [ {
          "columnNumber": 273,
@@ -898,22 +985,22 @@
       } ]
    }
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667"
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 38,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 39,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 40,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Log.entryAdded 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Log.entryAdded E70FB382B88369164552235EDF318F15 {
    "entry": {
       "level": "warning",
       "lineNumber": 1,
@@ -1006,21 +1093,17 @@
          } ]
       },
       "text": "chrome.loadTimes() is deprecated, instead use standardized API: Paint Timing. https://www.chromestatus.com/features/5637885046816768.",
-      "timestamp": 1.647588843624776e+12,
+      "timestamp": 1.647938426285655e+12,
       "url": "https://cn.bing.com/rp/ajd4P2gLuC9ICyk5BTNHL3oybcE.br.js"
    }
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 41,
    "nodeId": 8
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
-   "childNodeCount": 42,
-   "nodeId": 8
-}
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameAttached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "D1B216B27B06B5E49861992BB1C6EEE2",
-   "parentFrameId": "2BFBFD1B27A520EAC693666BF07E0923",
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Page.frameAttached E70FB382B88369164552235EDF318F15 {
+   "frameId": "7774231DF00DCF78903A2D9EC1B53670",
+   "parentFrameId": "E70FB382B88369164552235EDF318F15",
    "stack": {
       "callFrames": [ {
          "columnNumber": 235,
@@ -1037,65 +1120,51 @@
       } ]
    }
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "D1B216B27B06B5E49861992BB1C6EEE2"
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "7774231DF00DCF78903A2D9EC1B53670"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 22,
    "nodeId": 7
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Event: Target.attachedToTarget 2BFBFD1B27A520EAC693666BF07E0923 {
-   "sessionId": "34198B1F32192B3E8BA942673810A45C",
+[1647938429.121][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
+   "childNodeCount": 42,
+   "nodeId": 8
+}
+[1647938429.121][DEBUG]: DevTools WebSocket Event: Target.attachedToTarget E70FB382B88369164552235EDF318F15 {
+   "sessionId": "61DA9681F192E6714DFEFC6E4EF3184A",
    "targetInfo": {
       "attached": true,
-      "browserContextId": "DD3D6599249AD47D97B95837492A1AAA",
+      "browserContextId": "C9CE2FE8EFCB6B3FC29042E968572FF0",
       "canAccessOpener": false,
-      "targetId": "90A8A606A1BB8071681B69C554D72667",
+      "targetId": "6039DB807E0C72B81180305232ACF3B0",
       "title": "",
       "type": "iframe",
       "url": ""
    },
    "waitingForDebugger": false
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Command: Page.addScriptToEvaluateOnNewDocument (id=1) 34198B1F32192B3E8BA942673810A45C {
+[1647938429.121][DEBUG]: DevTools WebSocket Command: Page.addScriptToEvaluateOnNewDocument (id=1) 61DA9681F192E6714DFEFC6E4EF3184A {
    "source": "(function () {window.cdc_adoQpoasnfa76pfcZLmcfl_Array = window.Array;window.cdc_adoQpoasnfa76pfcZLmcfl_Promise = window.Promise;window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol = window.Symbol;}) ();"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=2) 34198B1F32192B3E8BA942673810A45C {
+[1647938429.122][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=2) 61DA9681F192E6714DFEFC6E4EF3184A {
    "expression": "(function () {window.cdc_adoQpoasnfa76pfcZLmcfl_Array = window.Array;window.cdc_adoQpoasnfa76pfcZLmcfl_Promise = window.Promise;window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol = window.Symbol;}) ();"
 }
-[1647588846.410][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=3) 34198B1F32192B3E8BA942673810A45C {
+[1647938429.122][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=3) 61DA9681F192E6714DFEFC6E4EF3184A {
 
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Command: Target.setAutoAttach (id=4) 34198B1F32192B3E8BA942673810A45C {
+[1647938429.122][DEBUG]: DevTools WebSocket Command: Target.setAutoAttach (id=4) 61DA9681F192E6714DFEFC6E4EF3184A {
    "autoAttach": true,
    "flatten": true,
    "waitForDebuggerOnStart": false
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Command: Page.enable (id=5) 34198B1F32192B3E8BA942673810A45C {
+[1647938429.122][DEBUG]: DevTools WebSocket Command: Page.enable (id=5) 61DA9681F192E6714DFEFC6E4EF3184A {
 
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Command: Page.enable (id=24) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.122][DEBUG]: DevTools WebSocket Command: Page.enable (id=26) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameDetached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667",
-   "reason": "swap"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameAttached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667",
-   "parentFrameId": "2BFBFD1B27A520EAC693666BF07E0923"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Target.detachedFromTarget 2BFBFD1B27A520EAC693666BF07E0923 {
-   "sessionId": "34198B1F32192B3E8BA942673810A45C",
-   "targetId": "90A8A606A1BB8071681B69C554D72667"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameNavigated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameNavigated E70FB382B88369164552235EDF318F15 {
    "frame": {
       "adFrameStatus": {
          "adFrameType": "none",
@@ -1104,87 +1173,105 @@
       "crossOriginIsolatedContextType": "NotIsolated",
       "domainAndRegistry": "bing.com",
       "gatedAPIFeatures": [  ],
-      "id": "90A8A606A1BB8071681B69C554D72667",
-      "loaderId": "29539C5F9DF5C30BF18C1CEE20ADAC82",
-      "mimeType": "text/html",
-      "name": "aadssofr",
-      "parentId": "2BFBFD1B27A520EAC693666BF07E0923",
-      "secureContextType": "Secure",
-      "securityOrigin": "https://cn.bing.com",
-      "url": "https://cn.bing.com/orgid/idtoken/conditional"
-   },
-   "type": "Navigation"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
-   "context": {
-      "auxData": {
-         "frameId": "90A8A606A1BB8071681B69C554D72667",
-         "isDefault": true,
-         "type": "default"
-      },
-      "id": 3,
-      "name": "",
-      "origin": "https://cn.bing.com",
-      "uniqueId": "5692396716250264718.-7903795339566108794"
-   }
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667"
-}
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameNavigated 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frame": {
-      "adFrameStatus": {
-         "adFrameType": "none",
-         "explanations": [  ]
-      },
-      "crossOriginIsolatedContextType": "NotIsolated",
-      "domainAndRegistry": "bing.com",
-      "gatedAPIFeatures": [  ],
-      "id": "D1B216B27B06B5E49861992BB1C6EEE2",
-      "loaderId": "AEFBF3CFF7942FDCA561677D2EED380A",
+      "id": "7774231DF00DCF78903A2D9EC1B53670",
+      "loaderId": "B850CFBE463EEEC11D588CBBA9E9295C",
       "mimeType": "text/html",
       "name": "",
-      "parentId": "2BFBFD1B27A520EAC693666BF07E0923",
+      "parentId": "E70FB382B88369164552235EDF318F15",
       "secureContextType": "Secure",
       "securityOrigin": "https://cn.bing.com",
       "url": "https://cn.bing.com/secure/Passport.aspx?popup=1&ssl=1"
    },
    "type": "Navigation"
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
    "context": {
       "auxData": {
-         "frameId": "D1B216B27B06B5E49861992BB1C6EEE2",
+         "frameId": "7774231DF00DCF78903A2D9EC1B53670",
+         "isDefault": true,
+         "type": "default"
+      },
+      "id": 3,
+      "name": "",
+      "origin": "https://cn.bing.com",
+      "uniqueId": "3305035559713956441.-2693280594853513432"
+   }
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameDetached E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0",
+   "reason": "swap"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "7774231DF00DCF78903A2D9EC1B53670"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameAttached E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0",
+   "parentFrameId": "E70FB382B88369164552235EDF318F15"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Target.detachedFromTarget E70FB382B88369164552235EDF318F15 {
+   "sessionId": "61DA9681F192E6714DFEFC6E4EF3184A",
+   "targetId": "6039DB807E0C72B81180305232ACF3B0"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameNavigated E70FB382B88369164552235EDF318F15 {
+   "frame": {
+      "adFrameStatus": {
+         "adFrameType": "none",
+         "explanations": [  ]
+      },
+      "crossOriginIsolatedContextType": "NotIsolated",
+      "domainAndRegistry": "bing.com",
+      "gatedAPIFeatures": [  ],
+      "id": "6039DB807E0C72B81180305232ACF3B0",
+      "loaderId": "F82024A149063B66E972220373FBB6F6",
+      "mimeType": "text/html",
+      "name": "aadssofr",
+      "parentId": "E70FB382B88369164552235EDF318F15",
+      "secureContextType": "Secure",
+      "securityOrigin": "https://cn.bing.com",
+      "url": "https://cn.bing.com/orgid/idtoken/conditional"
+   },
+   "type": "Navigation"
+}
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
+   "context": {
+      "auxData": {
+         "frameId": "6039DB807E0C72B81180305232ACF3B0",
          "isDefault": true,
          "type": "default"
       },
       "id": 4,
       "name": "",
       "origin": "https://cn.bing.com",
-      "uniqueId": "758972553934845978.7409229140452667047"
+      "uniqueId": "-3345347739750880572.-2884646475700085596"
    }
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "D1B216B27B06B5E49861992BB1C6EEE2"
+[1647938429.122][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0"
 }
-[1647588846.411][DEBUG]: DevTools WebSocket Response: Page.enable (id=24) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.122][DEBUG]: DevTools WebSocket Response: Page.enable (id=26) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.411][INFO]: Waiting for pending navigations...
-[1647588846.411][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=25) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.122][INFO]: Waiting for pending navigations...
+[1647938429.122][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=27) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.412][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=25) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=27) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.412][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=26) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=28) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.412][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=26) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=28) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 1,
       "baseURL": "https://cn.bing.com/",
@@ -1215,7 +1302,7 @@
             "parentId": 11
          }, {
             "attributes": [ "data-priority", "2" ],
-            "backendNodeId": 4,
+            "backendNodeId": 14,
             "childNodeCount": 42,
             "localName": "body",
             "nodeId": 13,
@@ -1224,7 +1311,7 @@
             "nodeValue": "",
             "parentId": 11
          } ],
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "localName": "html",
          "nodeId": 11,
          "nodeName": "HTML",
@@ -1242,72 +1329,72 @@
       "xmlVersion": ""
    }
 }
-[1647588846.412][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=27) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=29) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": false,
    "expression": "document.readyState",
    "returnByValue": true
 }
-[1647588846.412][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=27) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=29) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "string",
       "value": "complete"
    }
 }
-[1647588846.412][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.413][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=28) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.123][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.124][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=30) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.417][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=28) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.129][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=30) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
          "status": 0,
          "value": {
-            "element-6066-11e4-a52e-4f735466cecf": "cc3d9882-3aa5-4248-8f06-07ffd0ed7a9c"
+            "element-6066-11e4-a52e-4f735466cecf": "a5a08c49-8bdc-404a-b64d-1882340cf889"
          }
       }
    }
 }
-[1647588846.417][INFO]: Waiting for pending navigations...
-[1647588846.417][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=29) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.129][INFO]: Waiting for pending navigations...
+[1647938429.129][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=31) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.417][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=29) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.129][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=31) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.417][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.417][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE FindElement {
-   "element-6066-11e4-a52e-4f735466cecf": "cc3d9882-3aa5-4248-8f06-07ffd0ed7a9c"
+[1647938429.129][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.129][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "a5a08c49-8bdc-404a-b64d-1882340cf889"
 }
-[1647588846.418][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND TypeElement {
-   "id": "cc3d9882-3aa5-4248-8f06-07ffd0ed7a9c",
+[1647938429.130][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND TypeElement {
+   "id": "a5a08c49-8bdc-404a-b64d-1882340cf889",
    "text": "Agilor",
    "value": [ "A", "g", "i", "l", "o", "r" ]
 }
-[1647588846.418][INFO]: Waiting for pending navigations...
-[1647588846.418][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=30) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.130][INFO]: Waiting for pending navigations...
+[1647938429.130][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=32) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.418][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=30) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.130][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=32) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.418][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.419][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=31) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.130][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.130][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=33) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.422][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=31) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.133][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=33) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1316,12 +1403,12 @@
       }
    }
 }
-[1647588846.422][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=32) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.134][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=34) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.425][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=32) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.136][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=34) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1330,12 +1417,12 @@
       }
    }
 }
-[1647588846.425][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=33) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.137][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=35) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.426][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=33) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.137][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=35) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1344,12 +1431,12 @@
       }
    }
 }
-[1647588846.427][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=34) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.138][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=36) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.428][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=34) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.139][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=36) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1358,34 +1445,34 @@
       }
    }
 }
-[1647588846.428][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=35) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.139][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=37) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": false,
    "expression": "document.hasFocus()",
    "returnByValue": true
 }
-[1647588846.428][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=35) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.139][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=37) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "boolean",
       "value": true
    }
 }
-[1647588846.428][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=36) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.139][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=38) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=36) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=38) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
          "status": 0,
          "value": {
-            "element-6066-11e4-a52e-4f735466cecf": "cc3d9882-3aa5-4248-8f06-07ffd0ed7a9c"
+            "element-6066-11e4-a52e-4f735466cecf": "a5a08c49-8bdc-404a-b64d-1882340cf889"
          }
       }
    }
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=37) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=39) E70FB382B88369164552235EDF318F15 {
    "code": "ShiftLeft",
    "key": "Shift",
    "modifiers": 0,
@@ -1394,7 +1481,7 @@
    "unmodifiedText": "",
    "windowsVirtualKeyCode": 16
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=38) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=40) E70FB382B88369164552235EDF318F15 {
    "code": "KeyA",
    "key": "A",
    "modifiers": 8,
@@ -1403,7 +1490,7 @@
    "unmodifiedText": "a",
    "windowsVirtualKeyCode": 65
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=39) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=41) E70FB382B88369164552235EDF318F15 {
    "code": "KeyA",
    "key": "A",
    "modifiers": 8,
@@ -1412,7 +1499,7 @@
    "unmodifiedText": "a",
    "windowsVirtualKeyCode": 65
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=40) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=42) E70FB382B88369164552235EDF318F15 {
    "code": "KeyA",
    "key": "A",
    "modifiers": 8,
@@ -1421,7 +1508,7 @@
    "unmodifiedText": "a",
    "windowsVirtualKeyCode": 65
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=41) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=43) E70FB382B88369164552235EDF318F15 {
    "code": "ShiftLeft",
    "key": "Shift",
    "modifiers": 0,
@@ -1430,7 +1517,7 @@
    "unmodifiedText": "",
    "windowsVirtualKeyCode": 16
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=42) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=44) E70FB382B88369164552235EDF318F15 {
    "code": "KeyG",
    "key": "g",
    "modifiers": 0,
@@ -1439,7 +1526,7 @@
    "unmodifiedText": "g",
    "windowsVirtualKeyCode": 71
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=43) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=45) E70FB382B88369164552235EDF318F15 {
    "code": "KeyG",
    "key": "g",
    "modifiers": 0,
@@ -1448,7 +1535,7 @@
    "unmodifiedText": "g",
    "windowsVirtualKeyCode": 71
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=44) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=46) E70FB382B88369164552235EDF318F15 {
    "code": "KeyG",
    "key": "g",
    "modifiers": 0,
@@ -1457,7 +1544,7 @@
    "unmodifiedText": "g",
    "windowsVirtualKeyCode": 71
 }
-[1647588846.429][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=45) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.140][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=47) E70FB382B88369164552235EDF318F15 {
    "code": "KeyI",
    "key": "i",
    "modifiers": 0,
@@ -1466,7 +1553,7 @@
    "unmodifiedText": "i",
    "windowsVirtualKeyCode": 73
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=46) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=48) E70FB382B88369164552235EDF318F15 {
    "code": "KeyI",
    "key": "i",
    "modifiers": 0,
@@ -1475,7 +1562,7 @@
    "unmodifiedText": "i",
    "windowsVirtualKeyCode": 73
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=47) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=49) E70FB382B88369164552235EDF318F15 {
    "code": "KeyI",
    "key": "i",
    "modifiers": 0,
@@ -1484,7 +1571,7 @@
    "unmodifiedText": "i",
    "windowsVirtualKeyCode": 73
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=48) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=50) E70FB382B88369164552235EDF318F15 {
    "code": "KeyL",
    "key": "l",
    "modifiers": 0,
@@ -1493,7 +1580,7 @@
    "unmodifiedText": "l",
    "windowsVirtualKeyCode": 76
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=49) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=51) E70FB382B88369164552235EDF318F15 {
    "code": "KeyL",
    "key": "l",
    "modifiers": 0,
@@ -1502,7 +1589,7 @@
    "unmodifiedText": "l",
    "windowsVirtualKeyCode": 76
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=50) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=52) E70FB382B88369164552235EDF318F15 {
    "code": "KeyL",
    "key": "l",
    "modifiers": 0,
@@ -1511,7 +1598,7 @@
    "unmodifiedText": "l",
    "windowsVirtualKeyCode": 76
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=51) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=53) E70FB382B88369164552235EDF318F15 {
    "code": "KeyO",
    "key": "o",
    "modifiers": 0,
@@ -1520,7 +1607,7 @@
    "unmodifiedText": "o",
    "windowsVirtualKeyCode": 79
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=52) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=54) E70FB382B88369164552235EDF318F15 {
    "code": "KeyO",
    "key": "o",
    "modifiers": 0,
@@ -1529,7 +1616,7 @@
    "unmodifiedText": "o",
    "windowsVirtualKeyCode": 79
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=53) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=55) E70FB382B88369164552235EDF318F15 {
    "code": "KeyO",
    "key": "o",
    "modifiers": 0,
@@ -1538,7 +1625,7 @@
    "unmodifiedText": "o",
    "windowsVirtualKeyCode": 79
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=54) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=56) E70FB382B88369164552235EDF318F15 {
    "code": "KeyR",
    "key": "r",
    "modifiers": 0,
@@ -1547,7 +1634,7 @@
    "unmodifiedText": "r",
    "windowsVirtualKeyCode": 82
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=55) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=57) E70FB382B88369164552235EDF318F15 {
    "code": "KeyR",
    "key": "r",
    "modifiers": 0,
@@ -1556,7 +1643,7 @@
    "unmodifiedText": "r",
    "windowsVirtualKeyCode": 82
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=56) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.141][DEBUG]: DevTools WebSocket Command: Input.dispatchKeyEvent (id=58) E70FB382B88369164552235EDF318F15 {
    "code": "KeyR",
    "key": "r",
    "modifiers": 0,
@@ -1565,147 +1652,147 @@
    "unmodifiedText": "r",
    "windowsVirtualKeyCode": 82
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=37) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.142][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=39) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.430][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=38) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.142][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=40) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.432][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=39) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.143][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=41) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.432][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=40) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.143][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=42) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.432][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=41) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.143][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=43) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.433][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=42) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.144][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=44) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.434][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=43) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.145][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=45) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.434][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=44) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.145][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=46) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.434][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=45) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.146][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=47) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.435][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=46) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.146][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=48) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.435][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=47) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.146][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=49) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.435][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=48) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.146][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=50) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.435][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=49) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.147][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=51) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=50) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.147][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=52) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=51) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.147][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=53) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=52) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.148][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=54) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=53) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.148][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=55) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=54) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.148][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=56) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=55) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.149][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=57) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=56) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.149][DEBUG]: DevTools WebSocket Response: Input.dispatchKeyEvent (id=58) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.437][INFO]: Waiting for pending navigations...
-[1647588846.437][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=57) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.149][INFO]: Waiting for pending navigations...
+[1647938429.149][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=59) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.440][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=57) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.151][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=59) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.440][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.440][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE TypeElement
-[1647588846.440][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND FindElement {
+[1647938429.151][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.151][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE TypeElement
+[1647938429.151][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND FindElement {
    "using": "css selector",
    "value": "[id=\"search_icon\"]"
 }
-[1647588846.440][INFO]: Waiting for pending navigations...
-[1647588846.440][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=58) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.152][INFO]: Waiting for pending navigations...
+[1647938429.152][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=60) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.441][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=58) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.153][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=60) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.441][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.442][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=59) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.153][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.154][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=61) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.447][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=59) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.158][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=61) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
          "status": 0,
          "value": {
-            "element-6066-11e4-a52e-4f735466cecf": "67fb1a93-534b-4fbd-8e8f-9336b5051feb"
+            "element-6066-11e4-a52e-4f735466cecf": "09c7ae9e-65d7-4c74-83c8-a2932203395c"
          }
       }
    }
 }
-[1647588846.447][INFO]: Waiting for pending navigations...
-[1647588846.447][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=60) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.158][INFO]: Waiting for pending navigations...
+[1647938429.158][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=62) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.447][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=60) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.159][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=62) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.447][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.447][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE FindElement {
-   "element-6066-11e4-a52e-4f735466cecf": "67fb1a93-534b-4fbd-8e8f-9336b5051feb"
+[1647938429.159][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.159][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE FindElement {
+   "element-6066-11e4-a52e-4f735466cecf": "09c7ae9e-65d7-4c74-83c8-a2932203395c"
 }
-[1647588846.448][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND ClickElement {
-   "id": "67fb1a93-534b-4fbd-8e8f-9336b5051feb"
+[1647938429.160][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND ClickElement {
+   "id": "09c7ae9e-65d7-4c74-83c8-a2932203395c"
 }
-[1647588846.448][INFO]: Waiting for pending navigations...
-[1647588846.448][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=61) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.160][INFO]: Waiting for pending navigations...
+[1647938429.160][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=63) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.449][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=61) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.160][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=63) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.449][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.450][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=62) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.160][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.161][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=64) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.451][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=62) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.163][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=64) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1714,12 +1801,12 @@
       }
    }
 }
-[1647588846.451][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=63) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.163][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=65) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.452][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=63) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.164][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=65) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1728,12 +1815,12 @@
       }
    }
 }
-[1647588846.453][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=64) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.165][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=66) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.457][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=64) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.170][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=66) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1742,12 +1829,12 @@
       }
    }
 }
-[1647588846.458][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=65) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.171][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=67) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.459][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=65) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.172][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=67) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1761,12 +1848,12 @@
       }
    }
 }
-[1647588846.460][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=66) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.173][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=68) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.464][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=66) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.176][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=68) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1790,18 +1877,18 @@
             "translate": {
 
             },
-            "x": 905.609375,
-            "y": 263.875
+            "x": 1164.703125,
+            "y": 271.296875
          }
       }
    }
 }
-[1647588846.464][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=67) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.177][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=69) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": true,
    "expression": "(function() { // Copyright (c) 2012 The Chromium Authors. All rights reserved.\n// Use of this source code is governed by a BSD-style license that can be\n// found in the LICENSE file.\n\n/**\n * Enum f...",
    "returnByValue": true
 }
-[1647588846.466][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=67) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.180][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=69) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "object",
       "value": {
@@ -1813,7 +1900,7 @@
       }
    }
 }
-[1647588846.467][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=68) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.180][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=70) E70FB382B88369164552235EDF318F15 {
    "button": "none",
    "buttons": 0,
    "clickCount": 0,
@@ -1825,10 +1912,10 @@
    "tiltY": 0,
    "twist": 0,
    "type": "mouseMoved",
-   "x": 919,
-   "y": 274
+   "x": 1178,
+   "y": 282
 }
-[1647588846.467][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=69) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.180][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=71) E70FB382B88369164552235EDF318F15 {
    "button": "left",
    "buttons": 0,
    "clickCount": 1,
@@ -1840,10 +1927,10 @@
    "tiltY": 0,
    "twist": 0,
    "type": "mousePressed",
-   "x": 919,
-   "y": 274
+   "x": 1178,
+   "y": 282
 }
-[1647588846.467][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=70) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.180][DEBUG]: DevTools WebSocket Command: Input.dispatchMouseEvent (id=72) E70FB382B88369164552235EDF318F15 {
    "button": "left",
    "buttons": 1,
    "clickCount": 1,
@@ -1855,59 +1942,59 @@
    "tiltY": 0,
    "twist": 0,
    "type": "mouseReleased",
-   "x": 919,
-   "y": 274
+   "x": 1178,
+   "y": 282
 }
-[1647588846.467][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=68) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.181][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=70) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.470][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=69) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.186][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=71) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.473][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=70) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.187][DEBUG]: DevTools WebSocket Response: Input.dispatchMouseEvent (id=72) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.473][INFO]: Waiting for pending navigations...
-[1647588846.473][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=71) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.187][INFO]: Waiting for pending navigations...
+[1647938429.187][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=73) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.474][DEBUG]: DevTools WebSocket Event: Page.frameScheduledNavigation 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.190][DEBUG]: DevTools WebSocket Event: Page.frameScheduledNavigation E70FB382B88369164552235EDF318F15 {
    "delay": 0,
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+   "frameId": "E70FB382B88369164552235EDF318F15",
    "reason": "formSubmissionGet",
-   "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847"
+   "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C"
 }
-[1647588846.474][DEBUG]: DevTools WebSocket Event: Page.frameRequestedNavigation 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.190][DEBUG]: DevTools WebSocket Event: Page.frameRequestedNavigation E70FB382B88369164552235EDF318F15 {
    "disposition": "currentTab",
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+   "frameId": "E70FB382B88369164552235EDF318F15",
    "reason": "formSubmissionGet",
-   "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847"
+   "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C"
 }
-[1647588846.474][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923"
+[1647938429.190][DEBUG]: DevTools WebSocket Event: Page.frameStartedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15"
 }
-[1647588846.475][DEBUG]: DevTools WebSocket Event: Page.frameClearedScheduledNavigation 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923"
+[1647938429.191][DEBUG]: DevTools WebSocket Event: Page.frameClearedScheduledNavigation E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15"
 }
-[1647588846.475][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=71) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.192][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=73) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: Page.frameDetached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "90A8A606A1BB8071681B69C554D72667",
+[1647938429.303][DEBUG]: DevTools WebSocket Event: Page.frameDetached E70FB382B88369164552235EDF318F15 {
+   "frameId": "6039DB807E0C72B81180305232ACF3B0",
    "reason": "remove"
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: Page.frameDetached 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "D1B216B27B06B5E49861992BB1C6EEE2",
+[1647938429.303][DEBUG]: DevTools WebSocket Event: Page.frameDetached E70FB382B88369164552235EDF318F15 {
+   "frameId": "7774231DF00DCF78903A2D9EC1B53670",
    "reason": "remove"
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Event: Runtime.executionContextsCleared E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: Page.frameNavigated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Event: Page.frameNavigated E70FB382B88369164552235EDF318F15 {
    "frame": {
       "adFrameStatus": {
          "adFrameType": "none"
@@ -1915,45 +2002,45 @@
       "crossOriginIsolatedContextType": "NotIsolated",
       "domainAndRegistry": "bing.com",
       "gatedAPIFeatures": [  ],
-      "id": "2BFBFD1B27A520EAC693666BF07E0923",
-      "loaderId": "9A8655CAC15D7533412A05A66E359BAF",
+      "id": "E70FB382B88369164552235EDF318F15",
+      "loaderId": "8762EE2C9AFA99C373373CC944EDB692",
       "mimeType": "text/html",
       "secureContextType": "Secure",
       "securityOrigin": "https://cn.bing.com",
-      "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847"
+      "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C"
    },
    "type": "Navigation"
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Event: Runtime.executionContextCreated E70FB382B88369164552235EDF318F15 {
    "context": {
       "auxData": {
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "isDefault": true,
          "type": "default"
       },
       "id": 5,
       "name": "",
       "origin": "https://cn.bing.com",
-      "uniqueId": "5088552289184557429.-5897980511321055614"
+      "uniqueId": "8181682740639706994.-3707245008931634449"
    }
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=72) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=74) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.569][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=73) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.303][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=75) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.570][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=72) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.309][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=74) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 158,
-      "baseURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847",
+      "baseURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C",
       "childNodeCount": 0,
       "children": [  ],
       "compatibilityMode": "NoQuirksMode",
-      "documentURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847",
+      "documentURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C",
       "localName": "",
       "nodeId": 14,
       "nodeName": "#document",
@@ -1962,14 +2049,14 @@
       "xmlVersion": ""
    }
 }
-[1647588846.570][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=73) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.309][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=75) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.572][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.312][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted E70FB382B88369164552235EDF318F15 {
    "node": {
       "backendNodeId": 159,
       "localName": "",
@@ -1983,12 +2070,12 @@
    "parentNodeId": 14,
    "previousNodeId": 0
 }
-[1647588846.572][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.312][DEBUG]: DevTools WebSocket Event: DOM.childNodeInserted E70FB382B88369164552235EDF318F15 {
    "node": {
       "attributes": [ "dir", "ltr", "lang", "zh", "xml:lang", "zh", "xmlns", "http://www.w3.org/1999/xhtml", "xmlns:web", "http://schemas.live.com/Web/" ],
       "backendNodeId": 160,
       "childNodeCount": 0,
-      "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+      "frameId": "E70FB382B88369164552235EDF318F15",
       "localName": "html",
       "nodeId": 16,
       "nodeName": "HTML",
@@ -1998,24 +2085,24 @@
    "parentNodeId": 14,
    "previousNodeId": 15
 }
-[1647588846.572][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.312][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 1,
    "nodeId": 16
 }
-[1647588846.572][DEBUG]: DevTools WebSocket Event: Runtime.exceptionThrown 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.312][DEBUG]: DevTools WebSocket Event: Runtime.exceptionThrown E70FB382B88369164552235EDF318F15 {
    "exceptionDetails": {
       "columnNumber": 1,
       "exception": {
          "className": "ReferenceError",
-         "description": "ReferenceError: define is not defined\n    at https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847:9:2",
-         "objectId": "2067707245366312453.5.1",
+         "description": "ReferenceError: define is not defined\n    at https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C:9:2",
+         "objectId": "7949175037990867188.5.1",
          "preview": {
-            "description": "ReferenceError: define is not defined\n    at https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847:9:2",
+            "description": "ReferenceError: define is not defined\n    at https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C:9:2",
             "overflow": false,
             "properties": [ {
                "name": "stack",
                "type": "string",
-               "value": "ReferenceError: define is not defined\n    at https…s=n&sk=&cvid=84036FF95A364AFE847582B060940847:9:2"
+               "value": "ReferenceError: define is not defined\n    at https…s=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C:9:2"
             }, {
                "name": "message",
                "type": "string",
@@ -2037,94 +2124,84 @@
             "functionName": "",
             "lineNumber": 8,
             "scriptId": "65",
-            "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847"
+            "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C"
          } ]
       },
       "text": "Uncaught",
-      "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847"
+      "url": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C"
    },
-   "timestamp": 1.64758884657083e+12
+   "timestamp": 1.647938429310679e+12
 }
-[1647588846.572][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=74) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.312][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=76) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.574][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=74) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.314][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=76) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.576][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.316][DEBUG]: DevTools WebSocket Event: DOM.childNodeCountUpdated E70FB382B88369164552235EDF318F15 {
    "childNodeCount": 2,
    "nodeId": 16
 }
-[1647588846.576][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=75) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.316][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=77) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.576][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=75) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.327][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=77) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.588][DEBUG]: DevTools WebSocket Event: Page.frameResized 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.397][DEBUG]: DevTools WebSocket Event: Page.frameResized E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.588][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=76) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.397][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=78) E70FB382B88369164552235EDF318F15 {
    "expression": "1"
 }
-[1647588846.588][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=76) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.398][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=78) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.680][DEBUG]: DevTools WebSocket Event: Page.frameResized 2BFBFD1B27A520EAC693666BF07E0923 {
-
+[1647938429.726][DEBUG]: DevTools WebSocket Event: Page.loadEventFired E70FB382B88369164552235EDF318F15 {
+   "timestamp": 507270.309298
 }
-[1647588846.680][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=77) 2BFBFD1B27A520EAC693666BF07E0923 {
-   "expression": "1"
-}
-[1647588846.682][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=77) 2BFBFD1B27A520EAC693666BF07E0923 {
-   "result": {
-      "description": "1",
-      "type": "number",
-      "value": 1
-   }
-}
-[1647588846.918][DEBUG]: DevTools WebSocket Event: Page.loadEventFired 2BFBFD1B27A520EAC693666BF07E0923 {
-   "timestamp": 157687.141123
-}
-[1647588846.919][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=78) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.726][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=79) E70FB382B88369164552235EDF318F15 {
    "awaitPromise": false,
    "expression": "document.readyState",
    "returnByValue": true
 }
-[1647588846.919][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading 2BFBFD1B27A520EAC693666BF07E0923 {
-   "frameId": "2BFBFD1B27A520EAC693666BF07E0923"
+[1647938429.726][DEBUG]: DevTools WebSocket Event: Page.frameStoppedLoading E70FB382B88369164552235EDF318F15 {
+   "frameId": "E70FB382B88369164552235EDF318F15"
 }
-[1647588846.920][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.726][DEBUG]: DevTools WebSocket Event: DOM.documentUpdated E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.920][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=79) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.726][DEBUG]: DevTools WebSocket Command: DOM.getDocument (id=80) E70FB382B88369164552235EDF318F15 {
 
 }
-[1647588846.920][DEBUG]: DevTools WebSocket Event: Page.domContentEventFired 2BFBFD1B27A520EAC693666BF07E0923 {
-   "timestamp": 157687.141338
+[1647938429.726][DEBUG]: DevTools WebSocket Event: Page.domContentEventFired E70FB382B88369164552235EDF318F15 {
+   "timestamp": 507270.309489
 }
-[1647588846.921][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=78) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.726][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=79) E70FB382B88369164552235EDF318F15 {
    "result": {
       "type": "string",
       "value": "complete"
    }
 }
-[1647588846.921][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=79) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.726][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=81) E70FB382B88369164552235EDF318F15 {
+   "expression": "1"
+}
+[1647938429.726][DEBUG]: DevTools WebSocket Response: DOM.getDocument (id=80) E70FB382B88369164552235EDF318F15 {
    "root": {
       "backendNodeId": 158,
-      "baseURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847",
+      "baseURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C",
       "childNodeCount": 2,
       "children": [ {
          "backendNodeId": 159,
@@ -2142,7 +2219,7 @@
          "childNodeCount": 2,
          "children": [ {
             "attributes": [  ],
-            "backendNodeId": 223,
+            "backendNodeId": 221,
             "childNodeCount": 12,
             "localName": "head",
             "nodeId": 20,
@@ -2151,8 +2228,8 @@
             "nodeValue": "",
             "parentId": 19
          }, {
-            "attributes": [ "class", "b_respl", "onload", "if(_w.lb)lb();" ],
-            "backendNodeId": 224,
+            "attributes": [ "class", "b_respl", "onload", "if(_w.lb)lb();", "style", "zoom: 1.05;" ],
+            "backendNodeId": 222,
             "childNodeCount": 15,
             "localName": "body",
             "nodeId": 21,
@@ -2161,7 +2238,7 @@
             "nodeValue": "",
             "parentId": 19
          } ],
-         "frameId": "2BFBFD1B27A520EAC693666BF07E0923",
+         "frameId": "E70FB382B88369164552235EDF318F15",
          "localName": "html",
          "nodeId": 19,
          "nodeName": "HTML",
@@ -2170,7 +2247,7 @@
          "parentId": 17
       } ],
       "compatibilityMode": "NoQuirksMode",
-      "documentURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=84036FF95A364AFE847582B060940847",
+      "documentURL": "https://cn.bing.com/search?q=Agilor&form=QBLH&sp=-1&pq=&sc=0-0&qs=n&sk=&cvid=1692403E583148E5B3B041DB6B4CAA4C",
       "localName": "",
       "nodeId": 17,
       "nodeName": "#document",
@@ -2179,21 +2256,18 @@
       "xmlVersion": ""
    }
 }
-[1647588846.921][DEBUG]: DevTools WebSocket Command: Runtime.evaluate (id=80) 2BFBFD1B27A520EAC693666BF07E0923 {
-   "expression": "1"
-}
-[1647588846.921][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=80) 2BFBFD1B27A520EAC693666BF07E0923 {
+[1647938429.727][DEBUG]: DevTools WebSocket Response: Runtime.evaluate (id=81) E70FB382B88369164552235EDF318F15 {
    "result": {
       "description": "1",
       "type": "number",
       "value": 1
    }
 }
-[1647588846.921][INFO]: Done waiting for pending navigations. Status: ok
-[1647588846.921][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE ClickElement
-[1647588851.930][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] COMMAND Quit {
+[1647938429.727][INFO]: Done waiting for pending navigations. Status: ok
+[1647938429.727][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE ClickElement
+[1647938434.728][INFO]: [5306576915395a6c5cea652ed4ef42ed] COMMAND Quit {
 
 }
-[1647588851.952][INFO]: [6d2a4a43d2bb21538c4ab865db583aa6] RESPONSE Quit
-[1647588851.952][DEBUG]: Log type 'driver' lost 0 entries on destruction
-[1647588851.952][DEBUG]: Log type 'browser' lost 2 entries on destruction
+[1647938434.755][INFO]: [5306576915395a6c5cea652ed4ef42ed] RESPONSE Quit
+[1647938434.755][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[1647938434.755][DEBUG]: Log type 'browser' lost 2 entries on destruction
