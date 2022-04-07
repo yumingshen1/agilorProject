@@ -2,7 +2,7 @@ import xlrd
 import xlwt
 import pandas as pd
 '''
-    excel  全部数据进行对比
+    excel  全部数据进行对比 最大对比量6万
 '''
 # csv文件转换成xlsx文件
 def csv_to_xlsx_pd(data1, data2):
@@ -26,7 +26,7 @@ def compare_excel(file1_name, file2_name):
                 comp_restult.write(i, j, str(tp2.cell(i, j).value))  # 第一行数据不比对
             else:
                 if str(tp1.cell(i, j).value) != str(tp2.cell(i, j).value):  # 将两个excel表格中同行同列进行比较
-                    #style = xlwt.easyxf('font:bold 1, color blue')  # 设置不匹配内容的字体及其颜色
+                    # style = xlwt.easyxf('font:bold 1, color blue')  # 设置不匹配内容的字体及其颜色
                     result = str(tp1.cell(i, j).value) + "和" + str(tp2.cell(i, j).value) + "不一致"
                     comp_restult.write(i, j, result)
                 else:

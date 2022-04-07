@@ -8,30 +8,30 @@ import numpy as np
 import requests
 import json
 
-'''
-    rtdb 6.2.0 读取数据。
-'''
-
 def test_QueryData():  ##查询接口
-    import requests
-
-    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIF1y"
-
-    payload = "select * from PI where AGPOINTNAME = 'DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT' and time <= '2022-02-06T08:25:56.000Z' and time >= '2022-01-20T01:57:43.000Z'"
+    url = "http://192.168.10.65:8713/agilorapi/v6/query?db=PIR"
+    data = {
+        "db": "PIR",
+        "start": "2022-01-18T13:00:00.000Z",
+        "stop": "2022-01-19T13:00:00.000Z",
+        "table": "PI",
+        "tags": [
+            {
+                "AGPOINTNAME":"DL-GH002-JYQNOX-4SJ-S-PI"
+            }
+        ]
+    }
     headers = {
         'Accept': 'application/csv',
-        'Content-Type': 'application/vnd.agilorql',
-        'Authorization': 'Token XXX'
+        'Authorization': 'Token XXX',
+        'Content-Type': 'application/json'
     }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
+    response = requests.post(url, headers=headers, data=json.dumps(data))
     print(type(response.text))
     print('结果---》',response.text)
+    re = response.text.replace(',result,table,_start,_stop,_time,_value,AGPOINTNAME, _field,_table','')
 
-    re = response.text.split('\n',1)[1]
-    print('截取的\n',re)
-
-    re = re.replace('\n', '')
+    re = re.replace('\r\n', '').strip(',')
     lista = []
     lista.append(re)
     print('lista添加的结果---->',lista)
@@ -46,7 +46,7 @@ def countlist():  ##获取查询接口的数据，并处理数据
     # 对数据根据时间进行分组
     for l in tq:
         arr = l.split(",")
-        lastTime = arr[0]
+        lastTime = arr[3]
         # print (lastTime)
         if timeMap.get(lastTime):
             grouped = timeMap.get(lastTime)
@@ -64,33 +64,43 @@ def countlist():  ##获取查询接口的数据，并处理数据
                     v[i], v[j] = v[j], v[i]
 
     for index, v in timeMap.items():
-        AGPOINTNAME = v[0][1]
-        date = v[0][0]
-        date = date[:10]
-        time_tuple_1 = time.localtime(int(date))
-        bj_time = time.strftime("%Y-%m-%d %H:%M:%S", time_tuple_1)
+        AGPOINTNAME = v[0][5]
+        date = v[0][3]
+        dateSub = date[0:date.rfind('.')]
+        # 定义小时
+        eightHour = datetime.timedelta(hours=8)
+        # 将时间格式化为 datetime 类型
+        d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
+        d = d + eightHour
+        df = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
-        '''
-            根据不同的点值的类型，更改value的取值 [0][2] [0][4]
-        '''
-        value = v[0][4]
-        # print('value的值',value)
-        good = v[0][3]
-
-        row = [AGPOINTNAME,bj_time,value,good]
+        type = v[0][6]
+        if type in ('F','L','B','S'):
+            value = v[0][4]
+            good = ""
+            if v[1]:
+                good = v[1][4]
+            print('v====>',v)
+            # print('v[0]===>',v[0])
+            # print('v[1]===>',v[1])
+        else:
+            value = v[1][4]
+            good = v[0][4]
+            type = v[1][6]
+        row = [AGPOINTNAME, df, value,good, type]
         listb.append(row)
         # print('listb数据',listb)
     return listb
 
-# 解析数据转为数组 ，去除PI
+# 解析数据转为数组 ，去除_result
 def resolver(data):
-    dataArr = data.split("PI,,")
+    dataArr = data.split("_result,")
     dataArr.pop(0)
-    print('处理',dataArr)
     return dataArr
 
 ## 数据写入excel
 def write_excel_data(filepath,data):
+    now = datetime.datetime.now().strftime('%Y-%m-%d')  # 当前时间
     filename = f'{filepath}'   # 存放excel的路径
     workbook = xlsxwriter.Workbook('{}'.format(filename))  # 建立文件
     worksheet = workbook.add_worksheet()  # 建立sheet
@@ -106,10 +116,9 @@ def write_excel_data(filepath,data):
     for i in range(len(data)):
         worksheet.write(i+1,0,data[i][0])
         worksheet.write(i+1,1,data[i][1])
-        # worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
-        worksheet.write(i+1,2,data[i][2])
+        worksheet.write(i+1,2,'{}'.format(str(data[i][2])))
         worksheet.write(i+1,3,data[i][3])
-        # worksheet.write(i+1,4,data[i][4])
+        worksheet.write(i+1,4,data[i][4])
     workbook.close()
 
 # 将数据写入文件
@@ -126,7 +135,7 @@ def writeFile(data, fileName):
 
 if __name__ == '__main__':
     data = countlist()
-    file_path = 'E:/sym/pi解析/PIF1y_interprolated_1y/DL-SW001-MMJCYX-1SJ-S-PLANTCONNECT.xlsx'
+    file_path = 'E:/sym/pi解析/pi_Interpolated/DL-GH002-JYQNOX-4SJ-S-PI.xlsx'
     write_excel_data(file_path,data)
     print('完成！！！')
 
@@ -152,15 +161,12 @@ PI:
 [['0', '2021-12-10T05:00:00.000000001Z', '2021-12-13T05:00:00.000000001Z', '2021-12-12T23:06:25Z', 'true', 'sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus', 'Good', 'PI_TABLE', ''], 
  ['1', '2021-12-10T05:00:00.000000001Z', '2021-12-13T05:00:00.000000001Z', '2021-12-12T23:06:25Z', '0 | Good', 'sy.st.WIN-F9KROVHMQ74.random1.DeviceStatus', 'S', 'PI_TABLE']]
  
-
+ 
  
 name,tags,      time,                   AGPOINTNAME,                    F,          Good,   L
 PI,    ,        1642510804775009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.50433,   true,
 PI,    ,        1642510814775009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.5599251, true,
 PI,    ,        1642510819275009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.830246,  true,
 PI,    ,        1642510824275009100,    DL-GH002-JYQNOX-4SJ-S-PI,       40.9119377, true,
- ['PI,,1642510804775009100,DL-GH002-JYQNOX-4SJ-S-PI,40.50433,true,
- \nPI,,1642510814775009100,DL-GH002-JYQNOX-4SJ-S-PI,40.5599251,true,
- \nPI,,1642510819275009100,DL-GH002-JYQNOX-4SJ-S-PI,40.830246,true,
- \nPI,,1642510824275009100,DL-GH002-JYQNOX-4SJ-S-PI,40.9119377,true,\n']
+
 '''

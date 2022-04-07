@@ -15,6 +15,7 @@ import openpyxl
 from openpyxl.styles import PatternFill
 from openpyxl.styles import colors
 from openpyxl.styles import Font, Color
+
 con = 97
 # for i in range(97,102):
 #读取excel文件
