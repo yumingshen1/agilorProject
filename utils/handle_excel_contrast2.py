@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Time: 2022/1/26 11:17
 # @Author: shenyuming
-import pandas
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -73,6 +72,44 @@ class conTrastExcel:
 a = conTrastExcel().excel1()
 b = conTrastExcel().excel2()
 conTrastExcel().con(a,b)
+
+'''
+def diff(a, b) {
+        // 定义保存相同和不同的数组
+        equal = []
+        diff = []
+
+        // 定义a,b字典
+        aDict = {}
+        bDict = {}
+
+        // 映射ab数组为字典
+        for(i = 0; i< range(a);i++) {
+            aDict.put(a[i][判断相等的字段], a[i])
+        }
+        for(i = 0; i< range(b);i++) {
+            bDict.put(b[i][判断相等的字段], a[i])
+        }
+        // 交叉遍历ab字典，先遍历b数组里值是否与a相等
+        for (key in aDict) {
+            if (bDict[key]) {
+                equals.add(bDict[key])
+            } else {
+                diff.add(bDict[key])
+            }
+        }
+
+        for (key in bDict) {
+            if (aDict[key]) {
+                equals.add(aDict[key])
+            } else {
+                diff.add(aDict[key])
+            }
+        }
+    }
+'''
+
+
 # for i in enumerate(a):
 #     for j in enumerate(a):
 #         if a != b:
