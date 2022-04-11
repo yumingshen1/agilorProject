@@ -17,7 +17,7 @@ def compare_excel(file1_name, file2_name):
 
     excel1_name = open_excel1.sheet_names()
     tp1 = open_excel1.sheet_by_name(excel1_name[0])  # 打开excel文件中的第一个表格
-
+    print(type(tp1))
     excel2_name = open_excel2.sheet_names()
     tp2 = open_excel2.sheet_by_name(excel2_name[0])
     for i in range(tp1.nrows):

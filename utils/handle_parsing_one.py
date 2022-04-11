@@ -43,7 +43,7 @@ class parsingApi:
                     point_type = 'B'
 
                 '''
-                    根据pi的实际情况来确定是需要获取RecordedData的数据还是RecordedData的数据
+                    根据pi的实际情况来确定是需要获取RecordedData的数据还是InterpolatedData的数据
                 '''
                 record_data = item['Links']['RecordedData']  # 获得RecordedData
                 Interpolated_data = item['Links']['InterpolatedData'] # 获得InterpolatedData
