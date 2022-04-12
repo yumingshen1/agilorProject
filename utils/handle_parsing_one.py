@@ -16,13 +16,14 @@ class parsingApi:
     # 所有点信息
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
-
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=20000'  #?maxCount=45000
+        #直接请求点名字
         # path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?nameFilter=sy.st.FWQ-DATAEX.PItoPI1.Scan%20Class%20Information'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?'  #?maxCount=45000
         some_list = requests.get(path1)  ##获取到所有的点信息
         print('samelist:',some_list)
-        ## 需要的name
-        need_name = ['DL-SW001-MMJCYX-2SJ-S-PLANTCONNECT']
+
+        ## 定义需要的name
+        need_name = ['CDM158']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -41,15 +42,14 @@ class parsingApi:
                     point_type = 'I'
                 elif point_type == 'Digital':
                     point_type = 'B'
-
+                print('类型',point_type)
                 '''
                     根据pi的实际情况来确定是需要获取RecordedData的数据还是InterpolatedData的数据
                 '''
                 record_data = item['Links']['RecordedData']  # 获得RecordedData
                 Interpolated_data = item['Links']['InterpolatedData'] # 获得InterpolatedData
                 links = Interpolated_data.split('/streams/')[1]
-                # print('links----------->', links)
-
+                # 定时时间范围、条数、插值的间隔
                 starttime = '?startTime=2022-01-20T01:57:43.000Z'
                 endtime = '&endTime=2022-02-06T08:25:56.000Z'
                 num = '&maxCount=86400'
@@ -57,7 +57,8 @@ class parsingApi:
                 url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{t}{num}'
                 print('url1------>',url1)
 
-                stream_datas = requests.get(url1).json()  ## 循环访问每个url
+                ## 循环访问每个url1
+                stream_datas = requests.get(url1).json()
 
                 values = []  ##存放点的信息
                 for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
@@ -131,7 +132,7 @@ class parsingApi:
                     worksheet.write(index, 1, '{}'.format(str(it[0])))
                     worksheet.write(index, 2, '{}'.format(str(it[1])))
                     worksheet.write(index, 3, '{}'.format(str(it[2])))
-                    # worksheet.write(index, 4, '{}'.format(item['point_type']))
+                    worksheet.write(index, 4, '{}'.format(item['point_type']))
                     index = tm  ## 将外层的下标 还给外层的index，继续循环，
 
         workbook.close()
@@ -152,6 +153,6 @@ class parsingApi:
 
 if __name__ == '__main__':
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_Interpolated_1y/DL-SW001-MMJCYX-2SJ-S-PLANTCONNECT.xlsx'
+    file_path2 = 'E:/sym/pi解析/ABC.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

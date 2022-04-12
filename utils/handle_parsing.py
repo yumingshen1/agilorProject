@@ -17,7 +17,7 @@ class parsingApi:
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
 
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=45000'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?'  #maxCount=45000
 
         some_list = requests.get(path1)  ##获取到所有的点信息
 
@@ -41,26 +41,24 @@ class parsingApi:
                 point_type = 'I'
             elif point_type == 'Digital':
                 point_type = 'L'
-                # results_arr.append(name)
-                # print('数据',name,point_type)
-        # print('长度',len(results_arr))
+            ## 获取取其他字段的链接
             record_data = item['Links']['RecordedData']  # 获得InterpolatedData
-            links = record_data.split('/streams/')[1]
-            # print('links----------->', links)
-
+            links = record_data.split('/streams/')[1]  # 截取需要部分
+            # 定义好时间范围
             starttime = '?startTime=2022-02-01T13:00:00.000Z'  ## ?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z
             endtime = '&endTime=2022-02-11T13:00:00.000Z'
             num = '&maxCount=86400'
-            url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
-            url2 = f'{"http://pi.vaiwan.com/piwebapi/streams/"}{links}{starttime}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
+            url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'  ## 拼接后获得每个name对应的url，http://192.168.10.243:8080/piwebapi/streams/
             print('url1------>',url1)
-            ##单个点信息
-            urlname = 'http://192.168.30.72:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
 
-            stream_datas = requests.get(url1).json()  ## 循环访问每个url
+            ##单个点信息
+            #urlname = 'http://192.168.30.72:8080/piwebapi/streams/F1DPL9_f9XkRSkCpa9_eooJCywAwAAAAV0lOLUY5S1JPVkhNUTc0XFNZLlNULldJTi1GOUtST1ZITVE3NC5SQU5ET00xLkRFVklDRSBTVEFUVVM/recorded?startTime=2000-01-01T00:00:00Z&endTime=2022-01-01T00:00:00Z'
+
+            ## 循环访问每个url
+            stream_datas = requests.get(url1).json()
 
             values = []  ##存放点的信息
-            for v in stream_datas['Items']:  ##循环每个name请求的url后的数据
+            for v in stream_datas['Items']:  ##循环每个name请求的url1后的数据
                 timestamp = v['Timestamp']  ## 时间直接获取
                 good = v['Good']  ## good直接获取
                 # print('good--->',good)
@@ -83,13 +81,13 @@ class parsingApi:
                 timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
                 r = [timestamp, value, good]  ## 将name 对应的一组 时间，value，good 存入一个list
-                # print('r---',r)
+                print('r---',r)
                 values.append(r)  ## 将每一个name 取得的 时间，value，good 放入一个list
-                # print('values----',values)
+                print('values----',values)
 
             row_dict = {'name': name, 'point_type': point_type,'values': values}  ##将 一个点的信息 name ,类型， 存放时间，value，good的list  全部 存入字典
             results_arr.append(row_dict)  ## 将存放每一个点的信息的 字典 放入list
-            # print("result_arr的值----->", results_arr)
+            print("result_arr的值----->", results_arr)
             '''
             [{'name': 'sy.st.WIN-F9KROVHMQ74.random1.sc1', 'point_type': 'F', 'values': [['2021-12-07 13:00:25', 50.0, True], ['2021-12-07 13:00:55', 50.0, True]]}]
             '''
@@ -152,7 +150,7 @@ class parsingApi:
 if __name__ == '__main__':
 
     # file_path = os.path.join(report_path,'data.xlsx')
-    # file_path2 = 'E:/sym/pi解析/pi_recorded/pi_1.xlsx'
-    # parsingApi().write_excel(parsingApi().information, file_path2)
-    parsingApi().information
+    file_path2 = 'E:/sym/pi解析/pi_recorded/pi_1.xlsx'
+    parsingApi().write_excel(parsingApi().information, file_path2)
+    # parsingApi().information
 
