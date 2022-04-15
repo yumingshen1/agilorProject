@@ -17,13 +17,13 @@ class parsingApi:
     @property  ##被声明是属性，不是方法， 调用时可直接调用方法本身
     def information(self):
         #直接请求点名字
-        # path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?nameFilter=sy.st.FWQ-DATAEX.PItoPI1.Scan%20Class%20Information'
-        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?'  #?maxCount=45000
+        # path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?nameFilter=eeaa5a37-bcc4-426b-9d8d-df40be83907c%20Class%20Information'
+        path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=23000'  #?maxCount=45000
         some_list = requests.get(path1)  ##获取到所有的点信息
         print('samelist:',some_list)
 
         ## 定义需要的name
-        need_name = ['CDM158']
+        need_name = ['BA:ACTIVE.1']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
 
         results_arr = []  # 创建一个list存放所有数据
@@ -35,7 +35,7 @@ class parsingApi:
                 name = name.replace(' ', '')
                 point_type = item['PointType']  ## 获得所有 type
                 if point_type == 'Float32':
-                    point_type = 'F'
+                    point_type = '浮点型r/R'
                 elif point_type == 'String':
                     point_type = 'S'
                 elif point_type == 'Int32':
@@ -48,13 +48,13 @@ class parsingApi:
                 '''
                 record_data = item['Links']['RecordedData']  # 获得RecordedData
                 Interpolated_data = item['Links']['InterpolatedData'] # 获得InterpolatedData
-                links = Interpolated_data.split('/streams/')[1]
+                links = record_data.split('/streams/')[1]
                 # 定时时间范围、条数、插值的间隔
-                starttime = '?startTime=2022-01-20T01:57:43.000Z'
-                endtime = '&endTime=2022-02-06T08:25:56.000Z'
+                starttime = '?startTime=2022-04-10T02:03:49.000Z'
+                endtime = '&endTime=2022-04-13T08:17:19.000Z'
                 num = '&maxCount=86400'
                 t = '&interval=1y'  # 间隔
-                url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{t}{num}'
+                url1 = f'{"http://192.168.30.72:8080/piwebapi/streams/"}{links}{starttime}{endtime}{num}'
                 print('url1------>',url1)
 
                 ## 循环访问每个url1
@@ -80,7 +80,7 @@ class parsingApi:
                     eightHour = datetime.timedelta(hours=8)
                     # 将时间格式化为 datetime 类型
                     d = datetime.datetime.strptime(dateSub, '%Y-%m-%dT%H:%M:%S')
-                    d = d + eightHour
+                    # d = d + eightHour
                     timestamp = datetime.datetime.strftime(d, '%Y-%m-%d %H:%M:%S')
 
                     r = [timestamp, value, good]  ## 将name 对应的一组 时间，value，good 存入一个list
@@ -153,6 +153,6 @@ class parsingApi:
 
 if __name__ == '__main__':
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/ABC.xlsx'
+    file_path2 = 'E:/sym/pi解析/pi_recorded_2022413/BAACTIVE1_pi.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

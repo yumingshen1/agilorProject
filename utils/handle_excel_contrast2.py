@@ -26,8 +26,8 @@ class conTrastExcel:
     def __init__(self):
         # 读取excel文件
         # 括号中的字符串为你要比较的两个excel的路径，注意用“/”
-        wb_a = openpyxl.load_workbook(f'E:/sym/共享文件夹/4.2取值_excel/11_布尔.xlsx')
-        wb_b = openpyxl.load_workbook(f'E:/sym/共享文件夹/4.2取值_excel/11_布尔 - 副本.xlsx')
+        wb_a = openpyxl.load_workbook(f'E:/sym/pi解析/pi_recorded_2022413/CDEP158_pi - 副本.xlsx')  #pi
+        wb_b = openpyxl.load_workbook(f'E:/sym/pi解析/rtdb_recorded_2022413/CDEP158_rtdb.xlsx')  #4.2
         self.wa = wb_a.worksheets[0]
         self.wb = wb_b.worksheets[0]
 
@@ -87,8 +87,9 @@ class conTrastExcel:
         ws = wb_s.active
         ws.title = '对比结果'
 
-        for index, item in enumerate(datas[0]):
-            ws.cell(row=1,column=index+1,value='{}'.format(item))
+        # for index, item in enumerate(datas[0]):
+        #     ws.cell(row=1,column=index+1,value='{}'.format(item))
+
         for index, item in enumerate(datas):
             print("---item： {}".format(item))
             ws.cell(index+1, 1, '{}'.format(item[0]))
@@ -102,5 +103,5 @@ class conTrastExcel:
 
 a = conTrastExcel().excel1()
 b = conTrastExcel().excel2()
-file_path = f'E:/sym/共享文件夹/4.2-pi对比/x.xlsx'
+file_path = f'E:/sym/pi解析/对比结果pi_2022413/CDEP158-副本_vs.xlsx'
 conTrastExcel().con(a,b,file_path)
