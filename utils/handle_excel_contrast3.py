@@ -21,7 +21,9 @@ from openpyxl.styles import PatternFill
 from openpyxl.styles import colors
 from openpyxl.styles import Font, Color
 import copy
-
+'''
+    对比大量数据 ， 多列
+'''
 # 读取excel文件
 # 括号中的字符串为你要比较的两个excel的路径，注意用“/”
 wb_a = openpyxl.load_workbook(f'E:/sym/共享文件夹/4.2取值_excel/11_布尔.xlsx')

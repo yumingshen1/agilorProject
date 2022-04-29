@@ -21,11 +21,9 @@ class parsingApi:
         path1 = 'http://192.168.30.72:8080/piwebapi/dataservers/F1DS3uSn5IfY2kGMucN6_OSrNAV0lOLVEzNzRQUEdBSDZD/points?maxCount=23000'  #?maxCount=45000
         some_list = requests.get(path1)  ##获取到所有的点信息
         print('samelist:',some_list)
-
         ## 定义需要的name
-        need_name = ['BA:ACTIVE.1']
+        need_name = ['CDEP158']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
-
         results_arr = []  # 创建一个list存放所有数据
 
         for item in some_list.json()['Items']:  ## 循环点信息
@@ -37,11 +35,11 @@ class parsingApi:
                 if point_type == 'Float32':
                     point_type = '浮点型r/R'
                 elif point_type == 'String':
-                    point_type = 'S'
+                    point_type = '字符串型s/S'
                 elif point_type == 'Int32':
-                    point_type = 'I'
+                    point_type = '长整型l/L'
                 elif point_type == 'Digital':
-                    point_type = 'B'
+                    point_type = '字符串型s/S'
                 print('类型',point_type)
                 '''
                     根据pi的实际情况来确定是需要获取RecordedData的数据还是InterpolatedData的数据
@@ -153,6 +151,6 @@ class parsingApi:
 
 if __name__ == '__main__':
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/pi解析/pi_recorded_2022413/BAACTIVE1_pi.xlsx'
+    file_path2 = 'E:/sym/PI/pi_424_data/pi_CDEP158.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 
