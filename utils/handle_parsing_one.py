@@ -22,7 +22,7 @@ class parsingApi:
         some_list = requests.get(path1)  ##获取到所有的点信息
         print('samelist:',some_list)
         ## 定义需要的name
-        need_name = ['CDEP158']
+        need_name = ['CDT158']
         # 'sy.st.WIN-F9KROVHMQ74.random1.sc1','BA:LEVEL.1','CDM158','CDM1589','CDEP158','CDEP1589','sy.st.WIN-F9KROVHMQ74.random1.Device Status'
         results_arr = []  # 创建一个list存放所有数据
 
@@ -151,6 +151,6 @@ class parsingApi:
 
 if __name__ == '__main__':
     file_path = os.path.join(report_path,'data.xlsx')
-    file_path2 = 'E:/sym/PI/pi_424_data/pi_CDEP158.xlsx'
+    file_path2 = 'E:/sym/PI/pi_505_data/pi_CDT158.xlsx'
     parsingApi().write_excel(parsingApi().information, file_path2)
 

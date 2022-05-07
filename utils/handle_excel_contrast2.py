@@ -24,8 +24,8 @@ class conTrastExcel:
     def __init__(self):
         # 读取excel文件
         # 括号中的字符串为你要比较的两个excel的路径，注意用“/”
-        wb_a = openpyxl.load_workbook(f'E:/sym/PI/pi_424_data/pi_CDM158.xlsx')  #pi
-        wb_b = openpyxl.load_workbook(f'E:/sym/PI/rtdb_424_421/rtdb_CDM158.xlsx')  #4.2
+        wb_a = openpyxl.load_workbook(f'E:/sym/PI/pi_505_data/pi_attribute_43374_modify.xlsx')  #pi
+        wb_b = openpyxl.load_workbook(f'E:/sym/PI/rtdb_506_421/点位信息_1651822976228.xlsx')  #4.2.1
         self.wa = wb_a.worksheets[0]
         self.wb = wb_b.worksheets[0]
 
@@ -92,12 +92,12 @@ class conTrastExcel:
             ws.cell(index+1, 2, '{}'.format(item[1]))
             ws.cell(index+1, 3, '{}'.format(item[2]))
             ws.cell(index+1, 4, '{}'.format(item[3]))
-            ws.cell(index+1, 5, '{}'.format(item[4]))
+            # ws.cell(index+1, 5, '{}'.format(item[4]))    ## 点属性对比时注释此行
 
         wb_s.save(file_path)
 
 
 a = conTrastExcel().excel1()
 b = conTrastExcel().excel2()
-file_path = f'E:/sym/PI/对比结果pi_2022_425/CDM158_421.xlsx'
+file_path = f'E:/sym/PI/对比结果pi_2022_506_421/attribute_VS.xlsx'
 conTrastExcel().con(a,b,file_path)
